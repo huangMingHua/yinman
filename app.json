@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/student/myCourse/myCourse",
+    "pages/student/student",
+    "pages/index/index",
+    "pages/index/contact/contact",
+    "pages/index/signUp/signUp",
+    "pages/index/class/class",
+    "pages/student/student"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

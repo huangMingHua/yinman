@@ -1,0 +1,7 @@
+<template name="telOur">
+    <view class="telOur">
+      <image src="/images/icon/phone.png"></image>
+      <text>预约热线</text>
+    </view>
+    <text class="telephone">021-50836037/13524160481</text>
+</template>

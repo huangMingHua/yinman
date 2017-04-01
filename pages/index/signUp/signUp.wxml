@@ -1,0 +1,99 @@
+<import src="../../template/contact/contact" />
+<view class="wrap">
+  <view class="background"></view>
+  <view class="section">
+    <input placeholder="宝宝名字" />
+  </view>
+  <view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        <text class="signClass">报名课程</text>
+        <text class="signCon">{{array[index]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view class="expectClass">
+    <text>期望上课时间段（可选填1~3个）</text>
+  </view>
+  <view class="timeWrap">
+    <view class="hopeDay">
+      <picker bindchange="bindPickerChangeDay" value="{{indexDay}}" range="{{arrayDay}}">
+        <view class="picker">
+          <text>{{arrayDay[indexDay]}}</text>
+          <image src="/images/icon/down.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="hopeTime">
+      <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+        <view class="picker1">
+          <text>{{time}}</text>
+        </view>
+      </picker>
+      <text>至</text>
+      <picker mode="time" value="{{timeEnd}}" start="09:01" end="21:01" bindchange="bindTimeChangeEnd">
+        <view class="picker">
+          <text>{{timeEnd}}</text>
+        </view>
+      </picker>
+      <image src="/images/icon/down.png"></image>
+    </view>
+    <view class="right" catchtap="add">
+      <view>
+        <image src="/images/icon/add.png" class="add"></image>
+      </view>
+      <view>
+        <text>添加</text>
+      </view>
+    </view>
+  </view>
+  <view class="timeWrap timeWrapArr" wx:for="{{dateArr}}" wx:for-index="idx">
+    <view class="hopeDay">
+      <picker bindchange="bindPickerChangeDay1" data-index="{{idx}}" value="{{dateArr[idx].indexDay}}" range="{{arrayDay}}">
+        <view class="picker">
+          <text>{{arrayDay[dateArr[idx].indexDay]}}</text>
+          <image src="/images/icon/down.png"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="hopeTime">
+      <picker mode="time" value="{{dateArr[idx].time}}" data-index="{{idx}}" start="09:01" end="21:01" bindchange="bindTimeChange1">
+        <view class="picker1">
+          <text>{{dateArr[idx].time}}</text>
+        </view>
+      </picker>
+      <text>至</text>
+      <picker mode="time" value="{{dateArr[idx].timeEnd}}" data-index="{{idx}}" start="09:01" end="21:01" bindchange="bindTimeChangeEnd1">
+        <view class="picker">
+          <text>{{dateArr[idx].timeEnd}}</text>
+        </view>
+      </picker>
+      <image src="/images/icon/down.png"></image>
+    </view>
+    <view class="right" catchtap="del" data-index="{{idx+1}}">
+      <view>
+        <image src="/images/icon/del.png" class="add"></image>
+      </view>
+      <view>
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
+  <view class="button">
+    <button formType="submit" catchtap="submit">确认报名</button>
+  </view>
+  <view class="warnTelWrap">
+    <view class="warnWrap">
+      <view class="warn">
+        <image src="/images/icon/warn.png"></image>
+        <text>温馨提示:</text>
+      </view>
+      <view class="warnText">
+        <text> 报名成功后,教务会与您联系确认报名事宜。</text>
+      </view>
+    </view>
+    <view class="contact">
+      <template is="telOur"></template>
+    </view>
+  </view>
+</view>

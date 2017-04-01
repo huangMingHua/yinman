@@ -1,0 +1,18 @@
+<template name="courseDetails">
+  <view class="courseDetails">
+    <view class="courseDetailsH">
+      <view>
+        <image src="/images/icon/headPortrait.png"></image>
+      </view>
+      <view>
+        <view>
+          <text>教师</text>
+          <text>王静雪</text>
+        </view>
+        <view>
+          <text>钢琴一对一30分钟</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
