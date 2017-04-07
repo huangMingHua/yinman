@@ -36,3 +36,42 @@
 .courseDetailsH text {
   font-size: 28rpx;
 }
+.courseDetailsH .classInfo{
+  color: #979797;
+}
+.timeInfo{
+  padding: 6rpx 30rpx 28rpx 30rpx;
+   background-color: #f5f5f5;
+}
+.timeInfo view{
+  margin-top: 22rpx;
+  font-size: 28rpx;
+}
+.timeInfo view:nth-child(2) text{
+    display: block;
+    text-indent: 2em;
+}
+.btn-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18rpx 0 30rpx 0;
+  font-size: 28rpx;
+}
+.btn-area navigator{
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 5rpx;
+  text-align: center;
+  color: white;
+}
+.btn-area navigator:nth-child(1){
+  background-color: #3cb4ff;
+}
+.btn-area navigator:nth-child(2){
+  background-color: #00d6c2;
+}
+.btn-area navigator:nth-child(3){
+  background-color: #ff9b39;
+}

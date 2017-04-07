@@ -1,7 +1,8 @@
 // pages/student/myCourse/myCourse.js
 Page({
   data: {
-    boff: true
+    boff: true,
+    course:["1","2"]
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数

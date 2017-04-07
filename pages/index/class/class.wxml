@@ -118,13 +118,13 @@
         </view>
       </view>
     </view>
-    <textarea placeholder="请介绍一下宝宝学习经历"  />
+    <textarea placeholder="请介绍一下宝宝学习经历" />
     <view class="info">
       <text>教材、学龄、上课频率、练习频率，0基础可不填</text>
     </view>
     <view class="button">
       <button formType="submit" catchtap="submit">提交</button>
     </view>
-    <template is="telOur"/>
+    <template is="telOur" />
   </view>
 </form>

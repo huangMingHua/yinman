@@ -1,0 +1,19 @@
+
+<!--pages/student/onlineInstruction/videoList/videoList.wxml-->
+<navigator url="/page/navigate/navigate?title=navigate" class="contect" wx:for="{{videoArr}}" wx:for-index="idx">
+  <image src="{{videoArr[idx].src}}"></image>
+  <view class="wrap">
+    <view class="vedioName">
+      <text>{{videoArr[idx].vedioName}}</text>
+    </view>
+    <view class="name">
+      <text>{{videoArr[idx].name}}</text>
+      <text wx:if="{{videoArr[idx].teacher}}" class="teacher">{{videoArr[idx].teacher}}</text>
+    </view>
+    <view class="update">
+      <text>{{videoArr[idx].update}}</text>
+      <text wx:if="{{videoArr[idx].teacher}}" class="alreadyComment bitComment">{{videoArr[idx].comment}}</text>
+      <text wx:else class="bitComment1">{{videoArr[idx].comment}}</text>
+    </view>
+  </view>
+</navigator>
