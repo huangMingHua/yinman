@@ -1,0 +1,104 @@
+
+<!--pages/student/myCourse/applyLessons/applyLessons.wxml-->
+<import src="../../../template/prompt/prompt"/>
+<view class="head">调课人：
+  <text>王子魏</text>
+</view>
+<template is="prompt" data="{{prompt}}"></template>
+<view class="berforInfo">
+  <view>原课程信息</view>
+  <view class="cir"></view>
+  <view class="wrap">
+    <view class="line"></view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon1.png"></image>
+      </view>
+      <view>
+        <text class="berforConTeacher">教师:</text>
+        <text>王静雪</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon2.png"></image>
+      </view>
+      <view>
+        <text class="berforConCourse">课程:</text>
+        <text>钢琴一对一30分钟</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon3.png"></image>
+      </view>
+      <view>
+        <text class="berforConTime">上课时间:</text>
+        <text>每周二上午10:00~10:30</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="courseInformationHead">
+  <text>调课信息</text>
+</view>
+<view class="courseInformation">
+  <view class="courseInformationCon">
+    <view class="section" style="margin-top:42rpx;">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>请假时间</text>
+      <picker mode="date" value="{{arrDate[0]}}" start="2015-09-01" end="2040-09-01" data-index="0" bindchange="bindDateChange">
+        <view class="picker">
+          {{arrDate[0]}}
+        </view>
+      </picker>
+      <picker mode="time" value="{{arrTime[0]}}" start="09:01" end="21:01" data-index="0" bindchange="bindTimeChange">
+        <view class="picker">
+          {{arrTime[0]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+    </view>
+    <view class="courseTimeTo">
+      <view class="courseTimeToHead">课程调至:</view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>教师</text>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker" style="width:440rpx;">
+            {{array[index]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>补课时间</text>
+        <picker mode="date" value="{{arrDate[1]}}" start="2015-09-01" end="2040-09-01" data-index="1" bindchange="bindDateChange">
+          <view class="picker">
+            {{arrDate[1]}}
+          </view>
+        </picker>
+        <picker mode="time" value="{{arrTime[1]}}" start="09:01" end="21:01" data-index="1" bindchange="bindTimeChange">
+          <view class="picker">
+            {{arrTime[1]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>教室</text>
+        <text>二楼南</text>
+      </view>
+      <view class="section" style="margin:40rpx 0;">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>调课原因</text>
+        <input placeholder="输入详细描述" />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="button">
+      <button formType="submit" catchtap="submit">确认调课</button>
+</view>

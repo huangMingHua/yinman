@@ -1,0 +1,130 @@
+<import src="../../template/contact/contact" />
+<form bindsubmit="formSubmit">
+  <view class="classname">
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝姓名</text>
+      <input name="name" placeholder="宝宝名字" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝性别</text>
+      <radio-group class="sex" bindchange="radioChange">
+        <label class="leftRa">
+          <radio value="男" checked="true" />
+          <text>男</text>
+        </label>
+        <label class="rightRa">
+          <radio value="女" checked="" class="gril" />
+          <text>女</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>出生日期</text>
+      <input placeholder="宝宝出生日期" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>就读学校</text>
+      <input placeholder="学校名称" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家长姓名</text>
+      <input placeholder="你的名字" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>联系电话</text>
+      <input placeholder="输入11位数" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家庭住址</text>
+      <input placeholder="输入详细地址" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>音乐经历</text>
+      <radio-group class="sex" bindchange="radioChange">
+        <label class="leftRa">
+          <radio value="0基础" checked="true" />
+          <text>0基础</text>
+        </label>
+        <label class="rightRa">
+          <radio value="有基础" checked="" class="gril" />
+          <text>有基础</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>预约课程</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+    </view>
+    <view class="expectClass">
+      <text>期望上课时间段（可选填1~3个）</text>
+    </view>
+    <view class="select">
+      <view class="left">
+        <picker mode="date" value="{{dateData.date}}" class="date" start="2015-09-01" end="2040-09-01" bindchange="bindDateChange">
+          <view class="picker date">
+            {{dateData.date}}
+          </view>
+        </picker>
+        <picker mode="time" class="time" value="{{dateData.time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+          <view class="picker time">
+            {{dateData.time}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="right" catchtap="add" data-add="value">
+        <view>
+          <image src="/images/icon/add.png" class="add"></image>
+        </view>
+        <view>
+          <text>添加</text>
+        </view>
+      </view>
+    </view>
+    <view class="select addSel" wx:for="{{dateArr}}" wx:for-index="idx">
+      <view class="left">
+        <picker mode="date" value="{{dateArr[idx].date}}" data-index="{{idx}}" class="date" start="2015-09-01" end="2040-09-01" bindchange="bindDateChange1">
+          <view class="picker date">
+            {{dateArr[idx].date}}
+          </view>
+        </picker>
+        <picker mode="time" class="time" value="{{dateArr[idx].time}}" data-index="{{idx}}" start="09:01" end="21:01" bindchange="bindTimeChange1">
+          <view class="picker time">
+            {{dateArr[idx].time}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="right" catchtap="del" data-index="{{idx+1}}">
+        <view>
+          <image src="/images/icon/del.png" class="add"></image>
+        </view>
+        <view>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+    <textarea placeholder="请介绍一下宝宝学习经历" />
+    <view class="info">
+      <text>教材、学龄、上课频率、练习频率，0基础可不填</text>
+    </view>
+    <view class="button">
+      <button formType="submit" catchtap="submit">提交</button>
+    </view>
+    <template is="telOur" />
+  </view>
+</form>

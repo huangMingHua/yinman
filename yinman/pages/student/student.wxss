@@ -1,0 +1,15 @@
+/* pages/student/student.wxss */
+@import "../homeComponent/head/head.wxss";
+@import "../homeComponent/stuAndTecCourse/stuAndTecCourse.wxss";
+@import "../homeComponent/classAndEnroll/classAndenroll.wxss";
+@import "../homeComponent/tel/tel.wxss";
+.headWrap{
+    border-bottom:1rpx solid #e6e6e6; 
+}
+.stuAndTecCourseWrap{
+    margin-top: 20rpx;
+    border-top:1rpx solid #e6e6e6; 
+}
+.classEnroll{
+     margin-top: 20rpx;
+}

@@ -1,0 +1,11 @@
+
+<!--pages/student/myCourse/myLesson/myLesson.wxml-->
+<import src="../../../template/courseContent/courseContent" />
+ <import src="../../../template/prompt/prompt"/>
+<view class="wrap">
+  <view class="head">
+    <text>调课人：王子魏</text>
+  </view>
+  <template is="courseContent"></template>
+  <template is="prompt" data="{{prompt}}"></template>
+</view>

@@ -1,0 +1,14 @@
+<template name="classEnroll">
+  <view class="classEnroll">
+    <view class="class" catchtap="classTo">
+      <image src="/images/icon/class.png"></image>
+      <text>预约试课</text>
+      <image src="/images/icon/dir.png" class="dir"></image>
+    </view>
+    <view class="enroll"  catchtap="enrollTo">
+      <image src="/images/icon/enroll.png"></image>
+      <text>我要报名</text>
+      <image src="/images/icon/dir.png" class="dir"></image>
+    </view>
+  </view>
+</template>

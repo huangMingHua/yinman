@@ -1,0 +1,6 @@
+<!--pages/about/about.wxml-->
+<view class="about">
+   <view><image src="/images/icon/about.png"></image></view>
+   <view> <text>南京鼓楼社区少儿钢琴比赛</text><text>地点:南京鼓楼社区</text><text>时间:2017-03-14  20:00</text></view>
+   <navigator>查看</navigator>
+</view>

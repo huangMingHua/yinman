@@ -1,0 +1,21 @@
+.telOur{
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.telOur image{
+  margin:0 14rpx 0 33rpx;
+  width: 27rpx;
+  height: 23rpx;
+  vertical-align: middle;
+}
+.telOur text{
+  font-size: 28rpx;
+  color: #333;
+  vertical-align: middle;
+}
+.telephone{
+  display: block;
+  margin: 20rpx 0 30rpx 73rpx;
+  font-size: 28rpx;
+  color: #b9b9b9;
+}

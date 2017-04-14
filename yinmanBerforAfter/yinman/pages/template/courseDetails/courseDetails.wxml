@@ -1,0 +1,34 @@
+<template name="courseDetails">
+  <view class="courseDetails">
+    <view class="courseDetailsH">
+      <view>
+        <image src="/images/icon/headPortrait.png"></image>
+      </view>
+      <view>
+        <view>
+          <text>教师</text>
+          <text>王静雪</text>
+        </view>
+        <view>
+          <text class="classInfo">钢琴一对一30分钟</text>
+        </view>
+      </view>
+    </view>
+    <view class="timeInfo">
+      <view>
+        <text>上课时间: 每周二上午10:00~10:30</text>
+      </view>
+      <view>
+        <text>教室: 二楼南</text>
+      </view>
+      <view>
+        <text>课程周期: 2017.2.6~2017.7.31</text>
+      </view>
+    </view>
+    <view class="btn-area">
+      <navigator>申请调课</navigator>
+      <navigator>我的调课</navigator>
+      <navigator>申请续课</navigator>
+    </view>
+  </view>
+</template>

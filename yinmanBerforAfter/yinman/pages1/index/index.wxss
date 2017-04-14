@@ -1,0 +1,6 @@
+/* pages/index/index.wxss */
+@import "../homeComponent/classAndEnroll/classAndenroll.wxss";
+@import "../homeComponent/tel/tel.wxss";
+page{
+    background-color: #f5f5f5;
+}

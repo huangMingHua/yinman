@@ -1,0 +1,28 @@
+
+<!--pages/student/onlineInstruction/videoList/commentDetails/commentDetails.wxml-->
+<view class="video">
+  <image src="/images/icon/bigVideo.jpg"></image>
+</view>
+<view class="videoInfo">
+  <view>蓝色多瑙河钢琴曲自弹1</view>
+  <view>
+    <text>学生:王子魏</text>
+    <text>上传时间:2017.02.23 21:00</text>
+  </view>
+</view>
+<view class="videoSynopsis">
+  <view>视频简介:</view>
+  <view>视频简介视频简介视频简介视频简介视频简介视频简介视 频简介视频简介视频简介视频简介视频简介视频简介视频 简介视频简介视频简介视频简介视频简介视
+  </view>
+</view>
+<view class="teacher">
+  <view>
+    <text>教师:王静雪</text>
+    <text>点评时间:2017.02.23 24:00</text>
+  </view>
+  <view>
+    <view>教师评语:</view>
+    <view>在线指导为有偿指导在线指导为有偿指导在线指导为有偿
+指导在线指导为有偿指导在线指导为有偿指导:</view>
+  </view>
+</view>

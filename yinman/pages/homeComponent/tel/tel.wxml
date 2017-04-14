@@ -1,0 +1,10 @@
+<template name="tel">
+  <view class="tel" catchtap="telUs">
+   <view>
+    <image src="/images/icon/tel.png"></image>
+      <text>联系我们</text>
+    <image src="/images/icon/dir.png" class="dir"></image>
+   </view>
+    
+  </view>
+</template>

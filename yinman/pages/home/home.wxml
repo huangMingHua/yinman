@@ -1,0 +1,10 @@
+<!--pages/home/home.wxml-->
+<view class="home">
+   <navigator url="/pages/home/about/about"><image src="/images/icon/home1.png" class="icon"></image><text>关于音曼</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view>
+<view class="home">
+   <navigator url="url"><image src="/images/icon/home2.png" class="icon"></image><text>展示中心</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view>
+<view class="home">
+   <navigator url="url"><image src="/images/icon/home3.png" class="icon"></image><text>个人中心</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view>

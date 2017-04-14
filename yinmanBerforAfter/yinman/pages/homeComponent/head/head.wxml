@@ -1,0 +1,13 @@
+<template name="head">
+  <view class="head">
+    <view class="headPortrait">
+      <view class="imgWrap">
+        <image src="/images/icon/headPortrait.png"></image>
+      </view>
+    </view>
+    <view class="nameTel">
+      <text>王子魏</text>
+      <text>159xxxx2222</text>
+    </view>
+  </view>
+</template>

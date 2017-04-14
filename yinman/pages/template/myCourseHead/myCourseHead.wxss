@@ -1,0 +1,18 @@
+.myCourseHead{
+     display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+.myCourseHead view {
+    height: 98rpx;
+    box-sizing: border-box;
+    width: 50%;
+    text-align: center;
+    line-height: 98rpx;
+    font-size: 32rpx;
+    color: #333333;
+}
+.myCourseHead .active{
+    border-bottom:4rpx solid #3cb4ff;
+    color: #3cb4ff;
+}

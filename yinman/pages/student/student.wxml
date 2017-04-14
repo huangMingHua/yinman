@@ -1,0 +1,16 @@
+
+<!--pages/student/student.wxml-->
+<import src="../homeComponent/head/head.wxml" />
+<import src="../homeComponent/stuAndTecCourse/stuAndTecCourse.wxml" />
+<import src="../homeComponent/classAndEnroll/classAndenroll.wxml" />
+<import src="../homeComponent/tel/tel.wxml" />
+<view class="headWrap">
+  <template is="head" />
+</view>
+<view class="stuAndTecCourseWrap">
+  <template is="stuAndTecCourse" />
+</view>
+<view class="classEnroll">
+  <template is="classEnroll" />
+</view>
+  <template is="tel" />

@@ -1,0 +1,6 @@
+<template name="myCourseHead" >
+    <view class="myCourseHead">
+      <view catchtap="switch" data-head="1" class="{{boff ? 'active': ''}}"><text>本期课程</text></view>
+      <view catchtap="switch" data-head="2" class="{{!boff ? 'active' : ''}}"><text>往期课程</text></view>
+    </view>
+</template>

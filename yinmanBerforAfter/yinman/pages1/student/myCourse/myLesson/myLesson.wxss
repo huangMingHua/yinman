@@ -1,0 +1,15 @@
+/* pages/student/myCourse/myLesson/myLesson.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.head {
+  height: 86rpx;
+  line-height: 86rpx;
+  background-color: white;
+  padding-left: 33rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+@import "../../../template/courseContent/courseContent.wxss";
+@import "../../../template/prompt/prompt.wxss";

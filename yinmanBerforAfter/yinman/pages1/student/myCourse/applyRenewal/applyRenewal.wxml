@@ -1,0 +1,124 @@
+
+<!--pages/student/myCourse/applyRenewal/applyRenewal.wxml-->
+<import src="../../../template/prompt/prompt" />
+<view class="head">续课人：
+  <text>王子魏</text>
+</view>
+<view class="courseInfo">
+  <view class="courseInfoName">
+    <text>课程信息</text>
+  </view>
+  <view class="continuationType">
+    <view class="section">
+      <text>续课类型</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" mode="selector" range="{{array}}">
+        <view class="picker">{{array[index]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+    </view>
+    <radio-group class="radio-group" bindchange="radioChange" wx:if="{{index==1}}">
+      <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+    <view class="continuationTypeCon">
+      <view>
+        <text>教师</text>
+        <text>王静雪</text>
+      </view>
+      <view>
+        <text>课程</text>
+        <text>钢琴一对一30分钟</text>
+      </view>
+      <view>
+        <text>教室 </text>
+        <text>二楼南</text>
+      </view>
+      <view>
+        <text>上课时间</text>
+        <text>每周二上午10:00~10:30</text>
+      </view>
+      <view>
+        <text>课程周期</text>
+        <text>2017.9.1~2017.12.31</text>
+      </view>
+    </view>
+    <view wx:if="{{radioIndex==1}}">
+      <view class="section classTime">
+        <text>上课时间</text>
+        <picker mode="selector" bindchange="bindDayChange" value="{{daysIndex}}" range="{{objTime.days}}">
+          <view class="picker">{{objTime.days[daysIndex]}}
+          </view>
+        </picker>
+        <picker mode="selector" bindchange="bindTimeChange" value="{{timesIndex}}" range="{{times}}">
+          <view class="picker">{{times[timesIndex]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="section position">
+        <text>教室</text>
+        <text>{{position}}</text>
+      </view>
+    </view>
+    <view class="otherTime" wx:if="{{radioIndex==2}}">
+      <view class="otherDay">
+        <picker mode="selector" bindchange="bindOtherTimeAddChange" value="{{otherTimeAdd.index}}" range="{{otherTimeAdd.array}}">
+          <view class="picker">{{otherTimeAdd.array[otherTimeAdd.index]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="otherHouer">
+        <picker mode="time" value="{{otherTimeAdd.time1}}" start="09:01" end="21:01" bindchange="bindTimeStartChange">
+          <view class="picker">
+            {{otherTimeAdd.time1}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="time" value="{{otherTimeAdd.time2}}" start="09:01" end="21:01" bindchange="bindTimeEndChange">
+          <view class="picker">
+            {{otherTimeAdd.time2}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="add" catchtap="add">
+        <image src="/images/icon/add.png"></image>
+        <text>添加</text>
+      </view>
+    </view>
+    <view class="otherTime delTime" wx:for="{{delArr}}" wx:for-index="idx">
+      <view class="otherDay">
+        <picker mode="selector" bindchange="bindOtherTimeDelChange" value="{{delArr[idx].index}}" data-index="{{idx}}" range="{{delArr[idx].array}}">
+          <view class="picker">{{delArr[idx].array[delArr[idx].index]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="otherHouer">
+        <picker mode="time" value="{{delArr[idx].time1}}" start="09:01" end="21:01" data-index="{{idx}}"  bindchange="bindTimeDelStartChange">
+          <view class="picker">
+            {{delArr[idx].time1}}
+          </view>
+        </picker>
+        <text>至</text>
+        <picker mode="time" value="{{delArr[idx].time2}}" start="09:01" end="21:01" data-index="{{idx}}" bindchange="bindTimeDelEndChange">
+          <view class="picker">
+            {{delArr[idx].time2}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class="add" catchtap="bindTimeDel" data-index="{{idx}}">
+        <image src="/images/icon/del.png"></image>
+        <text>删除</text>
+      </view>
+    </view>
+  </view>
+</view>
+<template is="prompt" data="{{prompt}}"></template>
+<view class="button">
+  <button formType="submit" catchtap="submit">确认续课</button>
+</view>
