@@ -1,0 +1,17 @@
+<!--pages/aboutInfo/rhythmCourse/rhythmCourse.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="wrap">
+  <view class="tr">
+    <text>课程名称:</text><text>{{course.name}}</text>
+  </view>
+  <view class="tr">
+    <text>类别:</text><text>{{course.category}}</text>
+  </view>
+  <view class="tr">
+    <text>时长:</text><text>{{course.time}}</text>
+  </view>
+   <view>
+    <view>课程介绍:</view>
+   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>

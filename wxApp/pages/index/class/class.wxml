@@ -1,0 +1,105 @@
+<import src="../../template/contact/contact" />
+<form bindsubmit="formSubmit">
+  <view class="classname">
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝姓名</text>
+      <input disabled="{{disab}}"  name="name"  value="{{userInfo.name}}" placeholder="宝宝名字" />
+    </view>
+    <view class="prompt">
+        {{sName}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝性别</text>
+      <radio-group class="sex" disabled="false" name="sex" bindchange="radioChange">
+        <label class="leftRa">
+          <radio value="男"  checked="{{man}}" disabled="{{disab}}" />
+          <text>男</text>
+        </label>
+        <label class="rightRa">
+          <radio value="女"  checked="{{girl}}" class="gril" disabled="{{disab}}" />
+          <text>女</text>
+        </label>
+      </radio-group>
+    </view>
+     <view class="prompt">
+        {{sSex}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>出生日期</text>
+      <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
+        <view class="picker">
+           {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class="prompt">
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>就读学校</text>
+      <input name="school" disabled="{{disab}}" value="{{userInfo.school}}" placeholder="学校名称" />
+    </view>
+     <view class="prompt">
+        {{sSchool}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家长姓名</text>
+      <input name="parentName" disabled="{{disab}}" value="{{userInfo.parentName}}" placeholder="你的名字" />
+    </view>
+    <view class="prompt">
+        {{sParentName}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>联系电话</text>
+      <input name="telephone" disabled="{{disab}}"  value="{{userInfo.telephone}}" placeholder="输入11位数" />
+    </view>
+     <view class="prompt">
+        {{sTelphone}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家庭住址</text>
+      <input name="address" disabled="{{disab}}" value="{{userInfo.address}}" placeholder="输入详细地址" />
+    </view>
+    <view class="prompt">
+        {{sHomeAddress}}
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>音乐经历</text>
+      <radio-group class="sex"  name="basics" bindchange="radioChange">
+        <label class="leftRa">
+          <radio value="0基础" checked="{{basics}}"  disabled="{{disab}}"/>
+          <text>0基础</text>
+        </label>
+        <label class="rightRa">
+          <radio value="有基础" checked="{{unBasics}}" class="gril"  disabled="{{disab}}"/>
+          <text>有基础</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="prompt">
+        {{sBasic}}
+    </view>
+   <view class='introduceBaby'> 
+    <textarea name="introduceBaby" bindinput='introduceBaby' maxlength='200' value="{{userInfo.introduceBaby}}" placeholder="介绍宝宝"/>
+    <text>{{remarksLength}}/200</text>
+   </view>  
+     <view class="info">
+      <text>教材、学龄、上课频率、练习频率，0基础可不填</text>
+    </view>
+    <view class="button" wx:if="{{show}}" >
+      <button formType="submit" >{{btn}}</button>
+    </view>
+    <view class="del" wx:if="{{userInfo.name}}" >
+      <button  bindtap="delete">删除</button>
+    </view>
+    <view style='height:20rpx;'></view>
+    <template is="telOur" data="{{telFun}}"/>
+  </view>
+</form>

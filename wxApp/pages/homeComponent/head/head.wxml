@@ -1,0 +1,13 @@
+<template name="head">
+  <view class="head">
+    <view class="headPortrait">
+      <view class="imgWrap">
+        <image src="{{headInfo.head}}"></image>
+      </view>
+    </view>
+    <view class="nameTel">
+      <text>{{headInfo.name}}</text>
+      <text>{{headInfo.tel}}</text>
+    </view>
+  </view>
+</template>

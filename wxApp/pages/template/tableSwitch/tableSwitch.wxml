@@ -1,0 +1,8 @@
+<template name="tableSwitch">
+  <view class="table" wx:if="{{content.switch.length>0}}">
+    <view class="table-item"> 
+    <view class="{{content.switchIndex==index?'active':''}}" bindtap="switch" wx:for="{{content.switch}}" data-index="{{index}}">{{item.name}}
+    </view> 
+  </view>
+  </view>
+</template>

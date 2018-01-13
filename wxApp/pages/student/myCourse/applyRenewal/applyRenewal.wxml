@@ -1,0 +1,91 @@
+
+<!--pages/student/myCourse/applyLessons/applyLessons.wxml-->
+<import src="../../../template/prompt/prompt"/>
+<view class="head">学生：
+  <text>{{name}}</text>
+</view>
+<template is="prompt" data="{{prompt}}"></template>
+<form bindsubmit="formSubmit">
+<view class="berforInfo">
+  <view>课程信息</view>
+  <view class="cir"></view>
+  <view class="wrap">
+    <view class="line"></view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon1.png"></image>
+      </view>
+      <view>
+        <text class="berforConTeacher">教师:</text>
+        <text>{{course.detail.teacherName}}</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon2.png"></image>
+      </view>
+      <view>
+        <text class="berforConCourse">课程:</text>
+        <text>{{course.detail.courseName}}</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon3.png"></image>
+      </view>
+      <view>
+        <text class="berforConTime">上课时间:</text>
+        <text>{{course.detail.dayOfWeek}}{{course.detail.startTime}}-{{course.detail.endTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="courseInformation">
+  <view class="courseInformationCon">
+    <view class='wran'>
+       {{sLeave}}
+    </view>
+    <view class="courseTimeTo">
+      <view class="courseTimeToHead">补课申请:</view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>教师</text>
+        <picker bindchange="teacherChange" style="position:relative;z-index:100" value="{{teacherIndex}}" range="{{teachers}}">
+          <view class="picker" style="width:440rpx;">
+            {{teachers[teacherIndex]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class='wran'>
+          {{sTeacher}}
+       </view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>补课时间</text>
+        <picker bindchange="TimesChange" style="position:relative;z-index:100" value="{{timeIndex}}" range="{{makeupTime}}" >
+          <view class="picker" style="width:440rpx;">
+            {{makeupTime[timeIndex]}}
+          </view>
+        </picker>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+      <view class='wran'>
+      {{sMakeup}}
+       </view>
+      <view class="section">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>教室</text>
+        <text>{{room}}</text>
+      </view>
+      
+      <view class='wran'>
+      {{sReason}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class="button">
+      <button formType="submit" disabled="{{disabled}}">确认补课</button>
+</view>
+</form>

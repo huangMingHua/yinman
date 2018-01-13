@@ -1,0 +1,83 @@
+<!--pages/index/class/appointmentList/studentReservationInformation/studentReservationInformation.wxml-->
+<import src="../../../../template/contact/contact" />
+<import src="../../../../../wxParse/wxParse.wxml"/>
+<view style="background-color:white">
+<view class="state" wx:if="{{id!=''}}">
+          <text wx:if="{{state == '已取消'}}" style="color:#8a8a8a">已取消</text>
+          <text wx:elif="{{state == '待确认'}}" style="color:#fd6651">待确认</text>
+          <text wx:elif="{{state == '已试听'}}" style="color:#fd9704">已试听</text>
+          <text wx:elif="{{state == '已确认'}}" style="color:#fd6651">已确认</text>
+          <text wx:else style="color:#fd6651">已拒绝</text>
+</view>
+<view class="section">
+      <text class="student-name">姓名</text>{{studentName}}
+</view>
+<view class="prompt">
+</view>
+<view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>课程</text>
+      <picker bindchange="bindCurriculumsChange" disabled="{{disab}}" value="{{index1}}" range="{{curriculums}}">
+        <view class="picker">
+           {{curriculums[index1]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+</view>
+ <view class="prompt">
+        {{sCourse}}
+    </view>
+<view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>时间</text>
+      <picker bindchange="bindDateChange" disabled="{{disab}}" value="{{dateIndex}}" range="{{dateArr}}">
+        <view class="picker">
+           {{dateArr[dateIndex]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+</view>
+ <view class="prompt">
+        {{sTime}}
+    </view>
+ <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>教师</text>
+      <picker bindchange="bindTeachersChange" disabled="{{disab}}" value="{{index}}" range="{{teachers}}">
+        <view class="picker">
+           {{teachers[index]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+ </view>
+  <view class="prompt">
+        {{sTeacher}}
+    </view>
+<view class="section">
+  <text class="classRoome">教室</text><text>{{iClassRoom}}</text>
+</view>
+ <view class="prompt">
+        {{sClassRoom}}
+    </view>
+<view class='requirement'>
+ <textarea maxlength='200' disabled="{{disab}}" value="{{requirementVlaue}}" placeholder="其它要求"  bindinput='requirement'/>
+ <text>{{remarksLength}}/200</text>
+</view>
+<view style="height:40rpx;background-color:white">
+</view>
+</view> 
+<view class="button" wx:if="{{show}}" >
+  <button bindtap="submit" >{{btn}}</button>
+</view>
+<!-- <view class="mattersNeedingAttention">
+  <view>
+    <image src="/images/icon/warn.png"></image><text>注意事项:</text>
+  </view> 
+  <view class="mattersNeedingAttentionText">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view> 
+</view> -->
+<view style="background-color:white;padding:30rpx 0 2rpx 0">
+  <template is="telOur"  data="{{telFun}}" />
+</view>
+

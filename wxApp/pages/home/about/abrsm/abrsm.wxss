@@ -1,0 +1,7 @@
+/* pages/home/about/abrsm/abrsm.wxss */
+.wxParse-div{
+  padding: 0 0.5rem;
+}
+.wxParse-inline{
+  text-indent: 2rem;
+}

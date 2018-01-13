@@ -1,0 +1,8 @@
+<!--pages/exhibitionCenter/exerciseShow/showDetails/showDetails.wxml-->
+<view>
+  <view>
+      <video src="{{video.path}}" ></video>
+  </view>
+  <view class="title">{{video.title}}</view>
+  <view><text class="name">学生:{{video.name}}</text><text class="time">上传时间:{{video.createTime}}</text></view>
+</view>

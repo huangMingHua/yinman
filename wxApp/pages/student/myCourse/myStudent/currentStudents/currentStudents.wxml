@@ -1,0 +1,41 @@
+<!--pages/student/myCourse/myStudent/currentStudents/currentStudents.wxml-->
+  <view class="myCourseHead">
+    <view catchtap="switch" data-head="1" class="{{boff ? 'active': ''}}"><text>本期学生</text></view>
+    <view catchtap="switch" data-head="2" class="{{!boff ? 'active' : ''}}"><text>往期学生</text></view>
+  </view>
+  <view >
+    <view class="courseDetails" wx:for="{{student}}"    wx:for-index="idx">
+      <view class="courseDetailsH">
+        <view>
+          <image src="{{item.userInfo.wxHead}}"></image>
+        </view>
+        <view>
+          <view>
+            <text>学生</text>
+            <text>{{item.student.name}}</text>
+          </view>
+          <view>
+            <text class="classInfo">{{item.courseInfo.courseName}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="timeInfo">
+        <view>
+          <text>上课时间:{{item.courseInfo.dayOfWeek}}{{item.courseInfo.startTime}}~{{item.courseInfo.endTime}}</text>
+        </view>
+        <view>
+          <text>教室: {{item.courseInfo.classroom}}</text>
+        </view>
+        <view>
+          <text>课程周期: {{item.table.startDate}}至{{item.table.endDate}}</text>
+        </view>
+      </view>
+      <view class="btn-area">
+        <navigator url="/pages/student/myCourse/myLesson/myLesson?id={{item._id}}">调课记录</navigator>
+        <navigator url="/pages/student/myCourse/myStudent/myComment/myComment?courseTableDetailId={{item.courseInfo.id}}&studentId={{item.student.id}}">教师点评</navigator>
+      </view>
+    </view>
+  </view>
+
+
+

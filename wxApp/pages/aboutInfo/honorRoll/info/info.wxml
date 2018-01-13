@@ -1,0 +1,10 @@
+<!--pages/aboutInfo/honorRoll/info/info.wxml-->
+<view class="wrap">
+  <view class="tr">
+    <text>姓名:</text><text>{{user.name}}</text>
+  </view>
+  <view class="tr">
+    <text>获奖内容:</text>
+    <view> {{user.introduce}}</view>
+  </view>
+</view>

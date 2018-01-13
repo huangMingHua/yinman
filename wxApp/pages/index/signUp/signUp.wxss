@@ -1,0 +1,274 @@
+/* pages/signUp/signUp.wxss */
+
+.background{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40rpx;
+  width: 100%;
+  background-color: white;
+}
+.section {
+  position: relative;
+  margin: 40rpx 32rpx 0 32rpx;
+  padding-left: 35rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+.star {
+  width: 12rpx;
+  height: 12rpx;
+  vertical-align: middle;
+}
+
+.section label {
+  display: inline-block;
+  width: 190rpx;
+}
+
+.section>text {
+  display: inline-block;
+  font-size: 32rpx;
+  vertical-align: middle;
+  width: 190rpx;
+  color: #b9b9b9;
+}
+
+.section label text {
+  color: #333;
+}
+
+input:-moz-placeholder {
+  color: #a9a9a9;
+}
+
+input::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+
+input:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+input::-moz-placeholder {
+  color: #a9a9a9;
+}
+
+input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: black;
+  height: 100%;
+  width: 100%;
+  padding-left: 228rpx;
+  box-sizing: border-box;
+}
+
+.sex {
+  display: inline-block;
+}
+
+.sex label {
+  display: inline-block;
+  height: 100%;
+}
+
+.sex label radio {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.sex label text {
+  margin-left: 16rpx;
+  vertical-align: middle;
+}
+
+
+.signClass {
+  margin-right: 32rpx;
+  font-size: 32rpx;
+  color: #b9b9b9;
+}
+
+.signCon {
+  color: #333;
+  font-size: 28rpx;
+}
+
+.expectClass {
+  height: 68rpx;
+  line-height: 68rpx;
+  margin: 0 32rpx;
+  color: #b9b9b9;
+  font-size: 28rpx;
+}
+
+.timeWrap {
+  margin: 0 32rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.timeWrap>view {
+  float: left;
+  height: 100%;
+}
+
+.timeWrap>view:nth-child(1) {
+  width: 240rpx;
+  background-color: #ebebeb;
+  margin-right: 1rpx;
+  border-radius: 5px;
+}
+
+.timeWrap>view:nth-child(1) text, .timeWrap>view:nth-child(2) text {
+  margin: 0 64rpx 0 24rpx;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.timeWrap>view:nth-child(1) image, .timeWrap>view:nth-child(2) image {
+  width: 39rpx;
+  height: 23rpx;
+  vertical-align: middle;
+}
+
+.timeWrap>view:nth-child(2) {
+  width: 384rpx;
+  background-color: #ebebeb;
+}
+
+.timeWrap>view:nth-child(2) picker, .timeWrap>view:nth-child(2) view {
+  width: 128rpx;
+  display: inline-block;
+}
+
+.timeWrap>view:nth-child(2) text {
+  margin: 0;
+}
+
+.timeWrap>view:nth-child(2) .picker1 {
+  padding-left: 38rpx;
+  box-sizing: content-box;
+}
+
+.timeWrap>view:nth-child(2) .picker1 {
+  padding-left: 38rpx;
+  box-sizing: content-box;
+}
+
+.timeWrap>view:nth-child(2) .picker {
+  padding-left: 10rpx;
+  box-sizing: content-box;
+}
+
+.timeWrap .right {
+  width: 60rpx;
+  text-align: center;
+}
+
+.timeWrap .add {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.timeWrap .right view:nth-child(1) {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.timeWrap .right view:nth-child(2) {
+  height: 30rpx;
+  line-height: 30rpx;
+}
+
+.timeWrap .right image {
+  padding-top: 5rpx;
+  box-sizing: content-box;
+}
+
+.timeWrap .right text {
+  font-size: 24rpx;
+  color: #3cb4ff;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+.dateOfBirth{
+  position:absolute;
+  left:0;
+  top:0;
+  vertical-align:middle;
+  font-size:28rpx;
+  color:black;
+  height:100%;
+  width:100%;
+  padding-left:228rpx;
+  box-sizing:border-box;
+}
+.timeWrapArr {
+  margin-top: 20rpx;
+}
+
+.button {
+  position: relative;
+  margin: 28rpx 0;
+  height: 170rpx;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.button button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 276rpx;
+  height: 90rpx;
+  background-color: #3cb4ff;
+  border: none;
+  color: white;
+}
+
+.warnWrap{
+  background-color: white;
+}
+.warn {
+  margin-top: 24rpx;
+  height: 36rpx;
+}
+
+.warn image {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 14rpx 0 28rpx;
+}
+
+.warn text {
+  color: #040000;
+  font-size: 28rpx;
+}
+
+.warnText {
+  padding-left: 70rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+  font-size: 28rpx;
+  color: #979797;
+}
+.contact{
+  margin-top: 20rpx;
+  padding: 28rpx 0 0rpx 0;
+}
+

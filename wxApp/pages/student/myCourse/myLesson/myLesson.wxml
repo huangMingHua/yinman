@@ -1,0 +1,23 @@
+<template name="myLesson">
+<!--pages/student/myCourse/myLesson/myLesson.wxml-->
+  <import src="../../../template/courseContent/courseContent" />
+  <import src="../../../template/receNull/receNull" />
+  <import src="../../../template/prompt/prompt"/>
+  <picker bindchange="semesterChange1" class="semester" value="{{index}}" range="{{semesterArr}}">
+      <view class="picker">
+        {{semesterArr[index]}} <image class="img" wx:if="{{semesterArr[index]}}" src="/images/icon/down.png"></image>
+        <text wx:else>{{loading}}</text>
+      </view>
+  </picker>
+  <view class="wrap" wx:for="{{record}}">
+    <view>课程名：{{item.courseName}}</view>
+    <view>课程教师：{{item.oTeacher.name}}</view>
+    <view>课程时间：{{item.date}} {{item.startTime}}~{{item.endTime}}</view>
+    <view>课程教室：{{item.oClassroom.name}}</view>
+    <view>课程等级：{{item.level}}</view>
+    <view>课程人数：{{item.number}}</view>
+    <view>创建时间：{{item.createTime1}}</view>
+  </view>
+  <template is="rece" wx-if="{{record.length==0}}" ></template>
+  <template is="prompt" data="{{prompt}}"></template>
+</template>

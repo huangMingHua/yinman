@@ -1,0 +1,14 @@
+<template name="stuAndTecCourse">
+  <view class="stuAndTecCourse">
+    <view class="course" catchtap="courseTo">
+      <image src="/images/icon/course.png"></image>
+      <text>课程与请假</text>
+      <image src="/images/icon/dir.png" class="dir"></image>
+    </view>
+    <!-- <view class="instruction" catchtap="instructionTo">
+      <image src="/images/icon/instruction.png"></image>
+      <text>在线指导</text>
+      <image src="/images/icon/dir.png" class="dir"></image>
+    </view> -->
+  </view>
+</template>

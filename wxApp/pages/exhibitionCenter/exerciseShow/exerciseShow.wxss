@@ -1,0 +1,47 @@
+/* pages/exhibitionCenter/exerciseShow/exerciseShow.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.box{
+   position: relative;
+   display: flex;
+   padding: 30rpx;
+   background-color: white;
+   margin-bottom: 20rpx;
+   border: 1rpx solid #e6e6e6;
+}
+.box .video{
+  margin-right: 15rpx;
+}
+.box .video video{
+  width: 182rpx;
+  height: 120rpx;
+}
+.box .text view{
+   height: 40rpx;
+   line-height: 40rpx;
+}
+.box .text view:nth-of-type(1){
+  font-size: 32rpx;
+  color: #040000;
+}
+.box .text view:nth-of-type(2){
+  font-size: 28rpx;
+  color: #040000;
+}
+.box .text view:nth-of-type(3){
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.box .see{
+  width: 112rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius:5px;
+  color: #3cb4ff;
+  border:1rpx solid #3cb4ff;
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+}

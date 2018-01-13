@@ -1,0 +1,76 @@
+
+<!--pages/student/myCourse/applyLessons/applyLessons.wxml-->
+<import src="../../../template/prompt/prompt"/>
+<view class="head">学生：
+  <text>{{name}}</text>
+</view>
+<template is="prompt" data="{{prompt}}"></template>
+<form bindsubmit="formSubmit">
+<view class="berforInfo">
+  <view>原课程信息</view>
+  <view class="cir"></view>
+  <view class="wrap">
+    <view class="line"></view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon1.png"></image>
+      </view>
+      <view>
+        <text class="berforConTeacher">教师:</text>
+        <text>{{course.detail.teacherName}}</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon2.png"></image>
+      </view>
+      <view>
+        <text class="berforConCourse">课程:</text>
+        <text>{{course.detail.courseName}}</text>
+      </view>
+    </view>
+    <view class="berforCon">
+      <view>
+        <image src="/images/icon/berforIcon3.png"></image>
+      </view>
+      <view>
+        <text class="berforConTime">上课时间:</text>
+        <text>{{course.detail.dayOfWeek}}{{course.detail.startTime}}-{{course.detail.endTime}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="courseInformationHead">
+  <text>请假信息</text>
+</view>
+<view class="courseInformation">
+  <view class="courseInformationCon">
+    <view class="section" style="margin-top:42rpx;">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>请假时间</text>
+      <picker bindchange="leaveChange" style="position:relative;z-index:100;font-size:30rpx;" value="{{leaveIndex}}" range="{{leaveTime}}">
+        <view class="picker" style="width:440rpx;">
+         {{leaveTime[leaveIndex]}}
+        </view>
+      </picker>
+      <image src="/images/icon/down.png" class="down"></image>
+    </view>
+    <view class='wran'>
+       {{sLeave}}
+    </view>
+    <view class="courseTimeTo">
+      <view class="section" style="margin-top:40rpx;">
+        <image src="/images/icon/star.png" class="star"></image>
+        <text>请假原因</text>
+        <input placeholder="输入详细描述"  name="reason" />
+      </view>
+      <view class='wran'>
+      {{sReason}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class="button">
+      <button formType="submit" disabled="{{disabled}}">确认请假</button>
+</view>
+</form>

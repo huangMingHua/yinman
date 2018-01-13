@@ -1,0 +1,4 @@
+<!--pages/student/signUpList/signUpList.wxml-->
+<view>
+   <navigator class="list" url="/pages/student/myCourse/myCourse?studentId={{item.id}}" wx:for="{{students}}" >{{item.name}}</navigator> 
+</view>

@@ -1,0 +1,53 @@
+<!--pages/student/myCourse/myStudent/myComment/myComment.wxml-->
+<view>
+  <view class="head">
+    <view class="head-img">
+      <image src="{{info.studentUser.wxHead}}"></image>
+    </view>
+    <view>
+      <view class="head-teacher">
+        <text>{{info.student.name}}</text>
+      </view>
+      <view class="head-cul">
+        {{info.courseTableDetail.courseName}}
+      </view>
+    </view>
+  </view>
+  <view class="cul-info">
+    <view class="cul-info-a">
+      <text>上课时间:</text>{{info.courseTableDetail.dayOfWeek}}{{info.courseTableDetail.startTime}}~{{info.courseTableDetail.endTime}}</view>
+    <view class="cul-info-a">
+      <text>教室:</text> {{info.classroom.name}}</view>
+    <view class="cul-info-a">
+      <text>课程周期:</text>{{info.courseTable.startDate}}至{{info.courseTable.endDate}} </view>
+  </view>
+  <view class="title">教师点评</view>
+  <view class="wrap">
+    <view class="head" wx:for="{{comment}}">
+      <view class="head-img">
+        <image src="{{user.wxHead}}"></image>
+      </view>
+      <view>
+        <view class="head-teacher">
+          <text>教师</text>
+          <text>{{teacher.name}}</text>
+        </view>
+        <view class="head-cul">
+          {{item.comment}}
+        </view>
+        <view class="date">
+          {{item.creatDate}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<form bindsubmit="formSubmit">
+  <view class="write">
+    <view class="write-wrap">
+      <image src="/images/icon/write.png"></image>
+      <input placeholder="我来点评一下~" name="input" focus="{{focus}}" />
+    </view>
+    <button formType="submit">确定</button>
+  </view>
+</form>

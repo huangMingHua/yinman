@@ -1,5 +1,0 @@
-<!--pages/student/myCourse/myCourse.wxml-->
-<import src="../../template/myCourseHead/myCourseHead.wxml" />
-<import src="../../template/courseDetails/courseDetails.wxml" />
-<template is="myCourseHead" data="{{boff}}"></template>
-<template is="courseDetails" wx:for="{{course}}" ></template>

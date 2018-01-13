@@ -1,0 +1,39 @@
+/* pages/student/myCourse/myLesson/myLesson.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.head {
+  height: 86rpx;
+  line-height: 86rpx;
+  background-color: white;
+  padding-left: 33rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.semester{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 20rpx;
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+}
+.img{
+  width: 30rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+.wrap{
+  padding: 0 20rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  font-size: 26rpx;
+}
+.wrap view{
+  line-height: 60rpx;
+}
+.red{
+  color:red;
+}
+

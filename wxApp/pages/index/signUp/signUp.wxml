@@ -1,0 +1,58 @@
+<import src="../../template/contact/contact" />
+<view class="wrap">
+  <view class="background"></view>
+  <form bindsubmit="formSubmit">
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝姓名</text>
+      <input name="name" placeholder="宝宝名字" disabled="{{disab}}" bindinput="change" data-name="{{name}}" value="{{name}}" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>宝宝性别</text>
+      <radio-group class="sex"  name="sex" bindchange="radioChange" disabled="{{disab}}">
+        <label class="leftRa">
+          <radio value="男" checked="{{man}}"disabled="{{disab}}" />
+          <text>男</text>
+        </label>
+        <label class="rightRa">
+          <radio value="女" checked="{{girl}}" class="gril"  disabled="{{disab}}"/>
+          <text>女</text>
+        </label>
+      </radio-group>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>出生日期</text>
+      <picker mode="date" value="{{date}}" class="dateOfBirth"  bindchange="bindDateChange">
+        <view class="picker">
+           {{date}}
+        </view>
+      </picker>  
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>就读学校</text>
+      <input name="school" placeholder="学校名称" value="{{school}}" disabled="{{disab}}"/>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家长姓名</text>
+      <input name="parentName" placeholder="你的名字"  value="{{parentName}}" disabled="{{disab}}"/>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>联系电话</text>
+      <input name="telephone" placeholder="输入11位数" value="{{telephone}}" disabled="{{disab}}"/>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>家庭住址</text>
+      <input name="address" placeholder="输入详细地址"  value="{{address}}" disabled="{{disab}}"/>
+    </view>
+    <view class="button">
+       <button formType="submit"  >提交信息</button>
+    </view>
+      </form>
+  
+</view>

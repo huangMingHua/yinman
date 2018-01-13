@@ -1,0 +1,13 @@
+/* pages/yinmanIntroduce/yinmanIntroduce.wxss */
+
+
+.wxParse-div{
+  padding: 0 0.5rem;
+}
+
+.wxParse-inline{
+    margin-top: 24rpx;
+    font-size: 32rpx;
+    line-height: 48rpx;
+    text-indent: 2rem;
+}

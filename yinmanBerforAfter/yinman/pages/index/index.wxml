@@ -1,6 +1,0 @@
-<import src="../homeComponent/classAndEnroll/classAndenroll.wxml"/>
-<import src="../homeComponent/tel/tel.wxml"/>
-<view>
-    <template is="classEnroll" />
-    <template is="tel" />
-</view>

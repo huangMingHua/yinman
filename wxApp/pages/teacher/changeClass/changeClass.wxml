@@ -1,0 +1,21 @@
+
+<!--pages/student/myCourse/myLesson/myLesson.wxml-->
+<import src="../../../template/courseContent/courseContent" />
+ <import src="../../../template/prompt/prompt"/>
+ <picker bindchange="semesterChange" class="semester" value="{{index}}" range="{{semesterArr}}">
+    <view class="picker">
+      {{semesterArr[index]}} <image class="img" wx:if="{{semesterArr[index]}}" src="/images/icon/down.png"></image>
+      <text wx:else>{{loading}}</text>
+    </view>
+</picker>
+<view class="wrap" wx:for="{{record}}">
+  <view>课程名：{{item.fromCourseTableItem.courseName}}</view>
+  <view>课程人数：{{item.fromCourseTableItem.number}}</view>
+  <view>课程等级：{{item.fromCourseTableItem.level}}</view>
+  <view>原课程时间：{{item.fromCourseTableItem.date}} {{item.fromCourseTableItem.startTime}}~{{item.fromCourseTableItem.endTime}}</view>
+  <view>原课程教室：{{item.fromCourseTableItem.classroom.name}}</view>
+  <view class='red'>现课程时间：{{item.toCourseTableItem.date}} {{item.toCourseTableItem.courseTableDetail.dayOfWeek}} {{item.toCourseTableItem.startTime}}~{{item.toCourseTableItem.endTime}}</view>
+  <view class='red'>现课程教室：{{item.toCourseTableItem.classroom.name}}</view>
+  <view>调课原因：{{item.reason}}</view>
+</view>
+<template is="prompt" data="{{prompt}}"></template>

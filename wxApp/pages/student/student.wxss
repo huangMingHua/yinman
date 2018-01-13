@@ -1,0 +1,82 @@
+/* pages/student/student.wxss */
+page{
+  padding-bottom: 100rpx;
+}
+@import "../homeComponent/head/head.wxss";
+@import "../homeComponent/stuAndTecCourse/stuAndTecCourse.wxss";
+@import "../homeComponent/classAndEnroll/classAndenroll.wxss";
+@import "../homeComponent/tel/tel.wxss";
+@import "../home/about/about.wxss";
+.headWrap{
+    border-bottom:1rpx solid #e6e6e6; 
+}
+.stuAndTecCourseWrap{
+    margin-top: 20rpx;
+    border-top:1rpx solid #e6e6e6; 
+}
+.classEnroll{
+     margin-top: 20rpx;
+}
+.table{
+  background-color: white;
+  padding: 5rpx 0;
+  margin-top: 20rpx;
+}
+.table-item{
+    display: flex;
+    border-bottom: 2rpx solid #ccc;
+    width: 100%;
+    height: 72rpx;
+}
+.table-item view{
+  width: 160rpx;
+  height:70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  margin-right: 10rpx;
+}
+.table-item .active{
+   color:#20a0ff;
+   border-bottom: 4rpx solid #20a0ff;
+}
+.addStudent{
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: white;
+  color: #14a2d4;
+}
+.editStudent{
+  margin:20rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background-color: white;
+  color: #14a2d4;
+}
+.fixed{
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  bottom: 0;
+  display: flex; 
+  width: 100%;
+  text-align: center;
+  background-color: white;
+}
+.fixed navigator{
+  width: 50%;
+  height: 70rpx;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+}
+.fixed .active{
+  background-color: #eeeeee;
+}
+.fixed navigator image{
+  display: block;
+  width: 40rpx;
+  margin: 0 auto;
+  height: 40rpx;
+  margin-bottom: 6rpx;
+}

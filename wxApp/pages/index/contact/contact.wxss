@@ -1,0 +1,51 @@
+/* pages/index/contact/contact.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.postionWrap {
+  background-color: white;
+}
+
+.postion {
+  padding-top: 38rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+}
+
+.postion image {
+  width: 37rpx;
+  height: 32rpx;
+  margin-left: 33rpx;
+  margin-right: 15rpx;
+}
+
+.postion text {
+  font-size: 32rpx;
+  color: #333;
+}
+.positionContent{
+    padding-bottom: 40rpx;
+}
+.positionContent view {
+  margin-top: 18rpx;
+  padding-left: 85rpx;
+  font-size: 28rpx;
+  color: #979797;
+}
+@import "../../template/contact/contact.wxss";
+.contact{
+    margin-top: 25rpx;
+    background-color: white;
+    padding: 28rpx 0 0rpx 0
+}
+.address{
+  padding-left:120rpx;
+}
+.block{
+  display: block;
+}
+.center{
+  text-align: center;
+}

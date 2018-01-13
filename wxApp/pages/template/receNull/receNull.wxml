@@ -1,0 +1,6 @@
+
+<template name="rece">
+  <view style='text-align:center;background-color:white;margin-top:10px;padding:20rpx 0;'>
+     记录为空
+  </view>
+</template>

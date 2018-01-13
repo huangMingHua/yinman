@@ -1,0 +1,87 @@
+<template name="courseDetails">
+  <view wx:for="{{course.teachers}}" class="top">
+    <view class="courseDetails" wx:for="{{item.list}}" wx:for-item="i" wx:for-index="idx">
+      <view class="courseDetailsH" wx-if="{{idx==0}}">
+        <view>
+          <image src="{{item.wxHead}}"></image>
+        </view>
+        <view>
+          <text>教师：</text>
+          <text>{{item.name}}</text>
+        </view>
+      </view>
+      <view class="timeInfo">
+        <view>
+          <text>课程：{{i.courseName}} <text wx-if='{{i.courseTableDetailStudent.status=="正常"}}'></text>
+          <text style='color:red' wx:elif="{{i.courseTableDetailStudent.status=='转课'}}">已转班</text>
+          <text style='color:red' wx:else> 已停课 </text>
+          </text>
+        </view>
+        <view>
+          <text>上课时间: {{i.dayOfWeek}}{{i.startTime}}~{{i.endTime}}</text>
+        </view>
+        <view>
+          <text>人数: {{i.number}}</text>
+        </view>
+        <view>
+          <text>等级: {{i.level}}</text>
+        </view>
+        <view>
+          <text>教室: {{i.classroomName}}</text>
+        </view>
+        <view>
+          <text>课程周期:{{i.courseTableDetailStudent.startCourseTableItemId?i.courseTableDetailStudent.startCourseTableItem.date:i.startDate}}至{{i.endDate}}</text>
+        </view>
+        <view wx:if="{{i.courseTableDetailStudent.closingDate}}">
+          <text>课程终止日期：{{i.courseTableDetailStudent.closingDate.date}}</text>
+        </view>
+        <view wx:if="{{i.courseTableDetailStudent.status=='停课'}}">
+          <view>停课原因：</view>
+          <view>{{i.courseTableDetailStudent.reasonsForSuspension}}</view>
+        </view>
+        <!-- <view wx:if="{{i.courseTableDetailStudent.status=='转课'}}">
+      <view>停课时间：{{i.courseTableDetailStudent.reasonsForSuspension}}</view>
+    </view> -->
+        <view wx:if="{{i.courseTableDetailStudent.status=='转课'}}">
+          <view style='word-break:break-all;'>停课原因：{{i.courseTableDetailStudent.reasonsForSuspension}}</view>
+        </view>
+        <view style='font-weight:bold;' wx:if="{{i.courseTableDetailStudent.status=='转课'}}">
+          <view>转班后课程信息：</view>
+          <view>
+            <text>上课时间: {{i.courseTableDetailStudent.reCourseTableDetail.dayOfWeek}}{{i.courseTableDetailStudent.reCourseTableDetail.startTime}}~{{i.courseTableDetailStudent.reCourseTableDetail.endTime}}</text>
+          </view>
+          <view>
+            <text>人数: {{i.courseTableDetailStudent.reCourseTableDetail.number}}</text>
+          </view>
+          <view>
+            <text>等级: {{i.level}}</text>
+          </view>
+          <view>
+            <text>教室: {{i.courseTableDetailStudent.reCourseTableDetail.classroom.name}}</text>
+          </view>
+          <view>
+            {{i.courseTableDetailStudent.reCourseTableDetail.term.name}} {{i.courseTableDetailStudent.reStartDate.date}}~ {{i.courseTableDetailStudent.reCourseTableDetail.endDate}}
+          </view>
+          <view wx:if="{{i.courseTableDetailStudent.status=='转课'}}">
+            <view style='word-break:break-all;'>转班原因：{{i.courseTableDetailStudent.shiftReasons}}</view>
+          </view>
+        </view>
+        <view class='take-care'>注：本课程你已请假{{i.courseTableDetailStudent.allNumberOfChangeClass - i.courseTableDetailStudent.numberOfleave}}次，剩余{{i.courseTableDetailStudent.numberOfleave}}次；补课{{i.courseTableDetailStudent.allNumberOfChangeClass - i.courseTableDetailStudent.numberOfChangeClass}}次</view>
+        <view class="btn-area">
+          <navigator url="/pages/student/myCourse/applyLessons/applyLessons?semester={{course.semester}}&studentId={{course.studentId}}&courseId={{i.id}}">申请请假</navigator>
+         
+          <navigator  url="/pages/student/myCourse/applyRenewal/applyRenewal?semester={{course.semester}}&studentId={{course.studentId}}&courseId={{i.id}}">申请补课</navigator>
+          <navigator url="/pages/student/myCourse/myLessonAndleave/myLessonAndleave?semester={{course.semester}}&studentId={{course.studentId}}&courseId={{i.id}}">请假补课记录</navigator>  
+        </view>
+      </view>
+      <view>
+        <view class="com-row-name" wx-if='{{i.comments.length>0}}'>教师点评</view>
+      </view>
+      <view class="com-row" wx:for="{{i.comments}}" wx:for-item="ic">
+        <view class="com-row-info">{{ic.comment}}</view>
+        <view class="com-row-date">{{ic.createTime}}</view>
+      </view>
+
+    </view>
+  </view>
+</template>

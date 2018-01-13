@@ -1,0 +1,138 @@
+<import src="../tableSwitch/tableSwitch.wxml" />
+<template name="teacherDetails">
+  <view wx:if="{{content.head}}">
+    <view class="courseDetails">
+      <view class="courseDetailsH">
+        <view>
+          <image src="{{content.head}}"></image>
+        </view>
+        <view>
+          <view>
+            <text>{{content.teacherName}}</text>
+          </view>
+          <view>
+            <text class="cul-week">课程周期</text>
+            <text class="classInfo">{{content.date}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <template is="tableSwitch" data="{{content}}"></template>
+    <view class="curriculum-schedule" wx:if="{{content.switchIndex==0}}">
+      <scroll-view scroll-x  scroll-left='{{content.scrollLeft}}' bindscroll="scroll" class="curriculum-schedule-head" style=" white-space: nowrap;width:750rpx;overflow:hidden;">
+        <view class="{{content.index==idx?'active curriculum-schedule-week':'curriculum-schedule-week'}}" bindtap="changeWeek" data-index="{{idx}}" wx:for="{{content.eachCycle}}" wx:for-index="idx">
+          <view class="week">
+            {{item.lable}}
+          </view>
+          <view>
+            {{item.startDate}}~{{item.endDate}}
+          </view>
+        </view>
+      </scroll-view>
+      <view class="curriculum-schedule-table">
+        <view class="table-head">
+          <view class="head-week">星期</view>
+          <view class="head-cul">课程</view>
+          <view class="head-time">时间</view>
+          <view class="head-do">操作</view>
+        </view>
+        <view class="table-body">
+          <view class="row" wx:for="{{content.course}}">
+            <view class="body-week">{{item.dayOfWeek}}</view>
+            <view class="body-cul">
+              <view class="cul-contenct" wx:for="{{item.list}}" wx:for-item="curriculum">
+                <view>
+                <view>{{curriculum.courseName}}</view>
+                <view style='color:red'>{{curriculum.students.length+curriculum.aStudentName.length}}/{{curriculum.number}}</view>
+                </view>
+              </view>
+            </view>
+            <view class="body-time">
+              <view class="cul-contenct" wx:for="{{item.list}}" wx:for-item="times">
+                {{times.startTime}}-{{times.endTime}}
+              </view>
+            </view>
+            <view class="body-do">
+              <view wx:for="{{item.list}}" wx:for-item="ids">
+                <navigator url="/pages/student/myCourse/myStudent/myStudent?itemId={{ids.id}}">查看课程</navigator>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else>
+      <view>
+        <view class="courseDetails" wx:for="{{content.student}}" wx:for-index="idx">
+          <view class="courseDetailsH">
+            <view>
+              <image src="{{item.wxHead}}"></image>
+            </view>
+            <view>
+              <view>
+                <text>学生</text>
+                <text>{{item.name}} </text>
+              </view>
+              <view>
+                <text class="classInfo">{{item.courseDetail.courseName}} {{item.courseDetail.number}}人班</text> <text wx-if="{{item.status=='停课'}}">已停课</text> <text wx-if="{{item.status=='转课'}}">已转班</text>
+              </view>
+            </view>
+          </view>
+          <view class="timeInfo">
+            <view>
+              <text>上课时间：{{item.courseDetail.dayOfWeek}}{{item.courseDetail.startTime}}~{{item.courseDetail.endTime}}</text>
+            </view>
+             <view>
+              <text>课程等级： {{item.courseDetail.level}}</text>
+            </view>
+            <view>
+              <text>教室：{{item.courseDetail.classroomName}}</text>
+            </view>
+            <view>
+              <text>课程周期： {{item.courseDetail.startDate}}至{{item.courseDetail.endDate}}</text>
+            </view>
+             <view>
+              <text wx-if='{{item.courseDetail.startCourseTableItem}}'>课程开始： {{item.courseDetail.startCourseTableItem.date}}</text>
+            </view>
+            <view wx-if='{{item.courseDetail.courseTableItem}}'>
+              <text>停课日期： {{item.courseDetail.courseTableItem.date}}</text>
+            </view>
+            <view wx-if='{{item.courseDetail.courseTableDetail}}'>
+              <text>转班周期： {{item.courseDetail.courseTableDetail.startDate}}至{{item.courseDetail.courseTableDetail.endDate}}</text>
+            </view>
+            <view wx-if='{{item.courseDetail.courseTableDetail}}'>
+              <text>转班上课时间： {{item.courseDetail.courseTableDetail.dayOfWeek}}{{item.courseDetail.courseTableDetail.startTime}}~{{item.courseDetail.courseTableDetail.endTime}}</text>
+            </view>
+           
+          </view>
+          <view class="btn-area" wx:if="{{item.comIndex==0}}">
+            <view bindtap="url1" data-nStudentId="{{item.id}}">请假记录</view>
+            <view bindtap="url" data-nStudentId="{{item.id}}">补课记录</view>
+            <view bindtap="commenting" data-index="{{idx}}">教师点评</view>
+          </view>
+           <view class="commenting" wx:else>
+            <view><input  class="com-info" type="text" value="{{item.keyInput}}" data-index="{{idx}}" bindinput="bindKeyInput"/></view>
+            <view class="com-btns">
+              <view class="com-close" bindtap="commenting" data-index="{{idx}}">关闭</view>
+              <view class="com-submit" bindtap="comSubmit" data-index="{{idx}}">确认</view>
+            </view>
+          </view>
+          <view wx-if='{{item.comments.length!=0}}'>
+            <view class="com-row-name" >点评内容</view>
+          </view>
+          <view class="com-row" wx:for="{{item.comments}}" wx:for-item="i" >
+              <view class="com-row-info">{{i.comment}} </view>
+              <view class="com-row-date">{{i.createTime}}</view>
+          </view>
+           <!-- <view class="btn-area" wx:if="{{item.comIndex==0}}">
+            <view bindtap="url1" data-nStudentId="{{item.id}}">请假记录</view>
+            <view bindtap="url" data-nStudentId="{{item.id}}">补课记录</view>
+            <view bindtap="commenting" data-index="{{idx}}">教师点评</view>
+          </view>  -->
+         
+        </view>
+      </view>
+
+    </view>
+  </view>
+</template>

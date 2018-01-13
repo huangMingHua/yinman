@@ -1,0 +1,32 @@
+<!--pages/index/signUpList/signUpList.wxml-->
+<import src="../../template/contact/contact.wxml" />
+<navigator url="/pages/index/signUpList/signUpCourse/signUpCourse?_id={{item.id}}" wx:for="{{userInfo}}">
+    <view class="list">
+       <image src="/images/icon/listIcon.png"></image>
+       <text wx:if='{{item.course}}'>{{item.course.courseName}}报名</text>
+        <text wx:else>{{item.afterCourseDeleTeSaveInfo.courseName}}报名</text> 
+       <image src="/images/icon/dir.png"></image>
+    <text class="state" wx:if="{{item.state == '已取消'}}" style="color:#8a8a8a">已取消</text>
+    <text class="state" wx:elif="{{item.state == '待确认'}}" style="color:#fd6651">待确认</text>
+    <text class="state" wx:elif="{{item.state == '已确认'}}" style="color:#fd6651">已确认</text>
+    <text class="state" wx:elif="{{item.state == '已拒绝'}}" style="color:#fd6651">已拒绝</text>
+    <text class="state" wx:elif="{{item.state == '已停课'}}" style="color:#8a8a8a">已停课</text>
+    <text class="state" wx:elif="{{item.state == '已转课'}}" style="color:#8a8a8a">已转课</text>
+    </view>
+</navigator>
+<view class="btn">
+    <button bindtap="signUp">我要报名</button>
+</view>
+<view class='reminder'>
+     <view><image src='/images/icon/tishi.png'></image> 报名须知：</view>
+     <view>1、请按时上课，建议提前5分钟到达，保证课时完整。迟到不延时。</view>
+     <view>2、凡请假调课务必提前2日，临时请假按旷课。（急病除外） </view>
+     <view>3、每学期（春，秋）所有课程可因私（含病假）调课2次，学期内补课，延期作废。</view>
+     <view>寒暑假1对1课上几次报几次，5次以内不可调课，5-10次课可调课1次 寒暑假期内补课，延期作废。</view>
+     <view>寒暑假集体课不延期，不调课。</view>
+     <view>4、法定节假日可调课，不计在因私调课2次之内，学期内补课，延期作废。 </view>
+     <view>5、关于停课：学生因私停课，1对1课需提前2个课时提出停课申请，保留剩余课时。未提前申请，则需扣除2个    课时，保留剩余课时。集体课（2人以上）停课视为自动放弃，不退费，不保留课时。</view>
+</view>
+<view class="tel">
+    <template is="telOur" data="{{telFun}}" />
+</view>

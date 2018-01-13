@@ -1,0 +1,6 @@
+<!--pages/about/about.wxml-->
+<view class="about" wx:for="{{teachers}}">
+   <view><image  src="{{item.picPath}}"></image></view>
+   <view> <text>{{item.list.name}}</text><text>{{item.list.teachingSubjects}}</text><text wx:if="{{boff}}" >时间:2017-03-14  20:00</text></view>
+   <navigator  url="/pages/aboutInfo/teacherIntroduction/teacherIntroduction?id={{item.list.id}}" wx:if="{{btnBoff}}">查看</navigator>
+</view>

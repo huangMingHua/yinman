@@ -1,0 +1,15 @@
+<!--pages/student/myCourse/myLessonAndleave/myLessonAndleave.wxml-->
+<import src="../myLeave/myLeave.wxml" />
+<import src="../myLesson/myLesson.wxml" />
+<view class="btn-area">
+  <navigator bindtap="url" class="{{urlIndex==0? 'active':''}}" data-urlIndex="0">
+    <text>请假记录</text>
+    <text  class="{{urlIndex==0? 'line':''}}"></text>
+  </navigator> 
+  <navigator bindtap="url" class="{{urlIndex==1? 'active':''}}" data-urlIndex="1">
+    <text>补课记录</text>
+    <text  class="{{urlIndex==1? 'line':''}}"></text>
+  </navigator> 
+</view>
+<template wx-if="{{urlIndex==0}}" is="myLeave" data="{{semesterArr: semesterArr,index: index,loading:loading,record:record,prompt:prompt}}" />
+<template wx-if="{{urlIndex==1}}" is="myLesson" data="{{semesterArr: semesterArr1,index: index1,loading:loading,record:record1,prompt:prompt}}" />

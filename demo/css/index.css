@@ -1,0 +1,25 @@
+body,
+body * {
+  -webkit-text-size-adjust: 100%;
+}
+body,
+h1,ul,li{
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+}
+a,
+input,
+button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+}
+a {
+  text-decoration: none;
+}
+li{
+	list-style: none;
+}
+body,html,img{
+	width: 100%;
+}

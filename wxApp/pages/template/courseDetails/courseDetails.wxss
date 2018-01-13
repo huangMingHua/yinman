@@ -1,0 +1,77 @@
+.top{
+  margin-top: 20rpx;
+}
+.courseDetails {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding:  32rpx;
+}
+
+.courseDetailsH {
+  display: flex;
+  flex-direction: row;
+  height: 117rpx;
+  font-size: 32rpx;
+}
+
+.courseDetailsH>view {
+  height: 100%;
+  padding: 28rpx 0 20rpx 0;
+  line-height: 70rpx;
+  box-sizing: border-box;
+}
+
+.courseDetailsH>view:nth-child(1) {
+  margin-right: 18rpx;
+}
+
+.courseDetailsH image {
+  width: 70rpx;
+  height: 70rpx;
+}
+.courseDetailsH>view:nth-child(2) view{
+      height: 28rpx;
+      line-height: 28rpx;
+}
+.courseDetailsH>view:nth-child(2) view:nth-child(1){
+    margin-bottom: 18rpx;
+}
+.courseDetailsH .classInfo{
+  color: #979797;
+}
+.timeInfo{
+  padding: 6rpx 30rpx 28rpx 30rpx;
+   background-color: #f5f5f5;
+}
+.timeInfo view{
+  margin-top: 22rpx;
+  font-size: 28rpx;
+}
+.btn-area{
+  display: flex;
+  flex-direction: row;
+  padding: 18rpx 0 30rpx 0;
+  font-size: 26rpx;
+}
+.btn-area navigator{
+  width: 220rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 5rpx;
+  text-align: center;
+  color: white;
+  margin-right: 15rpx;
+}
+.btn-area navigator:nth-child(1){
+  background-color: #3cb4ff;
+}
+.btn-area navigator:nth-child(2){
+  background-color: #00d6c2;
+}
+.btn-area navigator:nth-child(3){
+  background-color: #ff9b39;
+}
+.take-care{
+  font-size: 8rpx;
+}

@@ -1,0 +1,37 @@
+
+<import src="../../template/contact/contact" />
+<view class="postionWrap">
+  <view class="postion">
+    <image src="/images/icon/position.png"></image>
+    <text>音曼课堂位于:</text>
+  </view>
+  <view class="positionContent">
+    <view>
+      <text>上海市浦东新区上南路3899弄35号02室（瀚林苑小区 别墅）</text>
+    </view>
+    <view>
+      <text>※ 交通：地铁6号线上南路站1号口（出口即达）</text>
+    </view>
+    <view>
+      <text class='address'>中环上南路出口以北（上南路华夏西路路口东北侧）</text>
+    </view>
+    <view>
+      <text class='block'>※ 公交最近站点－上南路华夏西路站（到站向南步行20米，1分钟到达）：
+      </text>
+      <text class='block'>986（区间， 万周专线，周南线，174，177，338，576，583，627，955，976，978，沪塘专线，南华专线，三林1路
+      </text>
+    </view>
+   <view>
+      <text class='block'>※ 公交次近站点—杨南路上南路站（到站向南步行200米，5分钟到达）：
+      </text>
+      <text class='block'>632，784（内圈／外圈），980，1022
+      </text>
+    </view>
+    <view>
+      
+    </view>
+  </view>
+</view>
+<view class="contact">
+  <template is="telOur" data="{{telFun}}"></template>
+</view>

@@ -1,0 +1,22 @@
+
+<!--pages/student/onlineInstruction/videoList/videoList.wxml-->
+<navigator url="/pages/student/onlineInstruction/videoList/commentDetails/commentDetails?id={{item.id}}" class="contect" wx:for="{{videoArr}}" wx:for-index="idx">
+  <video  src="{{item.path}}"></video>
+  <view class="wrap">
+    <view class="vedioName">
+      <text>{{item.title}}</text>
+    </view>
+    <view class="name">
+      <text>{{item.student.name}}</text>
+      <text wx:if="{{item.teacherId!=0}}" class="teacher">教师：{{item.teacher.name}}</text>
+    </view>
+    <view class="update">
+      <text>{{item.createTime}}</text>
+      <text wx:if="{{item.teacherId!=0}}" class="alreadyComment bitComment">{{item.state}}</text>
+      <text wx:else class="bitComment1">{{item.state}}</text>
+    </view>
+  </view>
+</navigator>
+ <view class="button" wx:if="{{studentId!=''}}">
+    <navigator url="/pages/student/onlineInstruction/onlineInstruction?_id={{studentId}}">在线指导</navigator>
+  </view>

@@ -1,0 +1,16 @@
+<!--pages/exhibitionCenter/exerciseShow/exerciseShow.wxml-->
+<view>
+   <view class="box" wx:for="{{video}}">
+     <view class="video">
+       <video src="{{item.path}}"   controls ></video>
+     </view>
+     <view class="text">
+       <view >{{item.title}}</view>
+       <view >学生：{{item.name}}</view>
+       <view >{{item.updateTime}}上传</view>
+     </view>
+     <navigator url="/pages/exhibitionCenter/exerciseShow/showDetails/showDetails?_id={{item.id}}" class="see">
+       查看
+     </navigator> 
+   </view>
+</view>

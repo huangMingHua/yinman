@@ -1,0 +1,38 @@
+<view>
+  <view class="head">
+    <view class="head-img">
+      <image src="{{info.detail.teacherWxHead}}"></image>
+    </view>
+    <view>
+      <view class="head-teacher">
+        <text style="margin-right: 16rpx;">教师</text>
+        <text>{{info.detail.teacherName}}</text>
+      </view>
+      <view class="head-cul">
+        {{info.detail.courseName}} {{info.detail.number}}人班
+      </view>
+    </view>
+  </view>
+  <view class="cul-info">
+    <view class="cul-info-a">
+      <text>上课时间：</text>{{info.detail.date}} {{info.detail.startTime}}~{{info.detail.endTime}}
+    </view>
+    <view class="cul-info-a">
+      <text>课程类型：</text>{{info.detail.type}} 
+    </view>
+    <view class="cul-info-a">
+      <text>课程等级：</text>{{info.detail.level}} 
+    </view>
+    <view class="cul-info-a">
+      <text>教室：</text>{{info.detail.classroomName}}</view>
+    <view class="cul-info-a" wx-if="{{info.detail.startDate}}">
+      <text>课程周期：</text> {{info.detail.startDate}}至{{info.detail.endDate}}</view>
+  </view>
+  <view class="title">我的学生</view>
+  <view class="students" wx:for="{{info.students}}">
+    <image src="{{item.wxHead}}"></image>
+    <text>{{item.name}}</text>
+    <text wx:if="{{item.status=='请假'}}">（请假或老师调课）</text>
+    <navigator bindtap="url1" data-itemId="{{item.id }}" hover-class="navigator-hover">请假补课记录</navigator>
+  </view>
+</view>

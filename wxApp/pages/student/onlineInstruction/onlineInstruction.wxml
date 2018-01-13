@@ -1,0 +1,31 @@
+
+<!--pages/student/onlineInstruction/onlineInstruction.wxml-->
+<import src="../../template/prompt/prompt"/>
+<form bindsubmit="submit">
+  <view class="head">
+    学生:
+    <text>{{student.name}}</text>
+  </view>
+  <view class="contect">
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>视频标题</text>
+      <input name="title" value="{{title}}" placeholder="输入视频标题" />
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" class="star"></image>
+      <text>上传视频</text>
+      <button bindtap="chooseImg">{{video.length==0?"请上传视频":video}}</button>
+    </view>
+    <view class="section">
+      <image src="/images/icon/star.png" style="opacity: 0;" class="star"></image>
+      <text>视频简介</text>
+      <input name="explain"  value="{{explain}}" placeholder="输入详细描述" />
+    </view>
+  </view>
+  <template is="prompt" data="{{prompt}}"></template>
+  <view class="button">
+    <button formType="submit">确认提交</button>
+  </view>
+</form>
+

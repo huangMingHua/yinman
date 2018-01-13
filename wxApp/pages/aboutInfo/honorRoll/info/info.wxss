@@ -1,0 +1,8 @@
+/* pages/aboutInfo/honorRoll/info/info.wxss */
+.wrap{
+  padding: 20rpx;
+}
+.tr{
+  line-height:60rpx;
+  font-size:30rpx;
+}

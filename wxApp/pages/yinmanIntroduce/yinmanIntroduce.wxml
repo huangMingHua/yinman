@@ -1,0 +1,5 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<!--pages/yinmanIntroduce/yinmanIntroduce.wxml-->
+<div class="wrap">
+   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+ </div>

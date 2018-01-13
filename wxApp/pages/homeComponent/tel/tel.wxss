@@ -1,0 +1,30 @@
+.tel{
+    margin-top: 20px;
+    border-top:1rpx solid #e6e6e6; 
+    border-bottom:1rpx solid #e6e6e6; 
+    position: relative;
+}
+.tel view{
+    background-color: #fcfcfc;
+    height: 110rpx;
+    line-height: 110rpx;
+}
+.tel image{
+    margin-left: 32rpx;
+    width: 50rpx;
+    height: 50rpx;
+    vertical-align: middle;
+}
+.tel .dir{
+    width: 12rpx;
+    height: 27rpx;
+    float: right;
+    margin-right: 30rpx;
+    margin-top: 41rpx;
+}
+.tel text{
+    margin-left: 22rpx;
+    color: #333333;
+    vertical-align: middle;
+    font-size: 32rpx;
+}

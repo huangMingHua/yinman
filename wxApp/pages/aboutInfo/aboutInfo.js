@@ -1,0 +1,45 @@
+// pages/about/about.js
+Page({
+  data:{
+    boff:false,
+    teachers:[],
+    text:"",
+    btnBoff:true,
+  },
+  onLoad:function(options){
+    wx.setNavigationBarTitle({
+      title: "音曼教师"
+    })
+    if (options.index==1){
+      var appInstance = getApp()
+      //获取用户信息
+      appInstance.ajax("/teachernItroduction/getAll", { }, "get", (res)=> {
+        console.log(res)
+        this.data.teachers = res.data
+        for (var i = 0; i < this.data.teachers.length; i++) {
+          if (this.data.teachers[i].list.teachingSubjects.length >= 12) {
+            this.data.teachers[i].list.teachingSubjects = this.data.teachers[i].list.teachingSubjects.substring(0, 12)
+            this.data.teachers[i].list.teachingSubjects += "..."
+          }
+        }
+        this.setData({ teachers: this.data.teachers})
+      });
+      this.setData({ text: "音曼音乐老师"})
+    } else if (options.index == 2){
+      //获取用户信息
+      this.setData({ teachers: [{ wxHead: "/images/icon/headPortrait.png", wxName: "qiao" }], text: "书法比赛二等奖", btnBoff:false})
+     }
+  },
+  onReady:function(){
+    // 页面渲染完成
+  },
+  onShow:function(){
+    // 页面显示
+  },
+  onHide:function(){
+    // 页面隐藏
+  },
+  onUnload:function(){
+    // 页面关闭
+  }
+})

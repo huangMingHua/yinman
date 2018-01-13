@@ -1,0 +1,20 @@
+/* pages/student/myCourse/myCourse.wxss */
+
+@import "../../template/courseDetails/courseDetails.wxss";
+@import "../../template/teacherDetails/teacherDetails.wxss";
+page{
+    background-color: #f5f5f5;
+}
+.img{
+  width: 30rpx;
+  height: 20rpx;
+  margin-left: 20rpx;
+}
+.semester{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 20rpx;
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+}

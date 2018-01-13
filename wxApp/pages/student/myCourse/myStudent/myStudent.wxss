@@ -1,0 +1,79 @@
+.head{
+  display: flex;
+  flex-direction: row;
+  margin:  36rpx 0 20rpx 0;
+}
+.head-img{
+  width: 70rpx;
+  height: 70rpx;
+  margin:0 16rpx 0 32rpx;
+}
+.head-img image{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%; 
+}
+ .head-teacher{
+  color: #040000;
+  font-size: 32rpx;
+}
+ .head-cul{
+  color: #979797;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+.cul-info{
+  margin:20rpx 32rpx 36rpx 32rpx;
+  background-color: #f5f5f5;
+  padding: 10rpx 30rpx;
+  font-size: 28rpx;
+}
+.cul-info .cul-info-a{
+  margin: 20rpx 0;
+}
+.cul-info .cul-info-a text:nth-child(1){
+  display: inline-block;
+  width: 140rpx;
+  text-align: right;
+}
+.title{
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 32rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  padding-left: 30rpx;       
+}
+.students{
+  display: flex;
+  padding: 26rpx 0;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+  font-size:28rpx;
+}
+.students image{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%; 
+  margin: 0 32rpx;
+}
+.students text:nth-of-type(2){
+   font-size: 24rpx;
+   color: red;
+}
+.students navigator{
+  width: 220rpx;
+  height: 70rpx;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+   margin-left: 66rpx;
+}
+.students navigator:nth-of-type(1){
+   background-color: #00d6c2;
+   margin-right: 14rpx;
+}
+.students navigator:nth-of-type(2){
+   background-color: #ff9b39;
+   margin-left: 0rpx;
+}

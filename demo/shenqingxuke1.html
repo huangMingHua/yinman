@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<title></title>
+		<style type="text/css">
+				#wrap{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					opacity:0;
+					display: none;
+					background-color: rgba(0,0,0,0.3);
+					z-index: 100;
+					transition: 1s;
+				}
+			#wrap img{
+				position: absolute;
+				width: 300px;
+			}	
+				#btn{
+					position: absolute;
+					left: 120px;
+					width: 138px;
+					height: 44px;
+					top: 496px;
+					z-index: 88;
+				}
+			ul{
+				position: absolute;
+				left: 130px;
+				top: 134px;
+				font-size: 16px;
+				border-radius: 5px;
+				background-color: #e5edef;
+				width: 230px;
+				height: 0;
+				opacity: 0;
+				display: none;
+				transition: 1s;
+				overflow: hidden;
+			}
+			ul li{
+				height: 30px;
+				line-height: 30px;
+				padding-left: 30px;
+				border-bottom: 1px solid #000000;
+			}
+			ul li:nth-last-child(1){
+				border-bottom: none;
+			}
+		    ul a{
+		    	color: black;
+		    }
+		    #select{
+		    	position: absolute;
+			    width: 260px;
+			    height: 38px;
+			    left: 98px;
+			    top: 94px;
+		    }
+		</style>
+		<script type="text/javascript">
+			window.onload=function(){
+			   var oSelect=document.getElementById("select")
+			   var oUl=document.getElementsByTagName("ul")[0]
+			   var aLi=oUl.getElementsByTagName("li")
+			   var oWrap=document.getElementById("wrap")
+				var oImg=oWrap.getElementsByTagName("img")[0]
+				var oBtn=document.getElementById("btn")
+			   oSelect.onclick=function(){
+			   	  oUl.style.display="block"
+			   	  setTimeout(function(){
+			   	  	 oUl.style.height=aLi.length*aLi[0].offsetHeight+"px"
+			   	  	 oUl.style.opacity=1;
+			   	  },100)
+			   }
+			   oWrap.style.height=document.documentElement.clientHeight+"px";
+				oBtn.onclick=function(){
+					var scroll=null
+					if(document.documentElement&&document.documentElement.scrollTop){
+						 scroll=document.documentElement.scrollTop
+					}else{
+						scroll=document.body.scrollTop
+					}
+					oWrap.style.display="block"
+					setTimeout(function(){
+						oWrap.style.opacity=1;
+						oImg.style.left=(document.documentElement.clientWidth-oImg.offsetWidth)/2+"px"
+						oImg.style.top=(document.documentElement.clientHeight-oImg.offsetHeight)/2+scroll+"px"
+					},300)
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<img src="img/7-4个人中心-学生端口-我的课程-申请续课-换时间1.jpg"/>
+		<div id="select"></div>
+		<ul>
+			<li><a href="shenqingxuke.html">按原时间续课</a></li>
+			<li><a href="shenqingxuke1.html">换时间续课</a></li>
+			<li><a href="shenqingxuke2.html">换其他续课</a></li>
+		</ul>
+		<div id="wrap">
+			  	      <img src="img/7-3-1个人中心-学生端-续课成功弹框.jpg"/>
+		</div>
+		<a id="btn"></a>
+	</body>
+</html>

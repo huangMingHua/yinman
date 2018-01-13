@@ -1,0 +1,11 @@
+<!--pages/student/studentList/studentList.wxml-->
+<view>
+   <view wx:for="{{users}}"  class="list">
+     <navigator url="/pages/index/signUpList/signUpList?_id={{item.id}}&fn=order" class="name">{{item.name}}</navigator>
+     <navigator url="/pages/index/signUpList/signUpList?_id={{item.id}}&fn=order" class="order">报名</navigator><navigator url="/pages/index/class/class?_id={{item.id}}&fn=edit" class="edit">编辑</navigator>
+     <view url="url" class="delete" data-id="{{item.id}}" catchtap="delete">删除</view>
+   </view>
+   <navigator url="/pages/index/class/class" class="add">
+     添加学生
+   </navigator>
+</view>

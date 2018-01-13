@@ -1,0 +1,20 @@
+
+<template name="telOur">
+    <view class="telOur" catchtap="telephone">
+      <image src="/images/icon/phone.png"></image>
+      <text>咨询热线</text>
+    </view>
+    <view class="telephone" >
+      <text catchtap="mobilePhone">※ 13524160481 （上课的时候可能没人接，建议加微信留言）</text>
+    </view>
+    <view class="telOur" catchtap="telephone">
+      <image src="/images/icon/wechat.png"></image>
+      <text>微信号：</text>
+    </view>
+    <view class="telephone" >
+      <text>※ animamusic （老师下课后会尽快回复，谢谢）</text>
+    </view>
+    <view class='center' style='text-align:center;'>
+     <image style="width:400rpx;height:532rpx;" bindlongpress="downPic" data-down="https://wx.yinmanyinyue.com/public/files/animamusic.jpg" src="/images/icon/animamusic.jpg"></image>
+     </view>
+</template>

@@ -1,0 +1,21 @@
+/* pages/exhibitionCenter/exerciseShow/showDetails/showDetails.wxss */
+video{
+  width:100%;
+  margin-bottom:28rpx; 
+}
+.title{
+  padding-left: 32rpx;
+  margin-bottom: 24rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.name{
+   font-size: 28rpx;
+   color: #333;
+   padding-left: 32rpx;
+}
+.time{
+  font-size: 24rpx;
+  color: #8a8a8a;
+  margin-left: 222rpx;
+}

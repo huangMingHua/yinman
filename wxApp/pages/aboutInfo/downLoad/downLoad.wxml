@@ -1,0 +1,50 @@
+<!--pages/aboutInfo/downLoad/downLoad.wxml-->
+<view>
+  <view class="ul">
+    <!-- <view class="{{index==0?'active':''}}" bindtap="video">
+      <view>
+        视频
+      </view>
+    </view> -->
+    <view class="{{index==1?'active':''}}" bindtap="audio">
+      <view>
+        音频
+      </view>
+    </view>
+    <view class="{{index==2?'active':''}}" bindtap="pic">
+      <view>
+        图片
+      </view>
+    </view>
+  </view>
+  <view class="box" wx:for="{{video}}" wx:for-index="idx" wx:if="{{index==0}}">
+    <view>
+      <video src="{{item.path}}" class="img" controls></video>
+    </view>
+    <view class="info">
+      <view>{{item.title}}</view>
+      <view>{{item.explain}}</view>
+    </view>
+    <view class="down" bindtap="downVideo" data-down="{{item.path}}">下载</view>
+  </view>
+  <view class="box" wx:for="{{audio}}"  wx:for-index="idx" wx:if="{{index==1}}">
+    <view>
+      <image bindtap="music" data-src="{{item.path}}" src="/images/icon/music.jpg" class="img"></image>
+    </view>
+    <view class="info">
+      <view>{{item.title}}</view>
+      <view>{{item.explain}}</view>
+    </view>
+    <view class="down"  data-src="{{item.path}}" bindtap="music">播放</view>
+  </view>
+  <view class="box" wx:for="{{pic}}"  wx:for-index="idx" wx:if="{{index==2}}">
+    <view>
+      <image src="{{item.path}}" bindtap="preview" data-down="{{item.path}}" class="img"></image>
+    </view>
+    <view class="info">
+      <view>{{item.title}}</view>
+      <view>{{item.explain}}</view>
+    </view>
+    <view class="down" bindtap="downPic" data-down="{{item.path}}">下载</view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+<!--pages/home/about/competition/competition.wxml-->
+<view class="about" wx:for="{{teachers}}">
+   <view><image  src="{{item.picPath}}" class='img'></image></view>
+   <view> <text>{{item.res.title}}</text><text>地点:{{item.res.place}}</text><text  >时间:{{item.res.time}}</text></view>
+   <navigator  url="/pages/aboutInfo/competitionInfo/competitionInfo?id={{item.res.id}}" wx:if="{{btnBoff}}">查看</navigator>
+</view>

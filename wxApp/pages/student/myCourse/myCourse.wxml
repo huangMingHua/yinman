@@ -1,0 +1,11 @@
+<!--pages/student/myCourse/myCourse.wxml-->
+<import src="../../template/courseDetails/courseDetails.wxml" />
+<import src="../../template/teacherDetails/teacherDetails.wxml" />
+ <picker bindchange="semesterChange" class="semester" value="{{index}}" range="{{semesterArr}}">
+    <view class="picker">
+      {{semesterArr[index]}}<image class="img" wx:if="{{semesterArr[index]}}" src="/images/icon/down.png"></image>
+      <text wx:else>{{loading}}</text>
+    </view>
+</picker>
+<template is="courseDetails" wx:if="{{sign==1}}"  data="{{course}}" ></template>
+<template is="teacherDetails"  wx:if="{{sign==2}}" data="{{content}}"></template>

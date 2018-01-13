@@ -1,0 +1,34 @@
+<import src="../../template/prompt/prompt.wxml" />
+<import src="../../template/contact/contact.wxml" />
+
+<!--pages/index/subscribeList/subscribeList.wxml-->
+<view>
+  <view class="list" wx:for="{{listArray}}" wx:for-index="idx">
+    <navigator url="/pages/index/class/appointmentList/studentReservationInformation/studentReservationInformation?_id={{listArray[idx].id}}" hover-class="navigator-hover">
+      <view class="head">
+        <text>{{listArray[idx].course.courseName}}试听</text>
+        <view class="textWrap">
+          <text wx:if="{{listArray[idx].state == '已取消'}}" style="color:#8a8a8a">已取消</text>
+          <text wx:elif="{{listArray[idx].state == '待确认'}}" style="color:#fd6651">待确认</text>
+          <text wx:elif="{{listArray[idx].state == '未试听'}}" style="color:#fd9704">未试听</text>
+          <text wx:elif="{{listArray[idx].state == '已确认'}}" style="color:#fd6651">已确认</text>
+          <text wx:else style="color:#fd6651">已拒绝</text>
+          <image src="/images/icon/dir.png"></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="btn">
+    <button catchtap="btn">预约试课</button>
+  </view>
+  <template is="prompt" data="{{prompt}}" />
+  <view class='reminder'>
+     <view><image src='/images/icon/tishi.png'></image> 温馨提示：</view>
+     <view>1、进门换鞋，外出鞋子放在门口鞋柜，室内有供大人，孩子穿的室内拖鞋。进出教室，请把鞋子摆放整齐，谢谢。</view>
+     <view>2、上下楼梯注意提醒孩子抓住扶手，不要在楼梯上跑跳玩耍，注意安全！ </view>
+  </view>
+  <view class="tel">
+    <template is="telOur" data="{{telFun}}"/>
+  </view>
+  
+</view>

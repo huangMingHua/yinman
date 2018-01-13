@@ -1,0 +1,187 @@
+/* pages/student/myCourse/applyLessons/applyLessons.wxss */
+@import "../../../template/prompt/prompt.wxss";
+page {
+  background-color: #f5f5f5;
+}
+
+.head {
+  line-height: 106rpx;
+  height: 106rpx;
+  font-size: 32rpx;
+  color: #040000;
+  padding: 0 32rpx;
+  background-color: white;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.berforInfo {
+  position: relative;
+}
+
+.berforInfo>view:nth-child(1) {
+  padding: 0 32rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  color: #040000;
+  font-size: 32rpx;
+}
+
+.berforInfo .wrap {
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 28rpx;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.berforInfo  .cir {
+  position: absolute;
+  left: 38rpx;
+  top: 78rpx;
+  width: 13rpx;
+  height: 13rpx;
+  background-color: #3cb4ff;
+  border-radius: 100%;
+  z-index: 1000;
+}
+
+.berforInfo .wrap .line {
+  position: absolute;
+  left: 42rpx;
+  top: 11rpx;
+  width: 4rpx;
+  height: 100%;
+  background-color: #e3e3e3;
+}
+
+.berforInfo .wrap .berforCon {
+  margin-top: 16rpx;
+  display: flex;
+  flex-direction: row;
+  padding-left: 32rpx;
+  position: relative;
+  z-index: 100;
+}
+
+.berforInfo .wrap .berforCon image {
+  width: 24rpx;
+  height: 26rpx;
+  margin-right: 16rpx;
+}
+
+.berforInfo .wrap .berforCon {
+  font-size: 28rpx;
+}
+
+.berforInfo .wrap .berforCon .berforConTeacher,
+.berforInfo .wrap .berforCon .berforConCourse {
+  margin-right: 172rpx;
+}
+
+.berforInfo .wrap .berforCon .berforConTime {
+  margin-right: 30rpx;
+}
+
+.courseInformation {
+  padding: 0 34rpx;
+  background-color: white;
+  position: relative;
+}
+
+.courseInformationHead {
+  height: 84rpx;
+  line-height: 84rpx;
+  font-size: 32rpx;
+  color: #040000;
+  background-color: #f5f5f5;
+  padding: 0 32rpx;
+}
+.courseInformationCon{
+    overflow: hidden;
+}
+.section {
+  position: relative;
+  padding-left: 35rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 5px;
+  background-color: #ebebeb;
+}
+
+.star {
+  width: 12rpx;
+  height: 12rpx;
+  vertical-align: middle;
+}
+
+.section label {
+  display: inline-block;
+  width: 190rpx;
+}
+
+.section>text {
+  display: inline-block;
+  font-size: 32rpx;
+  vertical-align: middle;
+  width: 190rpx;
+  color: #b9b9b9;
+}
+
+.section label text {
+  color: #333;
+}
+
+picker {
+  display: inline-block;
+  width: 220rpx;
+}
+
+.section .picker {
+  display: inline-block;
+  width: 100%;
+}
+
+.down {
+  position: absolute;
+  right: 36rpx;
+  top: 28rpx;
+  width: 40rpx;
+  height: 24rpx;
+}
+.courseInformation .courseTimeToHead{
+    padding-top: 28rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+}
+.courseInformation .courseTimeTo{
+    overflow: hidden;
+}
+.wran{
+    height: 40rpx;
+    color:red;
+    font-size:25rpx;
+    padding-left:45rpx;
+}
+input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: black;
+  height: 100%;
+  width: 100%;
+  padding-left: 228rpx;
+  box-sizing: border-box;
+}
+.button{
+    padding: 42rpx 0 120rpx 0;
+}
+.button button{
+    width: 282rpx;
+    height: 96rpx;
+    background-color: #3cb4ff;
+    color:white;
+    
+}

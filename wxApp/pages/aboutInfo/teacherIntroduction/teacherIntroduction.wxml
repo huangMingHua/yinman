@@ -1,0 +1,26 @@
+<!--pages/aboutInfo/teacherIntroduction/teacherIntroduction.wxml-->
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="wrap">
+  <view class="tr">
+    <text>姓名:</text><text>{{user.name}}</text>
+  </view>
+  <view class="tr">
+    <text>性别:</text><text>{{user.sex}}</text>
+  </view>
+  <view class="tr">
+    <text>学历:</text><text>{{user.education}}</text>
+  </view>
+  <view class="tr">
+    <text>专业:</text><text>{{user.major}}</text>
+  </view>
+   <view class="tr">
+    <text>毕业院校:</text><text>{{user.school}}</text>
+  </view>
+  <view class="tr">
+    <text>教授科目:</text><text>{{user.teachingSubjects}}</text>
+  </view>
+   <view>
+    <view>专业经历:</view>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>

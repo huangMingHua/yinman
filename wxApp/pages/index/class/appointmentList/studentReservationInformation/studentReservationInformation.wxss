@@ -1,0 +1,258 @@
+/* pages/index/class/appointmentList/studentReservationInformation/studentReservationInformation.wxss */
+page{
+  background-color:#f5f5f5;
+}
+.state{
+  text-align: center;
+  font-size: 28rpx;
+}
+.section {
+  position: relative;
+  margin: 0 32rpx;
+  padding-left: 35rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  font-size: 28rpx;
+}
+
+.star {
+  width: 12rpx;
+  height: 12rpx;
+  vertical-align: middle;
+}
+
+.section label {
+  display: inline-block;
+  width: 190rpx;
+}
+
+.section>text {
+  display: inline-block;
+  vertical-align: middle;
+  color: #b9b9b9;
+}
+
+.section label text {
+  color: #333;
+}
+
+input:-moz-placeholder {
+  color: #a9a9a9;
+}
+
+input::-webkit-input-placeholder {
+  color: #a9a9a9;
+}
+
+input:-ms-input-placeholder {
+  color: #a9a9a9;
+}
+
+input::-moz-placeholder {
+  color: #a9a9a9;
+}
+
+input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  vertical-align: middle;
+  font-size: 28rpx;
+  color: black;
+  height: 100%;
+  width: 100%;
+  padding-left: 228rpx;
+  box-sizing: border-box;
+}
+
+.sex {
+  display: inline-block;
+}
+
+.sex label {
+  display: inline-block;
+  height: 100%;
+}
+
+.sex label radio {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.sex label text {
+  margin-left: 16rpx;
+  vertical-align: middle;
+}
+
+picker {
+  display: inline-block;
+  width: 560rpx;
+  position: relative;
+  z-index: 1000;
+}
+
+.section .picker {
+  display: inline-block;
+  width: 100%;
+}
+.down:nth-of-type(1){
+  position: absolute;
+  right: 320rpx;
+  top: 28rpx;
+  width: 40rpx;
+  height: 24rpx;
+
+}
+.down:nth-of-type(2) {
+  position: absolute;
+  right: 36rpx;
+  top: 28rpx;
+  width: 40rpx;
+  height: 24rpx;
+}
+
+.expectClass {
+  height: 68rpx;
+  line-height: 68rpx;
+  margin: 0 32rpx;
+  color: #b9b9b9;
+  font-size: 28rpx;
+}
+.requirement{
+  position: relative;
+}
+.requirement text{
+  position: absolute;
+  right:50rpx;
+  bottom:10rpx;
+  z-index:100;
+  color:#ccc;
+  font-size:30rpx;
+}
+.select {
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.select .left {
+  position: relative;
+  width: 560rpx;
+  padding-left: 40rpx;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  margin-left: 32rpx;
+  float: left;
+}
+
+.select .right {
+  float: left;
+  margin-left: 20rpx;
+  height: 100%;
+}
+
+.select .right view {
+  height: 24rpx;
+  font-size: 24rpx;
+  color: #3cb4ff;
+}
+
+.select picker, .select .picker {
+  display: inline-block;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.select .date{
+  width: 262rpx;
+  padding-left:18rpx;
+}
+.select .time {
+  width:200rpx;
+ padding-left:80rpx;
+}
+.select .add {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.addSel {
+  margin-top: 20rpx;
+}
+
+textarea {
+  margin: 0 32rpx;
+  width: auto;
+  background-color: #ebebeb;
+  border-radius: 5px;
+  padding: 10rpx;
+  font-size: 32rpx;
+}
+
+.info {
+  margin: 0 32rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  font-size: 28rpx;
+  color: #b9b9b9;
+}
+
+.button {
+  position: relative;
+  height: 180rpx;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
+}
+.confirmed-time{
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  padding: 20rpx 32rpx;
+}
+.section .classRoome,.section .student-name{
+  padding-left: 20rpx;
+  width: 90rpx;
+}
+.button button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 276rpx;
+  height: 90rpx;
+  background-color: #3cb4ff;
+  border: none;
+  color: white;
+}
+.mattersNeedingAttention{
+  background-color:white;
+}
+.mattersNeedingAttention image{
+  margin:0 14rpx 0 33rpx;
+  width:27rpx;
+  height:23rpx;
+  vertical-align:middle;
+}
+.mattersNeedingAttention text{
+  font-size:28rpx;
+  color:#333;
+  vertical-align:middle;
+}
+.mattersNeedingAttention .mattersNeedingAttentionText{
+  padding:20rpx 20rpx 30rpx 20rpx;
+  font-size:28rpx;
+  color:#b9b9b9;
+  text-indent: 1.5em;
+}
+.prompt{
+  height: 40rpx;
+  line-height: 40rpx;
+  color: red;
+  font-size: 20rpx;
+  padding-left: 160rpx;
+}
+@import "../../../../template/contact/contact.wxss"

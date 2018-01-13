@@ -1,0 +1,75 @@
+/* pages/student/onlineInstruction/videoList/videoList.wxss */
+
+page {
+  background-color: #f5f5f5;
+}
+
+.contect {
+  display: flex;
+  flex-direction: row;
+  padding: 32rpx 30rpx;
+  background-color: white;
+  margin-bottom: 20rpx;
+}
+
+.contect video {
+  width: 180rpx;
+  height: 122rpx;
+  margin-right: 16rpx;
+}
+
+.contect .wrap {
+  width: 100%;
+}
+
+.contect .wrap .vedioName, .contect .wrap .name {
+  color: #040000;
+  margin-bottom: 16rpx;
+}
+
+.contect .wrap .vedioName {
+  font-size: 32rpx;
+}
+
+.contect .wrap .name {
+  position: relative;
+  font-size: 28rpx;
+}
+
+.contect .wrap .update {
+  position: relative;
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+
+.contect .wrap .teacher, .contect .wrap .bitComment {
+  position: absolute;
+  right: 0;
+  color: #8a8a8a;
+}
+
+.contect .wrap .bitComment1 {
+  position: absolute;
+  right: 0;
+  color: #fd9704;
+}
+.button {
+  padding: 42rpx 0 120rpx 0;
+  position: relative
+}
+
+.button navigator {
+  width: 282rpx;
+  height: 96rpx;
+  background-color: #3cb4ff;
+  color: white;
+  line-height: 96rpx;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius:10rpx; 
+}

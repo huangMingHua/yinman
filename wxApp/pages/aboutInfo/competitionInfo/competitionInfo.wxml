@@ -1,0 +1,16 @@
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="wrap">
+  <view class="tr">
+     <text>{{user.title}}</text>
+  </view>
+  <view class="tr">
+    <text>比赛地点:</text><text>{{user.place}}</text>
+  </view>
+  <view class="tr">
+    <text>比赛时间:</text><text>{{user.time}}</text>
+  </view>
+   <view>
+    <view>比赛介绍:</view>
+   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+</view>

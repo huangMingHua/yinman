@@ -1,0 +1,35 @@
+<template name="courseContent">
+  <view class="courseContentHead">
+  </view>
+  <view class="courseContentCon">
+    <view class="circular"></view>
+    <view class="courseContentWrap">
+      <view class="line"></view>
+      <view class="courseContentText courseContentText1">
+        <view>
+          <text>教师 {{item.fromCourseTableItem.teacherName}} {{item.fromCourseTableItem.courseName}}</text>
+        </view>
+        <view>
+          <text>{{item.fromCourseTableItem.date}} {{item.fromCourseTableItem.startTime}}~{{item.fromCourseTableItem.endTime}}  教室：{{item.fromCourseTableItem.classroomName}}</text>
+        </view>
+      </view>
+      <view class="courseContentTo">
+        <view>
+          <image src="/images/icon/to.png"></image>
+        </view>
+        <text>调至：</text>
+      </view>
+      <view class="courseContentText courseContentText2">
+        <view>
+          <text>教师 {{item.toCourseTableItem.teacherName}} {{item.toCourseTableItem.courseName}}</text>
+        </view>
+        <view>
+          <text>{{item.toCourseTableItem.date}} {{item.toCourseTableItem.startTime}}~{{item.toCourseTableItem.endTime}}  教室：{{item.toCourseTableItem.classroomName}}</text>
+        </view>
+        <view>
+          <text>调课原因：{{item.reason}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

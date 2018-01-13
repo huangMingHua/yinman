@@ -1,0 +1,66 @@
+/* pages/aboutInfo/downLoad/downLoad.wxss */
+page{
+  background-color:#f5f5f5; 
+}
+.ul{
+  display: flex;
+  flex-direction: row;
+}
+.ul>view{
+    width:50%;
+    text-align: center;
+    font-size: 32rpx;
+    color: #333333;
+    height: 100rpx;
+}
+.ul>view view{
+  height: 94rpx;
+  background-color: white;
+  line-height: 94rpx;
+}
+.ul .active{
+  background-color: #3cb4ff;
+}
+.box{
+  position: relative;
+  display: flex;
+  padding: 30rpx;
+  background-color: white;
+  margin-bottom: 20rpx;
+  height: 124rpx;
+}
+.box .img{
+   width: 180rpx;
+   height: 124rpx;
+}
+.info{
+  margin-left: 14rpx;
+}
+.info view{
+  line-height: 40rpx;
+  height: 40rpx;
+}
+.info view:nth-of-type(1){
+  font-size: 32rpx;
+  color: #040000;
+}
+.info view:nth-of-type(2){
+  font-size: 28rpx;
+  color: #040000;
+}
+.info view:nth-of-type(3){
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.down{
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  width: 110rpx;
+  height: 60rpx;
+  border: 1rpx solid #3cb4ff;
+  color: #3cb4ff;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 5px
+}

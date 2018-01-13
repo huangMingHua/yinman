@@ -1,0 +1,19 @@
+/* pages/aboutInfo/teacherIntroduction/teacherIntroduction.wxss */
+
+.wrap{
+  padding: 20rpx;
+}
+.tr{
+  line-height:60rpx;
+  font-size:30rpx;
+}
+.wxParse-inline{
+    margin-top: 24rpx;
+    font-size: 32rpx;
+    line-height: 48rpx;
+    text-indent: 2rem;
+}
+.wxParse-div image{
+  margin: 0 auto;
+  display: block;
+}

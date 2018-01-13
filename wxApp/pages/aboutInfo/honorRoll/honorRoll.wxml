@@ -1,0 +1,6 @@
+<!--pages/aboutInfo/honorRoll/honorRoll.wxml-->
+<view class="about" wx:for="{{course}}" >
+   <view><image  src="{{item.path}}"></image></view>
+   <view> <text>{{item.name}}</text><text>{{item.introduce}}</text></view>
+   <navigator url="/pages/aboutInfo/honorRoll/info/info?id={{item.id}}" >查看</navigator>
+</view>

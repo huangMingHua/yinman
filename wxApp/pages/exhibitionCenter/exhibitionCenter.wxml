@@ -1,0 +1,12 @@
+<!--pages/exhibitionCenter/exhibitionCenter.wxml-->
+<template  name="exhibitionCenter">
+<view class="home">
+   <navigator url="/pages/aboutInfo/honorRoll/honorRoll"><image src="/images/icon/exhibitionCenter1.png" class="icon"></image><text>光荣榜</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view>
+<!-- <view class="home">
+   <navigator url="/pages/exhibitionCenter/exerciseShow/exerciseShow"><image src="/images/icon/exhibitionCenter2.png" class="icon"></image><text>练习秀</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view> -->
+<view class="home">
+   <navigator url="/pages/aboutInfo/downLoad/downLoad"><image src="/images/icon/exhibitionCenter3.png" class="icon"></image><text>下载中心</text> <image src="/images/icon/dir.png" class="dir"></image></navigator>
+</view>
+</template>

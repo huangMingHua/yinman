@@ -1,0 +1,89 @@
+/* pages/index/signUpList/signUpList.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.list{
+    position: relative;
+    background-color: white;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #f4f4f4; 
+}
+.list image:nth-of-type(1){
+   width:30rpx ;
+   height: 30rpx;
+   margin: 0 24rpx 0 32rpx; 
+   vertical-align: middle
+}
+.list text{
+    font-size: 28rpx;
+    color: #333; 
+    vertical-align: middle;
+}
+.list image:nth-of-type(2){
+    position: absolute;
+    right:30rpx;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width:11rpx ;
+    height: 25rpx;
+    vertical-align: middle;
+}
+.list .state{
+     position: absolute;
+     right:60rpx;
+     top: 0;
+     bottom: 0;
+     margin: auto;
+     vertical-align: middle;
+}
+.btn{
+    position: relative;
+    height: 174rpx;
+}
+.btn button{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width:277rpx ;
+    height: 90rpx;
+    background-color:#3cb4ff;
+    text-align: center;
+    line-height:90rpx ;
+    border-radius: 5px;
+    font-size: 32rpx;
+    color: white;
+}
+@import "../../template/contact/contact.wxss";
+.tel{
+    background-color: white;
+    padding: 28rpx 0 1rpx 0;
+}
+.reminder{
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  background-color: white;
+  padding:0 32rpx;
+  color:#979797;
+  line-height:40rpx;
+  padding-top: 20rpx;
+}
+.reminder view:nth-child(1){
+  height:46rpx;
+  line-height:46rpx;
+  font-size:28rpx;
+  color:#040000;
+  
+}
+.reminder view:nth-child(2),.reminder view:nth-child(3),.reminder view:nth-child(4),.reminder view:nth-child(5),.reminder view:nth-child(6),.reminder view:nth-child(7),.reminder view:nth-child(8){
+  padding-left: 40rpx;
+}
+.reminder image{
+  width:34rpx;
+  height: 34rpx;
+  vertical-align: middle;
+}

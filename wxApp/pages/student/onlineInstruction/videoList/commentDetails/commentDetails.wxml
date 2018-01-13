@@ -1,0 +1,35 @@
+
+<!--pages/student/onlineInstruction/videoList/commentDetails/commentDetails.wxml-->
+<view class="video">
+  <video src="{{videoInfo.path}}" ></video>
+</view>
+<view class="videoInfo">
+  <view>{{videoInfo.title}}</view>
+  <view>
+    <text>学生:{{videoInfo.student.name}}</text>
+    <text>上传时间:{{videoInfo.createTime}}</text>
+  </view>
+</view>
+<view class="videoSynopsis">
+  <view>视频简介:</view>
+  <view>{{videoInfo.explain}}
+  </view>
+</view>
+<view class="teacher" wx:if="{{videoInfo.teacherId!=0}}">
+  <view>
+    <text>教师:{{videoInfo.teacher.name}}</text>
+    <text>点评时间:{{videoInfo.updateTime}}</text>
+  </view>
+  <view>
+    <view>教师评语:</view>
+    <view>{{videoInfo.content}}</view>
+  </view>
+</view>
+<form bindsubmit="formSubmit" bindreset="formReset" wx:if="{{sign==2&&videoInfo.teacherId==0}}">
+<view class="textarea">
+    <textarea name="content"  placeholder="教师点评"  style="height: 200rpx !important;" />
+</view>
+ <view class="button">
+  <button formType="submit">确认提交</button>  
+ </view>
+</form> 
