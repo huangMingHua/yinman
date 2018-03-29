@@ -1,0 +1,13 @@
+<!--pages/teacher/timeTag/timeTag.wxml-->
+<view class='title'>
+  <image src='/images/icon/termRecords2.png'></image><text>考勤记录</text>
+</view>
+<view class='list' wx:for="{{list}}">
+   <view class='line'></view>
+   <view class='index'><text>{{index+1}}</text></view>
+   <view class='detail'>
+     <view class='time'><text>时间：</text><text>{{item.date}} 星期{{cnum[item.dayOfWeek]}} {{item.startTime}}~{{item.endTime}}</text></view>
+     <view class='people'><view><text>出勤：</text></view><view><text wx:for="{{item.goClass}}"  wx:for-item="studentItem">{{studentItem.student.name}}、</text></view></view>
+     <view class='people'><view><text>缺勤：</text></view><view><text wx:for="{{item.notGoClass}}"  wx:for-item="studentItem1">{{studentItem1.student.name}}、</text></view></view>
+   </view>
+</view>

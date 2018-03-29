@@ -1,20 +1,189 @@
 /* pages/student/myCourse/myCourse.wxss */
 
-@import "../../template/courseDetails/courseDetails.wxss";
-@import "../../template/teacherDetails/teacherDetails.wxss";
+/* @import "../../template/courseDetails/courseDetails.wxss"; */
+/* @import "../../template/teacherDetails/teacherDetails.wxss"; */
 page{
     background-color: #f5f5f5;
 }
 .img{
   width: 30rpx;
-  height: 20rpx;
+  height: 13rpx;
   margin-left: 20rpx;
 }
 .semester{
-  height: 80rpx;
-  line-height: 80rpx;
-  padding: 20rpx;
   background-color: white;
   text-align: center;
-  font-weight: bold;
+  padding-top: 20rpx;
+}
+.semesterPicker{
+  margin: 0 auto;
+  width: 314rpx;
+  height: 68rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 68rpx;
+  border: 1rpx solid #3cb4ff;
+  border-radius: 5px;
+  color: #3cb4ff; 
+}
+.semesterStartEnd{
+  padding: 18rpx 0 32rpx 0;
+  font-size: 28rpx;
+  color: #979797;
+}
+.semesterClassTitle,.classTimeClassTitle{
+   display: flex;
+   align-items: center;
+   height: 84rpx;
+   font-size: 24rpx;
+   border-top: 1rpx solid #e6e6e6;
+   border-bottom: 1rpx solid #e6e6e6;
+}
+.semesterClassTitle image,.classTimeClassTitle image{
+  margin: 0 15rpx 0 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.teacher{
+  display: flex;
+  align-items: center;
+  height: 118rpx;
+  background-color: white;
+}
+.teacher image{
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 20rpx 0 32rpx;
+  border-radius: 100%;
+}
+.teacher .teahcerTitle{
+  margin-right: 30rpx;
+  font-size: 28rpx;
+  color: #040000;
+}
+.teacher .teacherName{
+  font-size: 28rpx;
+  color: #040000;
+}
+.semesterClass,.classTimeClass{
+  background-color: white;
+}
+.semesterClass .detail,.classTimeClass .detail{
+  position: relative;
+  margin: 0 30rpx 30rpx 30rpx;
+  padding-bottom: 30rpx;
+  background-color: #f5f5f5;
+  overflow: hidden;
+} 
+.semesterClass .detail view,.classTimeClass .detail view{
+  margin-top: 28rpx;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+}
+.semesterClass .detail view text:nth-child(1){
+  margin-right: 8rpx;
+}
+.classTimeClass .detail view text:nth-child(1){
+  margin-right: 8rpx;
+}
+.semesterClass .lineWhite{
+  height: 3rpx;
+  background-color: white;
+  margin: 30rpx 30rpx 0rpx 30rpx;
+}
+.semesterClass .fun{
+  position: relative;
+  margin: 0 30rpx;
+  background-color: #f5f5f5;
+}
+.semesterClass .warn{
+  padding:  10rpx 0;
+  text-indent: -3em;
+  margin-left: 3em;
+  font-size: 24rpx;
+  color: #979797;
+}
+.semesterClass .warn .warnImg{
+  margin: 0 10rpx 0 35rpx;
+  width: 27rpx;
+  height: 24rpx;
+}
+.semesterClass .warn .content{
+  line-height: 40rpx;
+}
+.semesterClass .fun .record{
+  position: absolute;
+  right: 0;
+  bottom: 10rpx;
+  font-size: 24rpx;
+  color: #3cb4ff;
+}
+.semesterClass .fun .record image{
+  margin: 0 29rpx 0 13rpx;
+  width: 16rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+.semesterClass .links, .classTimeClass .links{
+  padding: 22rpx 30rpx 34rpx 30rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.semesterClass .links navigator,.classTimeClass .links navigator{
+  border-radius: 6rpx;
+  width: 222rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  color: white;
+}
+.semesterClass .links navigator:nth-child(1){
+   background-color: #3cb4ff;
+}
+.semesterClass .links navigator:nth-child(2){
+   background-color: #00d6c2;
+   margin-left: 14rpx;
+}
+.classTimeClass .links navigator:nth-child(1){
+   background-color: #ff9b39;
+}
+.classTimeClass .links navigator:nth-child(2){
+   background-color: #3cb4ff;
+   margin-left: 14rpx;
+}
+.classTimeNum{
+  display: inline-block;
+  margin-left: 18rpx;
+  padding-left: 18rpx;
+  border-left: 1rpx solid #979797;
+  font-size: 24rpx;
+  color: #979797;
+}
+.btn{
+  position: absolute;
+  right: 10rpx;
+  bottom: 24rpx;
+  font-size: 28rpx;
+  color: #3cb4ff;
+}
+.btn image{
+  width: 16rpx;
+  height: 29rpx;
+  vertical-align: middle;
+}
+.noData{
+  padding-top: 112rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.noData image{
+  margin-bottom: 30rpx;
+  width: 192rpx;
+  height: 220rpx;
+}
+.noData text{
+  color: #89888f;
+  font-size: 36rpx;
 }

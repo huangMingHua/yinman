@@ -1,0 +1,37 @@
+<!--pages/student/customerReservation/customerReservation.wxml-->
+<view wx:if="{{courses.length>0}}">
+  <view class="student">
+    <text>学生姓名：</text>
+    <text>{{student.name}}</text>
+  </view>
+  <view class='courseTableDetailList' wx:for="{{courses}}">
+      <view class='teacher'>
+          <image src="{{item.user.wxHead}}"></image>
+          <text>教师</text>
+          <text>{{item.teacher.name}}</text> 
+      </view>
+      <view class='courseIntroduce'>
+          {{item.user.remarks}}
+      </view>
+      <view class='courseDetails' wx:for="{{item.courseTableItem}}" wx:for-item='it'>
+        <view>
+          <image src='/images/icon/termRecords.png'></image>
+        </view>
+        <view>
+          <view>
+            <text>课程：</text>
+            <text>{{it.course.name}}</text>
+          </view>
+          <view>
+            <text>时间：</text>
+            <text>{{it.date}} 周{{it.dayOfWeek}} {{it.startTime}}~{{it.endTime}}</text>
+          </view>
+        </view>
+        <navigator url='/pages/student/bookingCourse/bookingCourse?courseTableItemId={{it.id}}'>预约</navigator>
+      </view>
+  </view>
+</view>
+ <view wx:if="{{courses.length===0}}" class="noData">
+    <image src="/images/icon/noData.png"  ></image>
+    <view><text>暂无课程信息</text></view>
+  </view>

@@ -1,12 +1,6 @@
 <template>
    <p-layout>
-    <template>
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="已预约试课" name="booking">
-          <booking></booking>
-        </el-tab-pane>
-      </el-tabs>
-    </template>
+     <booking></booking>
    </p-layout>
 </template>
 <script>

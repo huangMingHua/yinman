@@ -1,10 +1,10 @@
 <template>
     <p-layout>
-        <el-breadcrumb class="p-layout-breadcrumb" separator="/">
+        <!-- <el-breadcrumb class="p-layout-breadcrumb" separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item :to="{ path: '/courseCreation' }">课程表管理</el-breadcrumb-item>
             <el-breadcrumb-item >添加课程表</el-breadcrumb-item>
-          </el-breadcrumb>
+        </el-breadcrumb> -->
         <course-table-detail :termId="termId" :teacherId="teacherId"></course-table-detail>
     </p-layout>
 </template>

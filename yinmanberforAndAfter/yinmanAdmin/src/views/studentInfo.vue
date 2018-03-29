@@ -24,26 +24,34 @@
         <el-tabs v-model="currentStudentId" @tab-click="handleClick" type="border-card">
             <el-tab-pane :label="student.name" :name="student.id.toString()" v-for="(student,index) in students">
                 <com-student :studentId="student.id"></com-student>
+                <div class="term">
+                    <span>学期名称：</span>
+                    <el-select v-model="term"  @change="termFn"  placeholder="请选择">
+                    <el-option
+                        :no-match-text='term'
+                        v-for="item in terms"
+                        :key="item.id"
+                        :label="item.name"
+                        :value="item.id">
+                    </el-option>
+                    </el-select>
+                    <span class="termStartEnd">学期起止：</span>
+                    <em style="font-style:normal">{{termStartDate}} 至 {{termEndDate}}</em>
+                    </a>
+                </div>
                 <div>
                     <el-tabs v-model="activeName" type="card">
                             <el-tab-pane label="课程信息" name="courseInfo">
-                                <course-info @toSignUp="toSignUp" :name="student.name"></course-info>
+                                <course-info @toSignUp="toSignUp" :termId="term" @termFn="termFn1" :name="student.name"></course-info>
                             </el-tab-pane>
                             <el-tab-pane label="报名管理" name="signUpInfo">
-                                <sign-up-info :studentId="student.id"></sign-up-info>
+                                <sign-up-info :studentId="student.id" :termId="term"></sign-up-info>
                             </el-tab-pane>
                             <!-- <el-tab-pane label="续课管理" name="continuedEducationInfo">
-                                <renew :studentId="student.id" @toCurriculumInfo="toCurriculumInfo"></renew>
+                                <renew :studentId="student.id" @toCurriculumInfo="toCurriculumInfo" :termId="this.term"></renew>
                             </el-tab-pane> -->
-                            <el-tab-pane label="请假记录" name="leaveRecord">
-                                <leave :studentId="student.id"></leave>
-                            </el-tab-pane>
-                            <el-tab-pane label="补课记录" name="changingCourseRecord">
-                                <changing-course-info :studentId="student.id"></changing-course-info>
-                            </el-tab-pane>
                     </el-tabs>
                 </div>
-
             </el-tab-pane>
         </el-tabs>
             <el-dialog
@@ -69,19 +77,24 @@ import addStudent from '../components/userManagement/addStudent'
 import renew from  '../components/renew'
 export default {
     data() {
-      return {
-           showStudentSignUp: false,
-           studentBool:false,
-           terms: [],
-           termId: 0,
-           userId:0,
-           studentId:0,
-           currentStudentId:'0',
-           students:[],
-           student:{},
-           changeIndex:0,
-           activeName: 'courseInfo'
-      }
+        return {
+            term: '',
+            terms:[],
+            termData: '',
+            termStartDate: '2018-1-1',
+            termEndDate: '2018-1-1',
+            showStudentSignUp: false,
+            studentBool:false,
+            terms: [],
+            termId: 0,
+            userId:0,
+            studentId:0,
+            currentStudentId:'0',
+            students:[],
+            student:{},
+            changeIndex:0,
+            activeName: 'courseInfo'
+        }
     },
   created(){
       this.userId = this.$route.query.userId || 0
@@ -95,8 +108,20 @@ export default {
       else {
           this.currentStudentId = this.studentId.toString();
       }
+      this.init();
   },
   methods:{
+    init(){
+            this.$http.get('/api/term/getAll').then((res)=>{
+              if(typeof res==='object'&&res.data){
+                this.terms = res.data;
+                this.term = res.data[0].id
+                this.termFn(res.data[0].id)
+              }else{
+                alert('数据出错')
+              }
+            })
+    },  
     loadUserData(){
         this.$http.get('/api/user/getById?id='+ this.userId).then(res=>{
               if(res.data.students && res.data.students.length > 0){
@@ -119,7 +144,19 @@ export default {
     view(termId) {
         this.termId = termId;
         this.showStudentSignUp = true;
-        
+    },
+    //学期的修改
+    termFn(id){
+        for (let item of this.terms) {
+            if (item.id == id) {
+                this.termStartDate = item.startDate;
+                this.termEndDate = item.endDate;
+            }
+        }
+    },
+    termFn1(id){
+       this.term = id;
+       this.termFn(id);
     },
     add() {
         this.showStudentSignUp=true;

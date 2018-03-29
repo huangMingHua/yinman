@@ -1,15 +1,80 @@
 <!--pages/student/myCourse/myLessonAndleave/myLessonAndleave.wxml-->
-<import src="../myLeave/myLeave.wxml" />
-<import src="../myLesson/myLesson.wxml" />
-<view class="btn-area">
-  <navigator bindtap="url" class="{{urlIndex==0? 'active':''}}" data-urlIndex="0">
+<view wx:if="{{isShow===1}}">
+  <view class='student'>
+    <text>学生：{{studentName}}</text>
+  </view>
+  <view class="title">
+    <image src='/images/icon/termRecords.png'></image>
     <text>请假记录</text>
-    <text  class="{{urlIndex==0? 'line':''}}"></text>
-  </navigator> 
-  <navigator bindtap="url" class="{{urlIndex==1? 'active':''}}" data-urlIndex="1">
+  </view>
+  <view class='detail' wx:for="{{leavesRecort}}">
+    <view class='left'>
+      <text class='leval'>{{index+1}}</text>
+    </view>
+    <view class='right'>
+      <view>
+        <text>教师：</text>
+        <text>{{item.courseTableDetail.teacher.name}}</text>
+      </view>
+      <view>
+        <text>满员人数：</text>
+        <text>{{item.courseTableDetail.number}}</text>
+      </view>
+      <view>
+        <text>课程：</text>
+        <text>{{item.courseTableDetail.course.name}}</text>
+      </view>
+      <view>
+        <text>等级：</text>
+        <text>{{levels[item.courseTableDetail.level-1].name}}</text>
+      </view>
+      <view>
+        <text>时间：</text>
+        <text>{{item.courseTableItem.date}}{{item.courseTableItem.dayOfWeek}} {{item.courseTableItem.startTime}}~{{item.courseTableItem.endTime}}</text>
+      </view>
+      <view>
+        <text>教室：</text>
+        <text>{{item.courseTableDetail.classroom.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="title">
+    <image src='/images/icon/termRecords2.png'></image>
     <text>补课记录</text>
-    <text  class="{{urlIndex==1? 'line':''}}"></text>
-  </navigator> 
+  </view>
+   <view class='detail' wx:for="{{makeUpRecord}}">
+    <view class='left'>
+      <text class="makeUp">{{index+1}}</text>
+    </view>
+    <view class='right'>
+      <view>
+        <text>教师：</text>
+        <text>{{item.courseTableDetail.teacher.name}}</text>
+      </view>
+      <view>
+        <text>满员人数：</text>
+        <text>{{item.courseTableDetail.number}}</text>
+      </view>
+      <view>
+        <text>课程：</text>
+        <text>{{item.courseTableDetail.course.name}}</text>
+      </view>
+      <view>
+        <text>等级：</text>
+        <text>{{levels[item.courseTableDetail.level-1].name}}</text>
+      </view>
+      <view>
+        <text>时间：</text>
+        <text>{{item.courseTableItem.date}}{{item.courseTableItem.dayOfWeek}} {{item.courseTableItem.startTime}}~{{item.courseTableItem.endTime}}</text>
+      </view>
+      <view>
+        <text>教室：</text>
+        <text>{{item.courseTableDetail.classroom.name}}</text>
+      </view>
+    </view>
+  </view>
 </view>
-<template wx-if="{{urlIndex==0}}" is="myLeave" data="{{semesterArr: semesterArr,index: index,loading:loading,record:record,prompt:prompt}}" />
-<template wx-if="{{urlIndex==1}}" is="myLesson" data="{{semesterArr: semesterArr1,index: index1,loading:loading,record:record1,prompt:prompt}}" />
+<view wx:if="{{isShow===0}}" class="noData">
+  <image src="/images/icon/noData.png"  ></image>
+  <view><text>暂无课程信息</text></view>
+</view>

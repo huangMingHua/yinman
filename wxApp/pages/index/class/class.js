@@ -100,47 +100,41 @@ Page({
                 e.detail.value.booking = 0
                 e.detail.value.sign_up = 0
                 appInstance.ajax("/student/saveStudentInfo", e.detail.value, "post", (res) => {
-                    console.log(res)
                     if (res.data.code == 1) {
-                        wx.showToast({
-                            title: res.data.msg,
-                            duration: 5000
-                        })
                         if(this.data.from=='sign'){
-                          wx.showModal({
-                            title: '提示',
-                            content: '是否继续报名',
-                            success: function (re) {
-                              if (re.confirm) {
-                                setTimeout(function () {
-                                  wx.setStorageSync('studentId', res.data.data.insertId)
-                                  wx.redirectTo({
-                                    url: "/pages/index/signUpList/signUpCourse/signUpCourse"
+                            wx.showModal({
+                              title: '提示',
+                              content: '学生添加成功，是否继续报名',
+                              success: function (re) {
+                                if (re.confirm) {
+                                  setTimeout(function () {
+                                    wx.setStorageSync('studentId', res.data.data.insertId)
+                                    wx.navigateBack({
+                                      delta: 1
+                                    })
+                                  }, 1000)
+                                } else if (re.cancel) {
+                                  wx.navigateBack({
+                                    delta: 2
                                   })
-                                }, 1000)
-                              } else if (re.cancel) {
-                                wx.redirectTo({
-                                  url: `/pages/index/signUpList/signUpList?_id=${res.data.data.insertId}&fn=order&index=0`
-                                })
+                                }
                               }
-                            }
-                          })
-                          
-                        } else if (this.data.from == 'booking'){
+                            })
+                        } else if (this.data.from == 'class'){
                           wx.showModal({
                             title: '提示',
-                            content: '是否继续预约',
+                            content: '学生添加成功，是否继续报名',
                             success: function (re) {
                               if (re.confirm) {
                                 setTimeout(function () {
                                   wx.setStorageSync('studentId', res.data.data.insertId)
-                                  wx.redirectTo({
-                                    url: "/pages/index/class/appointmentList/studentReservationInformation/studentReservationInformation"
+                                  wx.navigateBack({
+                                    delta: 1
                                   })
                                 }, 1000)
                               } else if (re.cancel) {
-                                wx.redirectTo({
-                                  url: `/pages/index/subscribeList/subscribeList?_id=${res.data.data.insertId}&fn=order&index=0`
+                                wx.navigateBack({
+                                  delta: 2
                                 })
                               }
                             }
@@ -218,7 +212,8 @@ Page({
                     appInstance.ajax("/student/deleteUser", { id: This.data.userInfo.id }, "post", (res) => {
                         if (res.data.code == 1) {
                             This.onShow()
-                            wx.setStorageSync('idx', wx.getStorageSync('idx') - 1)
+                            wx.setStorageSync('idx', wx.getStorageSync('idx') - 1);
+                            wx.removeStorageSync('studentId');
                             wx.showToast({
                                 title: '删除成功',
                                 duration: 5000
@@ -230,6 +225,7 @@ Page({
                             }, 2000)
                         } else {
                             wx.showToast({
+                                icon:"none",
                                 title: res.data.msg,
                                 duration: 5000
                             })

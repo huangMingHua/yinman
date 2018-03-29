@@ -1,0 +1,119 @@
+/* pages/student/signUpTermDetail/signUpTermDetail.wxss */
+@import "../../template/wxparse/wxparse.wxss";
+page{
+  padding-bottom: 104rpx;
+}
+.header{
+  height: 104rpx;
+  line-height: 104rpx;
+  font-size: 32rpx;
+  color: #040000;
+  padding-left: 32rpx; 
+}
+.studentName{
+  margin-left: 18rpx;
+}
+.line{
+  height: 20rpx;
+  background-color: #f5f5f5;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.courseTeacher{
+  padding: 32rpx 36rpx 24rpx 36rpx;
+  font-size: 32rpx;
+  color: #040000;
+}
+.courseTeacher image{
+  width: 70rpx;
+  height: 70rpx;
+  vertical-align: middle;
+  border-radius: 100%;
+}
+.courseTeacher .title{
+  margin: 0 20rpx;
+}
+.courseTable{
+  font-size: 28rpx;
+  margin: 0 34rpx;
+  background-color: #f5f5f5;
+  padding-left: 30rpx;
+  line-height: 56rpx;
+}
+.classTimeNum{
+  display: flex;
+  align-items: center;
+  margin: 10rpx 34rpx 34rpx 34rpx;
+  font-size: 28rpx; 
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #f5f5f5;
+}
+.classTimeNum image{
+  width: 43rpx;
+  height: 43rpx;
+}
+.classTimeNum .title{
+  margin: 0 20rpx 0 30rpx;
+}
+.classTimeNum .num{
+  margin: 0 20rpx;
+}
+.requirements{
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 30rpx;
+  padding: 30rpx;
+  font-size: 28rpx;
+  background-color: #f5f5f5;
+}
+.requirements view:nth-child(1){
+  width: 138rpx
+}
+.requirements view:nth-child(2){
+  flex: 1
+}
+.requirements view:nth-child(2) textarea{
+  flex: 1;
+  width: 100%;
+}
+.wxparseWrap{
+  margin-top: 20rpx;
+  padding: 0 32rpx;
+}
+.wxparseTitle{
+ 
+}
+
+.wxparseTitle image{
+  width: 22rpx;
+  height: 28rpx;
+  margin-right: 14rpx;
+}
+.wxparseTitle text{
+  font-size: 32rpx;
+}
+.wxparse{
+  padding-left: 34rpx;
+  color: #aaaaaa;
+  font-size: 28rpx;
+}
+.btn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 104rpx;
+  background-color: #3cb4ff;
+  font-size: 28rpx;
+  color: white;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 104rpx;
+  text-align: center;
+  border-radius: 0;
+}
+.btn1{
+  background-color: #b7b7b7;
+}

@@ -1,0 +1,144 @@
+/* pages/teacher/teacherComment/teacherComment.wxss */
+.teahcerDetailWrap{
+  padding-bottom: 32rpx; 
+  background-color: white;
+}
+.teahcerDetail{
+  position: relative;
+  padding-top: 20rpx;
+  display: flex;
+  margin-top: 19rpx;
+  height: 106rpx;
+  align-items: center;
+  background-color: white;
+  font-size: 32rpx;
+  color: #040000;
+}
+.teahcerDetail image{
+  margin: 0 20rpx 0 32rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+}
+.teahcerDetail .student view:nth-child(2){
+  font-size: 28rpx;
+  color: #979797;
+}
+.teahcerDetail .teacherTitle{
+  margin-right: 16rpx;
+}
+.teahcerDetail navigator{
+  position: absolute;
+  right: 32rpx;
+  text-align: center;
+  width: 222rpx;
+  height: 64rpx;
+  border-radius: 5px;
+  line-height: 64rpx;
+  background-color: #01d6c2;
+  font-size: 28rpx;
+  color: white;
+}
+.classDetail{
+  padding: 13rpx 30rpx;
+  margin: 0 30rpx;
+  background-color: #f5f5f5;
+}
+.classDetail>view{
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 28rpx;
+}
+.classDetail>view text:nth-child(1){
+  margin-right: 18rpx;
+}
+.title{
+  background-color: #f5f5f5;
+  height: 86rpx;
+  line-height: 86rpx;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+  padding-left: 32rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+.title image{
+  margin-right: 14rpx;
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+.commentListWrap{
+  padding-bottom: 112rpx;
+}
+.commentList{
+  display: flex;
+  font-size: 24rpx;
+  color: #8a8a8a;
+  padding-top: 26rpx;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.commentList .head{
+   margin:  0 22rpx 0 32rpx;
+}
+.commentList .head image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 100%
+}
+.commentList .comment{
+  width: 615rpx;
+}
+.commentList .comment view{
+  margin-bottom: 20rpx;
+  word-wrap: break-word;
+}
+.commentList .comment view:nth-child(2){
+  font-size: 28rpx;
+  color: #040000;
+}
+.btn{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16rpx 32rpx;
+  background-color: #f5f5f5;
+}
+.btn>view{
+  display: flex;
+  align-items: center;
+}
+.btn .input{
+  display: flex;
+  align-items: center;
+  width: 606rpx;
+  height: 80rpx; 
+  background-color: white;
+  border-radius: 10rpx;
+}
+.btn .input input{
+  width: 544rpx;
+  height: 80rpx; 
+  font-size: 32rpx;
+  background-color: white;
+}
+.btn image{
+  width: 40rpx;
+  height: 44rpx;
+  margin:  0 15rpx;
+}
+.btn button{
+  position: static;
+  display: inline-block;
+  flex: 1;
+  margin: 0;
+  width: 64rpx;
+  font-size: 32rpx;
+  color: #3cb4ff; 
+  padding-left: 0;
+  padding-right: 0;
+  background-color: rgba(0, 0, 0, 0);
+  line-height:80rpx;
+  border:1rpx solid rgba(0, 0, 0, 0);
+}

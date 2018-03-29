@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-11-14 13:19:29
+Date: 2018-03-29 15:09:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,11 +47,12 @@ CREATE TABLE `booking_course` (
   `requirement` text,
   `afterCourseDeleTeSaveInfo` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of booking_course
 -- ----------------------------
+INSERT INTO `booking_course` VALUES ('2', '64', '2018-03-28 17:28:33', '待审核', null, '2700', null, 'dfdsf', '{\"id\":2700,\"courseTableDetailId\":0,\"teacherId\":14,\"date\":\"2018-05-07T16:00:00.000Z\",\"startTime\":\"11:45:00\",\"endTime\":\"12:35:00\",\"classroomId\":26,\"courseName\":61,\"number\":2,\"duration\":50,\"level\":\"2\",\"status\":\"空闲\",\"type\":\"预约试课\",\"termId\":55,\"updateTime\":\"2018-03-28T09:07:50.000Z\",\"createTime\":\"2018-03-28T09:07:50.000Z\",\"remarks\":null,\"isDel\":0,\"isChecked\":0,\"course\":{\"id\":61,\"name\":\"钢琴1级\",\"color\":\"#FF6C00\",\"courseDescription\":\"\",\"isDel\":0},\"teacherName\":{\"id\":14,\"userId\":110,\"name\":\"刘群老师\",\"identityCategory\":\"\",\"sex\":\"男\",\"dateOfBirth\":\"2017-11-13\",\"phoneNumber\":\"13133333333\",\"professorCourse\":null,\"createTime\":\"2017-11-13T10:43:50.000Z\",\"upDateTime\":\"2018-01-13T06:09:15.000Z\"},\"classroom\":{\"id\":26,\"name\":\"101\",\"date\":\"1517579600878\",\"isPiano\":0,\"isDel\":0},\"curriculum\":null}');
 
 -- ----------------------------
 -- Table structure for booking_course_time
@@ -78,11 +79,15 @@ CREATE TABLE `booking_wetchat` (
   `isSend` int(11) NOT NULL DEFAULT '0',
   `sendTime` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of booking_wetchat
 -- ----------------------------
+INSERT INTO `booking_wetchat` VALUES ('1', '2', '0', '2018-05-03 13:00:00');
+INSERT INTO `booking_wetchat` VALUES ('2', '3', '0', '2018-05-01 13:10:00');
+INSERT INTO `booking_wetchat` VALUES ('3', '10', '0', '2018-05-01 09:10:00');
+INSERT INTO `booking_wetchat` VALUES ('4', '14', '0', '2018-04-19 08:45:00');
 
 -- ----------------------------
 -- Table structure for classroom
@@ -93,17 +98,19 @@ CREATE TABLE `classroom` (
   `name` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
   `isPiano` tinyint(4) NOT NULL,
+  `isDel` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of classroom
 -- ----------------------------
-INSERT INTO `classroom` VALUES ('13', '三楼北', '1509537906455', '1');
-INSERT INTO `classroom` VALUES ('14', '二楼南', '1509537916727', '1');
-INSERT INTO `classroom` VALUES ('15', '二楼北', '1509537923564', '1');
-INSERT INTO `classroom` VALUES ('16', '地下南', '1509537931933', '0');
-INSERT INTO `classroom` VALUES ('17', '地下北', '1509537937948', '0');
+INSERT INTO `classroom` VALUES ('26', '101', '1517579600878', '0', '0');
+INSERT INTO `classroom` VALUES ('27', '102', '1517579607623', '0', '0');
+INSERT INTO `classroom` VALUES ('28', '103', '1517579611318', '0', '0');
+INSERT INTO `classroom` VALUES ('29', '一楼南', '1521790162138', '0', '0');
+INSERT INTO `classroom` VALUES ('30', '一楼北', '1521790168307', '0', '0');
+INSERT INTO `classroom` VALUES ('31', '二楼南', '1521790176503', '0', '0');
 
 -- ----------------------------
 -- Table structure for competitionpresentation
@@ -153,25 +160,28 @@ DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `color` varchar(255) NOT NULL,
   `courseDescription` text,
+  `isDel` smallint(6) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of course
 -- ----------------------------
-INSERT INTO `course` VALUES ('17', '钢琴1对1 ', '');
-INSERT INTO `course` VALUES ('18', '钢琴1对1（60）', '');
-INSERT INTO `course` VALUES ('19', '音乐素养1对1（30）', '');
-INSERT INTO `course` VALUES ('20', '音乐素养课小组（a）', '');
-INSERT INTO `course` VALUES ('21', '音乐素养小组（b）', '');
-INSERT INTO `course` VALUES ('22', '声乐小组课（a）', '');
-INSERT INTO `course` VALUES ('23', '钢琴陪练1对1（30）', '');
-INSERT INTO `course` VALUES ('24', '钢琴陪练1对1（45）', '');
-INSERT INTO `course` VALUES ('25', '钢琴陪练1对1（60）', '');
-INSERT INTO `course` VALUES ('26', '四手联弹课', '');
-INSERT INTO `course` VALUES ('27', '听力（1-3）', '');
-INSERT INTO `course` VALUES ('28', '试听课1对1（30）', '');
+INSERT INTO `course` VALUES ('53', '音乐素养小组1对多（等级A）', '#FF6C00', '<div>课程内容：</div><div>视唱练耳：视唱练耳英文叫作sign-singing and ear-training,也就是看着谱子演唱和耳朵训练,我们简称为“视唱练耳”。单从字面上来理解,就是看谱即唱和听觉的训练,但我们不能只从字面上来理解,其实它是一门综合性的音乐训练科目,包括乐理、听觉练习、视唱练习和节奏练习,是科学训练小孩头脑反应,提高听力乐感的美育课,通过学习使少儿听觉敏锐,唱音美好,否则一旦耳骨长成型,就较难纠正和提高。视唱课又是学习声乐、器乐课的很好的辅助课。练耳是学习音乐(声乐、器乐)必要的功课,学习视唱练耳和乐理等音乐基础知识会更好的促进器乐的学习,乐感提高了,学习专业时就会省时省力,事半功倍。视唱练耳,节拍、旋律等的训练,同时还应该包括对音乐的感知、理解和表达等综合性音乐素养的练习。</div><div>乐理：音乐理论是一切音乐学习的基础。更加系统的学习乐理，可以有效的反哺各种音乐学</div><div>欣赏：将视唱练耳及乐理综合在一起，才能够真正学会如何欣赏一首乐曲。视唱练耳带来“会听”，乐理带来了“能懂”，让孩子不再只是单纯的“听音乐”而是能够“懂音乐”。</div><div><br></div><div>二、教学训练内容</div><div><br></div><div>内容</div><div>1.乐理。包括音程,和弦,调式,记谱法等知识。</div><div>2.听觉练习。通过单音的模唱和听辨、音组的模唱和听辨,以及音程、音乐短句的听辨,提高和发展学习者的音乐</div><div>3.节奏练习。节奏是构成音乐要素之一,在这项训练中,通过读节奏、说念歌谣,以及节奏模仿、节奏选择、节奏听写方面的练习,可训练和提高学习者的模仿能力、反应能力和音乐记忆能力,丰富多样的节奏训练形式能极大地调动和增强学习者的音乐学习兴趣。</div><div>4.视唱练习。这项训练是和听觉练习相互结合相互补充的一项训练内容。通过对大量优秀的中外儿歌、民歌,以及名曲片段的视谱演唱,使学习者逐步提高视谱能力,同时,通过演唱,可达到积累丰富的音乐语汇的目的。</div><div>课程设置：</div><div>1对2-8小班制教学。</div><div>每节课30—60分钟。</div><div><br></div>', '1');
+INSERT INTO `course` VALUES ('54', '钢琴1对1', '#f43793', '<div>内容</div><div>1.乐理。包括音程,和弦,调式,记谱法等知识。</div><div>2.听觉练习。通过单音的模唱和听辨、音组的模唱和听辨,以及音程、音乐短句的听辨,提高和发展学习者的音乐</div><div>3.节奏练习。节奏是构成音乐要素之一,在这项训练中,通过读节奏、说念歌谣,以及节奏模仿、节奏选择、节奏听写</div><div>方面的练习,可训练和提高学习者的模仿能力、反应能力和音乐记忆能力,丰富多样的节奏训练形式能极大地调动和增</div><div>强学习者的音乐学习兴趣。</div><div>4.视唱练习。这项训练是和听觉练习相互结合相互补充的一项训练内容。通过对大量优秀的中外儿歌、民歌,以及名</div><div>曲片段的视谱演唱,使学习者逐步提高视谱能力,同时,通过演唱,可达到积累丰富的音乐语汇的目的。</div><div>课程设置：</div><div>1对2-8小班制教学。</div><div>每节课30—60分钟。</div><div><br></div>', '1');
+INSERT INTO `course` VALUES ('55', '钢琴1级', '#FF6C00', '', '1');
+INSERT INTO `course` VALUES ('56', '钢琴2级', '#03CAC3', '', '1');
+INSERT INTO `course` VALUES ('57', '吉他1级', '#f43793', '', '1');
+INSERT INTO `course` VALUES ('58', '吉他2级', '#0279bb', '', '1');
+INSERT INTO `course` VALUES ('59', '超级宇宙无敌长的测试课名字', '#2c9a43', '', '1');
+INSERT INTO `course` VALUES ('60', '钢琴1期', '#FF6C00', '', '1');
+INSERT INTO `course` VALUES ('61', '钢琴1级', '#FF6C00', '', '0');
+INSERT INTO `course` VALUES ('62', '吉他1级', '#03CAC3', '', '0');
+INSERT INTO `course` VALUES ('63', '钢琴一对一', '#f43793', '<div>课程介绍：</div><div>多年前，美国钢琴家、作曲家、音乐教育家、作家简•史密瑟•巴斯蒂安创立了“巴斯蒂安钢琴教育体系”，她编写的钢琴教程图文并茂，以快乐教育为指导思想，采用循序渐进的多调性教学法，让学生在弹奏多种调性乐曲的过程中，掌握完整的键盘知识，并且从中学习各种基础的节奏类型、音程、和弦、音阶、音乐记号和术语。其教程分为五级，每一级含《基础》、《乐理》、《技巧》、《演奏》与《视奏》，各教程配合使用，便于系统、完整、全方位地同步学习，为学生掌握每一阶段的音乐基本概念提供了最完整的材料，深受世界各国教师和儿童们的喜爱。</div><div><br></div><div>课程特色</div><div>“弹、知、听、想、作”，全面的能力培养，不再做“乐谱复读机”。</div><div>“大、小”结合的双课模式，科学、系统的学习钢琴。</div><div>强调有情感的演奏，摆脱枯燥的练习。</div><div>多样的教学形式，增强学习的趣味性。</div><div>大量的演奏实践机会，在表现自我中成长。</div><div>即兴创作与演奏相结合，体现了音乐的应用性。</div><div><br></div><div>课程设置：</div><div>1对1个人课。</div><div>每节课30分钟。</div><div><br></div>', '0');
+INSERT INTO `course` VALUES ('64', '声乐一对多', '#801eaf', '<div>课程介绍：</div><div>国内独家引进由牛津大学出版的《voiceworks》系列声乐教程，附加著名中国儿童歌曲及部分适合孩子演唱的流行歌曲，多种类型的歌曲选择。根据不同年龄段特点，通过参加有序的组织小组活动，包括声音的游戏、声音的热身、歌曲故事、歌词创作等趣味环节，让孩子们学会了倾听、分享、敢于创造及尊重他人。他们唱歌和创作音乐,有助于获得良好的乐感、节奏感,并且学习如何自信地展示声音。这些音乐和社会技能成为终身学习的基础。</div><div><br></div><div>课程特色：</div><div>运动式歌唱，有助于自我协调能力。</div><div>创作式歌唱，提高歌唱积极性和发现音乐的能力。</div><div>多样的曲风，开拓音乐视野。</div><div>小班制教学，个体表现与集体协作的能力培养。</div><div>丰富的教具，增加了学习乐趣，助于乐感培养。</div><div>年龄分层教学，顺应成长特点和科学用嗓。</div><div><br></div><div>课程设置：</div><div>1对4-8小班制教学。</div><div>每节课60分钟。</div><div><br></div>', '0');
+INSERT INTO `course` VALUES ('65', '音乐素养一对多', '#3dce89', '<p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><b><span class=\"15\" style=\"font-family: 宋体;\"><font face=\"宋体\">课程内容</font></span></b><b><span class=\"15\" style=\"font-family: Helvetica;\"><font face=\"宋体\">：</font></span></b><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">视唱练耳</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">：视唱练耳英文叫作</font>sign-singing and ear-training,<font face=\"宋体\">也就是看着谱子演唱和耳朵训练</font><font face=\"Helvetica\">,</font><font face=\"宋体\">我们简称为</font><font face=\"Helvetica\">“</font><font face=\"宋体\">视唱练耳</font><font face=\"Helvetica\">”</font><font face=\"宋体\">。单从字面上来理解</font><font face=\"Helvetica\">,</font><font face=\"宋体\">就是看谱即唱和听觉的训练</font><font face=\"Helvetica\">,</font><font face=\"宋体\">但我们不能只从字面上来理解</font><font face=\"Helvetica\">,</font><font face=\"宋体\">其实它是一门综合性的音乐训练科目</font><font face=\"Helvetica\">,</font><font face=\"宋体\">包括乐理、听觉练习、视唱练习和节奏练习</font><font face=\"Helvetica\">,</font><font face=\"宋体\">是科学训练小孩头脑反应</font><font face=\"Helvetica\">,</font><font face=\"宋体\">提高听力乐感的美育课</font><font face=\"Helvetica\">,</font><font face=\"宋体\">通过学习使少儿听觉敏锐</font><font face=\"Helvetica\">,</font><font face=\"宋体\">唱音美好</font><font face=\"Helvetica\">,</font><font face=\"宋体\">否则一旦耳骨长成型</font><font face=\"Helvetica\">,</font><font face=\"宋体\">就较难纠正和提高。视唱课又是学习声乐</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">、</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">器乐课的很好的辅助课。练耳是学习音乐</font>(<font face=\"宋体\">声乐、器乐</font><font face=\"Helvetica\">)</font><font face=\"宋体\">必要的功课</font><font face=\"Helvetica\">,</font><font face=\"宋体\">学习视唱练耳和乐理等音乐基础知识会更好的促进器乐的学习</font><font face=\"Helvetica\">,</font><font face=\"宋体\">乐感提高了</font><font face=\"Helvetica\">,</font><font face=\"宋体\">学习专业时就会省时省力</font><font face=\"Helvetica\">,</font><font face=\"宋体\">事半功倍。视唱练耳</font><font face=\"Helvetica\">,</font><font face=\"宋体\">节拍、旋律等的训练</font><font face=\"Helvetica\">,</font><font face=\"宋体\">同时还应该包括对音乐的感知、理解和表达等综合性音乐素养的练习。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">乐理</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">：音乐理论是一切音乐学习的基础。</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">更加</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">系统的学习乐理，可以有效的反哺各种音乐学习。从</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">简单的</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">认音识谱，到</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">进阶</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">的乐谱分析，一直到</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">乐曲</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">创作。都需要</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">乐理</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">知识的积淀</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">作为</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">基础</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">欣赏</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">：将视唱练耳及乐理综合在一起，</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">才能够</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">真正学会如何欣赏一首乐曲。</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">视唱练耳带来</font>“</span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">会听</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">”，</span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">乐理带来了</font>“</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">能懂</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">”</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">，</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">让孩子不再</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">只是</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">单纯的</font>“</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">听</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">音乐</font>”</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">而是</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">能够</font>“</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">懂</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">音乐</font>”</span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">。</font></span><span style=\"mso-spacerun:\'yes\';font-family:宋体;mso-ascii-font-family:Helvetica;mso-hansi-font-family:Helvetica;mso-bidi-font-family:Helvetica;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p>&nbsp;</o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><b><span class=\"15\" style=\"font-family: Helvetica;\"><font face=\"宋体\">二、教学训练内容</font></span></b><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p>&nbsp;</o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><b><span class=\"15\" style=\"font-family: Helvetica;\"><font face=\"宋体\">内容</font></span></b><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">1.<font face=\"宋体\">乐理。包括音程</font><font face=\"Helvetica\">,</font><font face=\"宋体\">和弦</font><font face=\"Helvetica\">,</font><font face=\"宋体\">调式</font><font face=\"Helvetica\">,</font><font face=\"宋体\">记谱法等知识。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">2.<font face=\"宋体\">听觉练习。通过单音的模唱和听辨、音组的模唱和听辨</font><font face=\"Helvetica\">,</font><font face=\"宋体\">以及音程、音乐短句的听辨</font><font face=\"Helvetica\">,</font><font face=\"宋体\">提高和发展学习者的音乐</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">3.<font face=\"宋体\">节奏练习。节奏是构成音乐要素之一</font><font face=\"Helvetica\">,</font><font face=\"宋体\">在这项训练中</font><font face=\"Helvetica\">,</font><font face=\"宋体\">通过读节奏、说念歌谣</font><font face=\"Helvetica\">,</font><font face=\"宋体\">以及节奏模仿、节奏选择、节奏听写方面的练习</font><font face=\"Helvetica\">,</font><font face=\"宋体\">可训练和提高学习者的模仿能力、反应能力和音乐记忆能力</font><font face=\"Helvetica\">,</font><font face=\"宋体\">丰富多样的节奏训练形式能极大地调动和增强学习者的音乐学习兴趣。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">4.<font face=\"宋体\">视唱练习。这项训练是和听觉练习相互结合相互补充的一项训练内容。通过对大量优秀的中外儿歌、民歌</font><font face=\"Helvetica\">,</font><font face=\"宋体\">以及名曲片段的视谱演唱</font><font face=\"Helvetica\">,</font><font face=\"宋体\">使学习者逐步提高视谱能力</font><font face=\"Helvetica\">,</font><font face=\"宋体\">同时</font><font face=\"Helvetica\">,</font><font face=\"宋体\">通过演唱</font><font face=\"Helvetica\">,</font><font face=\"宋体\">可达到积累丰富的音乐语汇的目的。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><b><span class=\"15\" style=\"font-family: Helvetica;\"><font face=\"宋体\">课程设置：</font></span></b><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\">1<font face=\"宋体\">对</font><font face=\"Helvetica\">2-8</font><font face=\"宋体\">小班制教学。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"p\" style=\"margin-top: 0pt; margin-bottom: 0pt; line-height: 19.2pt; background-image: initial; background-position: initial; background-size: initial; background-repeat: initial; background-attachment: initial; background-origin: initial; background-clip: initial;\"><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><font face=\"宋体\">每节课</font>30—60<font face=\"宋体\">分钟。</font></span><span style=\"mso-spacerun:\'yes\';font-family:Helvetica;mso-fareast-font-family:宋体;font-size:12.0000pt;mso-font-kerning:0.0000pt;\"><o:p></o:p></span></p><p class=\"MsoNormal\"><span style=\"mso-spacerun:\'yes\';font-family:Calibri;mso-fareast-font-family:宋体;mso-bidi-font-family:\'Times New Roman\';font-size:10.5000pt;mso-font-kerning:1.0000pt;\"><o:p>&nbsp;</o:p></span></p>', '0');
 
 -- ----------------------------
 -- Table structure for course_table
@@ -198,33 +208,33 @@ CREATE TABLE `course_table_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `termId` int(11) NOT NULL,
   `teacherId` int(11) NOT NULL,
-  `courseName` varchar(255) NOT NULL,
+  `courseNameId` int(11) NOT NULL,
   `classroomId` int(11) NOT NULL,
-  `dayOfWeek` varchar(255) NOT NULL,
+  `dayOfWeek` varchar(255) DEFAULT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
   `number` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
   `level` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT '',
-  `startDate` date NOT NULL,
-  `endDate` date NOT NULL,
+  `startDate` date DEFAULT NULL,
+  `endDate` date DEFAULT NULL,
   `openEnrollment` varchar(255) NOT NULL,
   `clearCourse` varchar(255) NOT NULL,
-  `remarks` varchar(60) DEFAULT NULL,
-  `belowClass` int(11) NOT NULL,
-  `numberOfRequests1` int(11) NOT NULL,
-  `numberOfRequests2` int(11) NOT NULL,
-  `teacherBelowClass` int(11) NOT NULL,
-  `teacherNumberOfRequests1` int(11) NOT NULL,
-  `teacherNumberOfRequests2` int(11) NOT NULL,
+  `totalLeave` int(11) NOT NULL,
+  `date` date DEFAULT NULL,
+  `courseTableItemId` int(11) DEFAULT '0',
+  `isDel` smallint(6) DEFAULT '0',
+  `leaveNum` int(11) DEFAULT '0',
+  `makeUpNum` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of course_table_detail
 -- ----------------------------
-INSERT INTO `course_table_detail` VALUES ('5', '37', '14', '钢琴1对1 ', '13', '星期一', '06:30:00', '07:00:00', '1', '30', 'A', '', '2017-11-14', '2017-11-30', '是', '', '', '10', '2', '3', '8', '3', '4');
+INSERT INTO `course_table_detail` VALUES ('248', '55', '14', '61', '26', '星期二', '07:00:00', '07:50:00', '2', '50', '2', '空闲', '2018-05-01', '2018-08-31', '是', '', '5', null, '0', '0', '0', '0');
+INSERT INTO `course_table_detail` VALUES ('249', '55', '14', '61', '26', '', '10:35:00', '00:00:00', '2', '50', '2', '', null, null, '是', '', '0', '2018-05-09', '2699', '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for course_table_detail_student
@@ -236,26 +246,30 @@ CREATE TABLE `course_table_detail_student` (
   `studentId` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
   `termId` int(11) NOT NULL DEFAULT '1',
-  `courseTableItem` text COMMENT '这个是停课的时间',
+  `endCourseTableItemId` int(11) DEFAULT NULL COMMENT '这个是停课的结束时间',
   `reasonsForSuspension` varchar(255) DEFAULT NULL,
   `classTransferCourseTableDetailId` int(11) DEFAULT NULL COMMENT '转班的iD',
   `originalCourseTableDetailId` int(11) DEFAULT NULL,
   `signUpCurriculumId` int(11) DEFAULT NULL COMMENT '报名课程的Id',
   `shiftReasons` varchar(255) DEFAULT NULL,
-  `shiftStartDate` text,
+  `shiftStartCourseTableItemId` int(11) DEFAULT NULL COMMENT '转班的开始时间',
   `numberOfChangeClass` int(11) NOT NULL,
   `allNumberOfChangeClass` int(11) NOT NULL,
   `numberOfleave` int(11) NOT NULL,
   `startCourseTableItemId` int(11) DEFAULT NULL,
   `numberOfChangeClassForTeacher` int(11) NOT NULL,
   `allNumberOfChangeClassForTeacher` int(11) NOT NULL,
+  `classTimeNum` int(11) DEFAULT '0',
+  `selectNum` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=123 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of course_table_detail_student
 -- ----------------------------
-INSERT INTO `course_table_detail_student` VALUES ('66', '5', '1', '正常', '37', null, null, null, null, '3', null, null, '2', '2', '2', null, '3', '3');
+INSERT INTO `course_table_detail_student` VALUES ('120', '248', '57', '正常', '55', null, null, null, null, '204', null, null, '5', '5', '5', null, '1000', '1000', '0', '0');
+INSERT INTO `course_table_detail_student` VALUES ('121', '249', '57', '正常', '55', null, null, null, null, '205', null, null, '0', '0', '0', null, '1000', '1000', '1', '1');
+INSERT INTO `course_table_detail_student` VALUES ('122', '249', '64', '正常', '55', null, null, null, null, '203', null, null, '0', '0', '0', null, '1000', '1000', '3', '0');
 
 -- ----------------------------
 -- Table structure for course_table_item
@@ -269,7 +283,7 @@ CREATE TABLE `course_table_item` (
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
   `classroomId` int(11) NOT NULL,
-  `courseName` varchar(255) NOT NULL,
+  `courseName` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `duration` int(11) NOT NULL,
   `level` varchar(255) NOT NULL,
@@ -279,14 +293,34 @@ CREATE TABLE `course_table_item` (
   `updateTime` datetime NOT NULL,
   `createTime` datetime NOT NULL,
   `remarks` varchar(255) DEFAULT NULL,
+  `isDel` tinyint(4) DEFAULT '0',
+  `isChecked` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2701 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of course_table_item
 -- ----------------------------
-INSERT INTO `course_table_item` VALUES ('11', '5', '14', '2017-11-20', '06:30:00', '07:00:00', '13', '钢琴1对1 ', '1', '30', 'A', '', '正式课程', '37', '2017-11-14 13:09:17', '2017-11-14 11:50:40', null);
-INSERT INTO `course_table_item` VALUES ('12', '5', '14', '2017-11-27', '06:30:00', '07:00:00', '13', '钢琴1对1 ', '1', '30', 'A', '', '正式课程', '37', '2017-11-14 13:09:17', '2017-11-14 11:50:40', null);
+INSERT INTO `course_table_item` VALUES ('2681', '248', '14', '2018-05-01', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2682', '248', '14', '2018-05-08', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2683', '248', '14', '2018-05-15', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2684', '248', '14', '2018-05-22', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2685', '248', '14', '2018-05-29', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2686', '248', '14', '2018-06-05', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2687', '248', '14', '2018-06-12', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2688', '248', '14', '2018-06-19', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2689', '248', '14', '2018-06-26', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2690', '248', '14', '2018-07-03', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2691', '248', '14', '2018-07-10', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2692', '248', '14', '2018-07-17', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2693', '248', '14', '2018-07-24', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2694', '248', '14', '2018-07-31', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2695', '248', '14', '2018-08-07', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2696', '248', '14', '2018-08-14', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2697', '248', '14', '2018-08-21', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2698', '248', '14', '2018-08-28', '07:00:00', '07:50:00', '26', '61', '2', '50', '2', '空闲', '正式课程', '55', '2018-03-28 16:40:05', '2018-03-28 16:21:38', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2699', '0', '14', '2018-05-09', '10:35:00', '11:25:00', '26', '61', '2', '50', '2', '空闲', '课时课', '55', '2018-03-29 10:33:08', '2018-03-28 16:21:55', null, '0', '0');
+INSERT INTO `course_table_item` VALUES ('2700', '0', '14', '2018-05-08', '11:45:00', '12:35:00', '26', '61', '2', '50', '2', '空闲', '预约试课', '55', '2018-03-28 17:07:50', '2018-03-28 17:07:50', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for course_table_item_change_class
@@ -294,12 +328,13 @@ INSERT INTO `course_table_item` VALUES ('12', '5', '14', '2017-11-27', '06:30:00
 DROP TABLE IF EXISTS `course_table_item_change_class`;
 CREATE TABLE `course_table_item_change_class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `courseTableDetailId` int(11) NOT NULL,
-  `courseTableDetailItemId` int(11) NOT NULL,
-  `reason` varchar(500) NOT NULL,
-  `studentId` int(11) NOT NULL,
-  `createTime` datetime NOT NULL,
-  `one` int(11) NOT NULL,
+  `courseTableDetailId` int(11) DEFAULT NULL,
+  `courseTableDetailItemId` int(11) DEFAULT NULL,
+  `reason` varchar(500) DEFAULT NULL,
+  `studentId` int(11) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `one` int(11) DEFAULT NULL,
+  `teacherId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -308,35 +343,17 @@ CREATE TABLE `course_table_item_change_class` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for course_table_item_change_class_for_teacher
--- ----------------------------
-DROP TABLE IF EXISTS `course_table_item_change_class_for_teacher`;
-CREATE TABLE `course_table_item_change_class_for_teacher` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `courseTableDetailStudentId` int(11) NOT NULL,
-  `fromCourseTableItemId` int(11) NOT NULL,
-  `toCourseTableItemId` int(11) NOT NULL,
-  `reason` text NOT NULL,
-  `one` int(11) NOT NULL,
-  `teacherId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of course_table_item_change_class_for_teacher
--- ----------------------------
-
--- ----------------------------
 -- Table structure for course_table_item_leave
 -- ----------------------------
 DROP TABLE IF EXISTS `course_table_item_leave`;
 CREATE TABLE `course_table_item_leave` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `courseTableDetailId` int(11) NOT NULL,
-  `courseTableDetailItemId` int(11) NOT NULL,
-  `reason` varchar(500) NOT NULL,
-  `studentId` int(11) NOT NULL,
-  `createTime` datetime NOT NULL,
+  `courseTableDetailId` int(11) DEFAULT NULL,
+  `courseTableDetailItemId` int(11) DEFAULT NULL,
+  `reason` varchar(500) DEFAULT NULL,
+  `studentId` int(11) DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  `teacherId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -357,14 +374,33 @@ CREATE TABLE `course_table_item_student` (
   `termId` int(11) NOT NULL DEFAULT '1',
   `updateTime` datetime NOT NULL,
   `createTime` datetime NOT NULL,
+  `isGoClass` tinyint(4) DEFAULT '0',
+  `reason` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=685 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=883 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of course_table_item_student
 -- ----------------------------
-INSERT INTO `course_table_item_student` VALUES ('683', '11', '1', '正常', null, '37', '2017-11-14 13:09:17', '2017-11-14 13:09:17');
-INSERT INTO `course_table_item_student` VALUES ('684', '12', '1', '正常', null, '37', '2017-11-14 13:09:17', '2017-11-14 13:09:17');
+INSERT INTO `course_table_item_student` VALUES ('864', '2681', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('865', '2682', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('866', '2683', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('867', '2684', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('868', '2685', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('869', '2686', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('870', '2687', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('871', '2688', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('872', '2689', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('873', '2690', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('874', '2691', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('875', '2692', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('876', '2693', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('877', '2694', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('878', '2695', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('879', '2696', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('880', '2697', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('881', '2698', '57', '正常', null, '55', '2018-03-28 16:40:05', '2018-03-28 16:40:05', '0', null);
+INSERT INTO `course_table_item_student` VALUES ('882', '2699', '57', '正常', null, '55', '2018-03-29 10:33:08', '2018-03-29 10:33:08', '0', null);
 
 -- ----------------------------
 -- Table structure for curriculum
@@ -503,12 +539,11 @@ CREATE TABLE `reset_curriculum_cycle` (
   `startDateId` int(11) NOT NULL,
   `endDateId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of reset_curriculum_cycle
 -- ----------------------------
-INSERT INTO `reset_curriculum_cycle` VALUES ('14', '83', '20', '878', '889');
 
 -- ----------------------------
 -- Table structure for rhythmcourse
@@ -566,15 +601,17 @@ CREATE TABLE `sign_up_curriculum` (
   `changeCurriculumId` int(11) DEFAULT NULL,
   `reviewRemarks` text,
   `paymentMethod` varchar(30) DEFAULT NULL,
-  `afterCourseDeleTeSaveInfo` text COMMENT '为了防止取消删除后存储的信息',
   `startCourseTableItemId` int(11) DEFAULT NULL,
+  `classTimeNum` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of sign_up_curriculum
 -- ----------------------------
-INSERT INTO `sign_up_curriculum` VALUES ('3', '1', '5', '109', '已确认', '2017-11-14 13:09', '', null, '11', '现金', '{\"id\":5,\"termId\":37,\"teacherId\":14,\"courseName\":\"钢琴1对1 \",\"classroomId\":13,\"dayOfWeek\":\"星期一\",\"startTime\":\"06:30:00\",\"endTime\":\"07:00:00\",\"number\":1,\"duration\":30,\"level\":\"A\",\"status\":\"\",\"startDate\":\"2017-11-13T16:00:00.000Z\",\"endDate\":\"2017-11-29T16:00:00.000Z\",\"openEnrollment\":\"是\",\"clearCourse\":\"\",\"remarks\":\"\",\"belowClass\":10,\"numberOfRequests1\":2,\"numberOfRequests2\":3,\"teacherBelowClass\":8,\"teacherNumberOfRequests1\":3,\"teacherNumberOfRequests2\":4,\"oTeacher\":{\"id\":14,\"userId\":110,\"name\":\"天天牛-VIP 专线\",\"identityCategory\":\"\",\"sex\":\"男\",\"dateOfBirth\":\"2017-11-13\",\"phoneNumber\":\"13133333333\",\"professorCourse\":null,\"createTime\":\"2017-11-13T10:43:50.000Z\",\"upDateTime\":\"2017-11-13T10:43:58.000Z\"},\"oClassroom\":{\"id\":13,\"name\":\"三楼北\",\"date\":\"1509537906455\",\"isPiano\":1},\"term\":{\"id\":37,\"name\":\"第一学期\",\"startDate\":\"2017-11-13T16:00:00.000Z\",\"endDate\":\"2017-11-29T16:00:00.000Z\",\"isDelete\":0,\"belowClass\":10,\"numberOfRequests1\":2,\"numberOfRequests2\":3,\"teacherBelowClass\":8,\"teacherNumberOfRequests1\":3,\"teacherNumberOfRequests2\":4},\"curriculum\":{\"id\":17,\"name\":\"钢琴1对1 \",\"courseDescription\":\"\"}}', '0');
+INSERT INTO `sign_up_curriculum` VALUES ('203', '64', '249', '109', '已确认', '2018-03-28 16:22', '', '249', '第三方打算', '现金', '0', '3');
+INSERT INTO `sign_up_curriculum` VALUES ('204', '57', '248', '207', '已确认', '2018-03-28 16:39', null, '248', '发给', '现金', '0', '0');
+INSERT INTO `sign_up_curriculum` VALUES ('205', '57', '249', '207', '已确认', '2018-03-28 16:39', '', '249', '他', '现金', '0', '1');
 
 -- ----------------------------
 -- Table structure for sign_up_curriculum_time
@@ -603,13 +640,14 @@ CREATE TABLE `sign_up_wetchat` (
   `courseTableDetailStudentId` int(11) NOT NULL,
   `isSend` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sign_up_wetchat
 -- ----------------------------
-INSERT INTO `sign_up_wetchat` VALUES ('1', '65', '0');
-INSERT INTO `sign_up_wetchat` VALUES ('2', '66', '0');
+INSERT INTO `sign_up_wetchat` VALUES ('131', '120', '0');
+INSERT INTO `sign_up_wetchat` VALUES ('132', '121', '0');
+INSERT INTO `sign_up_wetchat` VALUES ('133', '122', '0');
 
 -- ----------------------------
 -- Table structure for student
@@ -633,12 +671,15 @@ CREATE TABLE `student` (
   `dateOfBirth` date NOT NULL DEFAULT '2017-01-01',
   `hasCourseTable` tinyint(2) NOT NULL DEFAULT '0' COMMENT '已有课程',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('1', 'qiao', '男', '扬大', '乔', '13133333333', '江苏', '0基础', '', '109', '2017-11-14 10:23:54', '2017-11-14 10:23:54', '0', '1', '2017-11-14', '0');
+INSERT INTO `student` VALUES ('57', '赵杰伦', '男', '民居建筑', '巩固咯', '15951666592', '让我考虑下', '0基础', '', '207', '2018-03-23 13:16:29', '2018-03-23 13:16:29', '0', '1', '2018-03-23', '0');
+INSERT INTO `student` VALUES ('58', '2号', '男', '咯路', '头路口', '15951666592', '咯啦咯哦', '0基础', '', '207', '2018-03-23 13:52:55', '2018-03-23 13:52:55', '0', '1', '2018-03-23', '0');
+INSERT INTO `student` VALUES ('64', 'dsfs', '男', 'dsfds', 'dsfads', '13133333333', 'dsfdas', '0基础', '', '109', '2018-03-23 15:33:21', '2018-03-23 15:33:21', '0', '1', '2018-03-23', '0');
+INSERT INTO `student` VALUES ('65', '朱朱', '女', '百家湖小学', '朱心玲', '15951890260', '百家湖', '0基础', '测试', '112', '2018-03-23 16:38:33', '2018-03-23 16:38:33', '0', '1', '2010-03-23', '0');
 
 -- ----------------------------
 -- Table structure for student_comment
@@ -647,16 +688,17 @@ DROP TABLE IF EXISTS `student_comment`;
 CREATE TABLE `student_comment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `teacherId` int(11) NOT NULL,
-  `courseDetailId` int(11) NOT NULL,
+  `courseTableItemId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `comment` varchar(500) CHARACTER SET utf8mb4 NOT NULL,
   `createTime` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of student_comment
 -- ----------------------------
+INSERT INTO `student_comment` VALUES ('1', '14', '2408', '57', '机会好不好', '2018-03-23 20:13:29');
 
 -- ----------------------------
 -- Table structure for suspension_refund
@@ -693,7 +735,7 @@ CREATE TABLE `teacher` (
   `createTime` datetime DEFAULT NULL,
   `upDateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of teacher
@@ -707,7 +749,9 @@ INSERT INTO `teacher` VALUES ('10', '166', '孔虹美', '', '女', '1990-9-15', 
 INSERT INTO `teacher` VALUES ('11', '167', '佘瑞祺', '', '女', '1997-7-16', '15056217186', null, '2017-11-03 11:14:04', '2017-11-03 11:15:01');
 INSERT INTO `teacher` VALUES ('12', '169', '吴晓艇', '', '女', '1997-11-25', '18259373166', null, '2017-11-03 11:19:30', '2017-11-03 11:19:55');
 INSERT INTO `teacher` VALUES ('13', '164', '松', '', '女', '1986-2-4', '13916292747', null, '2017-11-03 11:30:13', '2017-11-03 11:30:56');
-INSERT INTO `teacher` VALUES ('14', '110', '天天牛-VIP 专线', '', '男', '2017-11-13', '13133333333', null, '2017-11-13 18:43:50', '2017-11-13 18:43:58');
+INSERT INTO `teacher` VALUES ('14', '110', '刘群老师', '', '男', '2017-11-13', '13133333333', null, '2017-11-13 18:43:50', '2018-01-13 14:09:15');
+INSERT INTO `teacher` VALUES ('15', '115', '顾晓曼', '', '女', '1985-2-2', '13951890260', null, '2018-02-02 14:35:53', '2018-02-02 17:18:02');
+INSERT INTO `teacher` VALUES ('16', '116', 'sten123', '', '', '', '', null, '2018-02-02 14:36:05', '2018-02-02 14:36:00');
 
 -- ----------------------------
 -- Table structure for teacher_nitroduction
@@ -746,19 +790,26 @@ CREATE TABLE `term` (
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
   `isDelete` tinyint(1) NOT NULL DEFAULT '0',
-  `belowClass` int(11) NOT NULL,
+  `belowClass1` int(11) NOT NULL,
+  `belowClass2` int(11) NOT NULL,
   `numberOfRequests1` int(11) NOT NULL,
   `numberOfRequests2` int(11) NOT NULL,
-  `teacherBelowClass` int(11) NOT NULL,
-  `teacherNumberOfRequests1` int(11) NOT NULL,
-  `teacherNumberOfRequests2` int(11) NOT NULL,
+  `numberOfRequests3` int(11) NOT NULL,
+  `registrationNotes` text NOT NULL,
+  `noticeOfReservation` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of term
 -- ----------------------------
-INSERT INTO `term` VALUES ('37', '第一学期', '2017-11-14', '2017-11-30', '0', '10', '2', '3', '8', '3', '4');
+INSERT INTO `term` VALUES ('54', '2018寒假学期', '2018-02-02', '2018-04-30', '0', '5', '10', '2', '4', '5', '', '第三方打算发大水发打发');
+INSERT INTO `term` VALUES ('55', '2018暑假学期', '2018-05-01', '2018-08-31', '0', '5', '10', '2', '4', '5', '', '的说法打算发的说法但是');
+INSERT INTO `term` VALUES ('56', '钢琴1期', '2018-02-05', '2018-05-31', '0', '5', '10', '2', '3', '4', '阿萨阿迪', '阿斯达');
+INSERT INTO `term` VALUES ('57', '吉他1期', '2018-04-15', '2018-08-15', '0', '5', '10', '2', '3', '4', '阿打算打打', '阿斯达');
+INSERT INTO `term` VALUES ('58', '测1', '2018-02-04', '2018-02-27', '1', '5', '6', '2', '3', '4', '1111', '111111');
+INSERT INTO `term` VALUES ('59', '测试111', '2018-03-07', '2018-05-31', '0', '5', '10', '2', '4', '5', '奥术大师', '阿斯达');
+INSERT INTO `term` VALUES ('60', '2018春季学期', '2018-03-23', '2018-05-31', '0', '5', '10', '2', '4', '5', '<div>报名须知：</div><div>1、请按时上课，建议提前5分钟到达，保证课时完整。迟到不延时。</div><div>2、凡请假调课务必提前2日，临时请假按旷课。（急病除外）</div><div>3、每学期（春，秋）所有课程可因私（含病假）调课2次，学期内补课，延期作废。</div><div>&nbsp; &nbsp;寒暑假1对1课上几次报几次，5次以内不可调课，5-10次课可调课1次 寒暑假期内补课，延期作废。</div><div>&nbsp; &nbsp;寒暑假集体课不延期，不调课。</div><div>4、法定节假日可调课，不计在因私调课2次之内，学期内补课，延期作废。</div><div>5、关于停课：学生因私停课，1对1课需提前2个课时提出停课申请，保留剩余课时。未提前申请，则需扣除2个课时，保留剩余课时。集体课（2人以上）停课视为自动放弃，不退费，不保留课时。</div>', '<div>预约成功后注意事项：</div><div>音曼音乐课堂地址：上海浦东新区上南路3899弄35号02别墅xx琴房xx老师（对应预约的教室和老师）。靠近华夏西路，上南路中环，地铁6号在线南路站1号口。&nbsp;&nbsp;</div><div>电话：13524160481 , 13564281815 （王老师）。微信：animamusic</div><div>每个试上学员［仅提供一次］免费试上机会，请准时上课。如遇特殊情况，请「务必提前一天」取消预约。未提前取消，或旷课，则不再享有免费试上机会。&nbsp;&nbsp;</div><div>温馨提示：</div><div>1、进门换鞋，外出鞋子放在门口鞋柜，室内有供大人，孩子穿的室内拖鞋。进出教室，请把鞋子摆放整齐，谢谢。</div><div>2、上下楼梯注意提醒孩子抓住扶手，不要在楼梯上跑跳玩耍，注意安全！&nbsp;</div>');
 
 -- ----------------------------
 -- Table structure for upload
@@ -858,17 +909,17 @@ CREATE TABLE `user` (
   `attentionTime` varchar(20) DEFAULT NULL,
   `lastInteraction` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('109', 'https://wx.qlogo.cn/mmopen/vi_32/RWib8FCKWu7d78sU05kCKAaYBTibIkmQT2p3u7U5ZLxzGLYTYwya8xK5TCXAkt9CMWECSNFaJ0KfEQO0H68CS8ww/0', '乔', 'oH5wb0Zxx1y6a0ZNgDw7wifa4iY0', 'ocVDd1Aq4f4NY3iwcIzX3JudVLMY', 'oKA9kwBAMXHyZMNg1a91a241c-MQ', '1', '', '0', '1', '2017-10-17 18:56:16', '2017-11-14 10:22:38');
-INSERT INTO `user` VALUES ('110', 'https://wx.qlogo.cn/mmopen/vi_32/wR33nxGW1MwoOO9MNHxcD4C6Oz3QzvlNBvZzDMbKRmEVQHb1JEiaRpGHdMVU8Ul6ib1UOgC4b7iaJysIe2Y0ks8rQ/0', '天天牛-VIP 专线', 'oH5wb0eAVyiCIXOW4I8lDsVkMBBA', 'ocVDd1Ku7hcWweTa36XIxCs1d8fA', 'oKA9kwEaw7HVMVvpyM02K8g29w3k', '2', '', '0', '2', '2017-10-17 19:05:57', '2017-11-08 18:43:04');
+INSERT INTO `user` VALUES ('109', 'https://wx.qlogo.cn/mmopen/vi_32/RWib8FCKWu7d78sU05kCKAaYBTibIkmQT2p3u7U5ZLxzGLYTYwya8xK5TCXAkt9CMWECSNFaJ0KfEQO0H68CS8ww/0', '乔', 'oH5wb0Zxx1y6a0ZNgDw7wifa4iY0', 'ocVDd1Aq4f4NY3iwcIzX3JudVLMY', 'oKA9kwBAMXHyZMNg1a91a241c-MQ', '1', '', '0', '1', '2017-10-17 18:56:16', '2018-03-29 14:11:01');
+INSERT INTO `user` VALUES ('110', 'https://wx.qlogo.cn/mmopen/vi_32/wR33nxGW1MwoOO9MNHxcD4C6Oz3QzvlNBvZzDMbKRmEVQHb1JEiaRpGHdMVU8Ul6ib1UOgC4b7iaJysIe2Y0ks8rQ/0', '天天牛-VIP 专线', 'oH5wb0eAVyiCIXOW4I8lDsVkMBBA', 'ocVDd1Ku7hcWweTa36XIxCs1d8fA', 'oKA9kwEaw7HVMVvpyM02K8g29w3k', '2', '教师这个职业是人类社会最古老的职业之一。他受社会的委托对受教育者进行专门的教育。在社会发展中，教师是人类文化科学知识的继承者和传播者。对学生来说，又是学生智力的开发者和个性的塑造者。因此人们把“人类灵魂的工程[1]  师”的崇高称号给予人民教师。在教育过程中，教师是起主导作用的，他是学生们身心发展过程的教育者、领导者、组织者。教师工作质量的好坏关系到我国年轻一代身心发展的水平和民族素质提高的程度，从而影响到国家的兴衰。', '0', '2', '2017-10-17 19:05:57', '2018-03-27 18:03:01');
 INSERT INTO `user` VALUES ('111', 'https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM7VXh9YiaLfEVD5GBBkxpTIKfVEkgRB45Z8XYRZak3NUh9NSupaGVVnA1Z5kdK1icUdCGNXWRoGoMnw/0', 'Andy', 'oH5wb0VMgMQqhD5W40-6hF0e4S78', 'ocVDd1G-8SYY8az5S_3Op6kKZKeI', 'oKA9kwOsBhwLRuv--O5drVWWbDS8', '1', '', '0', '1', '2017-10-18 09:03:59', '2017-10-18 09:04:00');
-INSERT INTO `user` VALUES ('112', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIV72kkInecZ08zWpfWcJf7jKib3HO8Q73q2ZVRmlSwYM4Ge17dEA2mz4QB8YvE7Onx1sWDltRNuPw/0', '豆豆猪', 'oH5wb0Yv0MJQJhrGWVKmKle6IgwE', 'ocVDd1Pn7GLBve3LlATn7MlO3_2M', 'oKA9kwKQULiCFxMIPLpPlHujbqIs', '1', '', '0', '2', '2017-10-18 09:08:50', '2017-11-10 17:29:19');
-INSERT INTO `user` VALUES ('115', 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoBSnxW0mW9AMsnys68IgmwnYGwVHMyS7TRfmDj6LkF1FRV2PVlybPuhENqreysZAoaH3Dib1gr8mQ/0', '助手君', 'oH5wb0YY_6uUuI5yMzyWktzgEtQQ', 'ocVDd1O_dqgShncAkfQiJdq_RVlk', 'oKA9kwErfNX0o_lqLfyM5UI4hjrI', '1', '', '0', '0', '2017-10-19 13:14:37', '2017-11-10 16:19:11');
-INSERT INTO `user` VALUES ('116', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL8nR7kBpJIFVPDuHkxAq0AG5x06ZtrHQPUK2thgQXvoc8ss4wL4bleibKyBTN58TI1IMDG3NwOj6A/0', 'sten123', 'oH5wb0eHzuMg6M5mJRXRCSQsd5Co', 'ocVDd1P2osRKu74QahlHvWciUIZ0', 'oKA9kwAgvGqmhoPnoaez7flPiyUY', '1', '', '0', '2', '2017-10-19 13:17:25', '2017-10-30 09:39:35');
+INSERT INTO `user` VALUES ('112', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIV72kkInecZ08zWpfWcJf7jKib3HO8Q73q2ZVRmlSwYM4Ge17dEA2mztJDH3YIXRLleJxSnthc2VQ/0', '豆豆猪', 'oH5wb0Yv0MJQJhrGWVKmKle6IgwE', 'ocVDd1Pn7GLBve3LlATn7MlO3_2M', 'oKA9kwKQULiCFxMIPLpPlHujbqIs', '1', '', '0', '2', '2017-10-18 09:08:50', '2018-03-23 16:45:14');
+INSERT INTO `user` VALUES ('115', 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eoBSnxW0mW9AMsnys68IgmwnYGwVHMyS7TRfmDj6LkF1FRV2PVlybPuhENqreysZAoaH3Dib1gr8mQ/0', '助手君', 'oH5wb0YY_6uUuI5yMzyWktzgEtQQ', 'ocVDd1O_dqgShncAkfQiJdq_RVlk', 'oKA9kwErfNX0o_lqLfyM5UI4hjrI', '2', '教师这个职业是人类社会最古老的职业之一。他受社会的委托对受教育者进行专门的教育。在社会发展中，教师是人类文化科学知识的继承者和传播者。对学生来说，又是学生智力的开发者和个性的塑造者。', '0', '0', '2017-10-19 13:14:37', '2018-03-28 10:29:54');
+INSERT INTO `user` VALUES ('116', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL8nR7kBpJIFVPDuHkxAq0AG5x06ZtrHQPUK2thgQXvoc8ss4wL4bleibKyBTN58TI1IMDG3NwOj6A/0', 'sten123', 'oH5wb0eHzuMg6M5mJRXRCSQsd5Co', 'ocVDd1P2osRKu74QahlHvWciUIZ0', 'oKA9kwAgvGqmhoPnoaez7flPiyUY', '2', '', '0', '2', '2017-10-19 13:17:25', '2017-10-30 09:39:35');
 INSERT INTO `user` VALUES ('117', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJGrDY3cRGPxOjPNK8hbhJAqgyiajwjZkicDkoqhm7ia7eb5ibKZeau6HibbgSNYP1m0IibsrqVibAdcgICQ/0', '随遇而安_Yuki', 'oH5wb0Rh7AwNQs7tm_rufJ4HvFWw', 'ocVDd1JmeqBCv3f9CuHQ5NyinZuI', 'oKA9kwFbHQz2mOQbkPyNLp_OQokw', '1', '', '0', '2', '2017-10-19 13:22:36', '2017-11-03 15:21:18');
 INSERT INTO `user` VALUES ('120', 'http://wx.qlogo.cn/mmopen/gwhELYibibFdRI0tmMeQ6KW6QEJ6SB5YVhSLZaJW1YzR7DV7960rm5plIReOXziayZVWmribjNfvyaPaQR0pmc4odw/0', 'AuNa娜', '', 'ocVDd1Cs5bOw6H1r8uA-wjYdoweI', 'oKA9kwCRt3QqX6QCz2QNuSB2CQt4', '1', '', '0', '2', '2017-10-20 17:16:00', '2017-10-20 17:16:00');
 INSERT INTO `user` VALUES ('121', 'http://wx.qlogo.cn/mmopen/gHj3DVcFxSwcRnLzziaDeaASjS7OtdXX0qBfDheCPBNFGKtld1hH63zeviaC97bVJc8EV03iabCht2fqVhStmPmtQ/0', '小正哥', '', 'ocVDd1EaqnD0Ho2mvxl6I2nOgdl8', 'oKA9kwE7QxNnCVqSwUPlGvrxjIa8', '1', '', '0', '1', '2017-10-20 17:16:00', '2017-10-20 17:16:00');
@@ -922,6 +973,8 @@ INSERT INTO `user` VALUES ('179', 'https://wx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEI
 INSERT INTO `user` VALUES ('180', 'https://wx.qlogo.cn/mmopen/vi_32/QOziautCDECAab7ba0DbECqiawQkRF3eLUNvJD5ibqazwKmOx855QzJTuBXfIDkD0Dm0jpgs3BVnRyhYbeFCz1BtQ/0', '山水之间', 'oH5wb0bK6vF2GcljfyIWX239I06k', null, null, '1', '', '0', '0', '2017-11-10 12:14:25', '2017-11-10 12:14:27');
 INSERT INTO `user` VALUES ('181', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIenBesolAerWoQmWQWJyQmEEMGfZkupn6iaCgd0EaqUonHBSLx9fhudBnhvSlia1sRInViaEujacfbw/0', '✨carol????琼????', 'oH5wb0crYnYXQnJkP2mYKU8msIME', 'ocVDd1H4cUiy2qhnMVT6kJS2Mr_g', 'oKA9kwKUP4wEwbYWI6vtgPVWgVH0', '1', '', '0', '2', '2017-11-11 18:59:45', '2017-11-11 18:59:51');
 INSERT INTO `user` VALUES ('182', 'http://wx.qlogo.cn/mmopen/fYMW6RD1vRd9udVFFCXku3ibic5sYbk88uU9hpeZgWiaoTbh419IkbQeTD68as9VPsstvAbZ47tGUSibOPDZicvh7O2xQqTR3OK1E/0', '春天暖', '', 'ocVDd1AEtQCcPG5Fsl8SikGa5hBQ', 'oKA9kwEmnmiyxOmdsJ1PHdLaC_nA', '1', '', '0', '1', '2017-11-13 17:54:45', '2017-11-13 17:54:45');
+INSERT INTO `user` VALUES ('207', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIk9C3v3lMt9pWyoZxhY7TqFYgKwMAmq9icNc6WqIopg4DJCLFKYvibzVKGIXxtobZRicFAaHPrcpFTw/0', '啤酒侠', 'oH5wb0U7cpE9aQe_nBQtKYsN16Qc', null, null, '1', '', '0', '1', '2018-02-01 18:15:50', '2018-03-29 10:29:42');
+INSERT INTO `user` VALUES ('208', 'https://wx.qlogo.cn/mmopen/vi_32/cTFyKIYm2n0nuaoHYQIUBvRLhDgl7c3wT5Br68t6mZGNZZoUuUdj12WYW8EcVlL7UFXaJvn4GkdcFsyLnbW3Yg/0', '赵杰伦', 'oH5wb0cfcIljNQLQA88HX5JIEuws', 'ocVDd1KSSh5W5TC-IgqEiahVZ2as', null, '1', '', '0', '1', '2018-02-08 15:04:05', '2018-02-13 16:22:42');
 
 -- ----------------------------
 -- Table structure for voiceintroduction

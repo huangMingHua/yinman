@@ -2,9 +2,9 @@
    <p-layout>
      <template>
         <el-tabs v-model="activeName" @tab-click="handleClick">
-           <el-tab-pane label="课程表管理" name="list">
+           <!-- <el-tab-pane label="课程表管理" name="list">
              <list></list>
-          </el-tab-pane>
+          </el-tab-pane> -->
           <el-tab-pane label="课程类型" name="formal">
             <formal-curriculum></formal-curriculum>
           </el-tab-pane>
@@ -28,7 +28,7 @@ import renew from '../components/renew'
       name:"introduce",
       data(){
       	return {
-           activeName:'list'
+           activeName:'formal'
         }
       },
     methods:{

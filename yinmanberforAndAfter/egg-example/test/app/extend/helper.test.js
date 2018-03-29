@@ -14,9 +14,9 @@ describe('test/app/extend/helper.test.js', () => {
     const ctx = app.mockContext();
 
     assert(ctx.helper.durationConflict('2017-05-01', '2017-07-01', '2017-04-01', '2017-08-01') === true);
-    
+
     assert(ctx.helper.durationConflict('2017-05-01', '2017-07-01', '2017-06-01', '2017-06-11') === true);
     assert(ctx.helper.durationConflict('2017-05-01', '2017-07-01', '2017-04-01', '2017-05-02') === true);
-    assert(ctx.helper.durationConflict('2017-05-01', '2017-07-01', '2017-04-01', '2017-04-30') === false);    
+    assert(ctx.helper.durationConflict('2017-05-01', '2017-07-01', '2017-04-01', '2017-04-30') === false);
   });
 });

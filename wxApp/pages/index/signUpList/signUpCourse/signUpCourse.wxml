@@ -1,119 +1,68 @@
-<!--pages/index/signUpList/signUpCourse/signUpCourse.wxml-->
-<import src="../../../../wxParse/wxParse.wxml"/>
-<import src="../../../template/contact/contact" />
-<view class="state" wx:if="{{id!=''}}">
-         <text class="state" wx:if="{{state == '已取消'}}" style="color:#8a8a8a">已取消</text>
-         <text class="state" wx:elif="{{state == '待确认'}}" style="color:#fd6651">待确认</text>
-         <text class="state" wx:elif="{{state == '已确认'}}" style="color:#fd6651">已确认</text>
-         <text class="state" wx:elif="{{state == '已拒绝'}}" style="color:#fd6651">已拒绝</text>
-         <text class="state" wx:elif="{{state == '已停课'}}" style="color:#8a8a8a">已停课</text>
-         <text class="state" wx:elif="{{state == '已转课'}}" style="color:#8a8a8a">已转课</text>
-         <text class="state" wx:else style="color:#fd6651">null</text>
-</view>
-    <view class="section">
-      <text class='student-name'>姓名</text><text class='student'>{{sName}}</text>
+<view>
+  <view class="tabBar">
+    <view bindtap="tabBarSwitch1" class="manu {{tabBarIndex===0?'active':''}}">
+      <text>固定课</text>
+      <view class="line"></view>
     </view>
-    <view class="prompt">
-        <!-- {{sTerm}} -->
-    </view>
-    <view class="section">
-      <picker bindchange="bindTermChange" value="{{termIndex}}" range="{{aTerm}}" disabled="{{disab}}">
-        <view class="picker">
-          <image src="/images/icon/star.png" class="star"></image>
-          <text class="signClass">学期</text>
-          <text class="signCon">{{aTerm[termIndex]}}</text>
-        </view>
-      </picker>
-      <image src="/images/icon/down.png" class="down"></image>
-    </view>
-    <view class="prompt">
-        {{sTerm}}
-    </view>
-  <view class="section">
-      <picker bindchange="bindCurriculumChange" value="{{index}}" range="{{curriculums}}" disabled="{{disab}}">
-        <view class="picker">
-          <image src="/images/icon/star.png" class="star"></image>
-          <text class="signClass">课程</text>
-          <text class="signCon">{{curriculums[index]}}</text>
-        </view>
-      </picker>
-      <image src="/images/icon/down.png" class="down"></image>
-  </view>
-  <view class="prompt">
-        {{sCourse}}
-    </view>
-    <view class="section">
-      <picker bindchange="bindTeacherChange" value="{{teacherIndex}}" range="{{aTeacher}}" disabled="{{disab}}">
-        <view class="picker">
-          <image src="/images/icon/star.png" class="star"></image>
-          <text class="signClass">教师</text>
-          <text class="signCon">{{aTeacher[teacherIndex]}}</text>
-        </view>
-      </picker>
-      <image src="/images/icon/down.png" class="down"></image>
-    </view>
-    <view class="prompt">
-        {{sTeacher}}
-    </view>
-    <view class="section">
-      <picker bindchange="bindWeekChange" value="{{weekIndex}}" range="{{aWeek}}" disabled="{{disab}}">
-        <view class="picker">
-          <image src="/images/icon/star.png" class="star"></image>
-          <text class="signClass">星期</text>
-          <text class="signCon">{{aWeek[weekIndex]}}</text>
-        </view>
-      </picker>
-      <image src="/images/icon/down.png" class="down"></image>
-    </view>
-    <view class="prompt">
-        {{sDay}}
-    </view>
-     <view class="section">
-      <picker bindchange="bindCycleChange" value="{{cycleIndex}}" range="{{aCycle}}" disabled="{{disab}}">
-        <view class="picker">
-          <image src="/images/icon/star.png" class="star"></image>
-          <text class="signClass">有效期</text>
-          <text class="signCon">{{aCycle[cycleIndex]}}</text>
-        </view>
-      </picker>
-      <image src="/images/icon/down.png" class="down"></image>
-    </view> 
-    <view class="prompt">
-        {{sWeek}}
-    </view>
-    <view class="section">
-      <text class="classRoome" style='width:160rpx;'>满员人数</text><text>{{number}}</text>
-    </view>
-    <view class="prompt">
-        {{iNumber}}
-    </view>
-    <view class="section">
-      <text class="classRoome">教室</text><text>{{iClassRoom}}</text>
-    </view>
-    <view class="prompt">
-        {{iClassRoom1}}
-    </view>
-    <view class="textarea">
-      <textarea maxlength='200' bindinput="bindTextAreaBlur" value='{{sInput}}' placeholder="其他要求" disabled="{{disab}}" />
-      <text>{{remarksLength}}/200</text>
-    </view>
-    <view class="button" wx:if="{{show}}">
-      <button  bindtap="submit"  >{{btn}}</button>
-    </view>
-  <view class="warnTelWrap">
-    <!-- <view class="warnWrap">
-      <view class="warn">
-        <image src="/images/icon/warn.png"></image>
-        <text>注意事项:</text>
-      </view>
-      <view class="warnText">
-        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-      </view>
-    </view> -->
-    <view class="contact">
-      <template is="telOur" data="{{telFun}}"></template>
+    <view bindtap="tabBarSwitch2" class="manu {{tabBarIndex===1?'active':''}}">
+      <text>课时课</text>
+      <view class="line"></view>
     </view>
   </view>
-  <!-- <view bindtap='payment'>
-   支付
+  <view>
+    <picker bindchange="bindTermChange" value="{{termIndex}}" range="{{terms}}">
+      <view class="term section">
+        <text class="termTitle sectionTitle">学期</text>
+        <text>{{terms[termIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <picker bindchange="bindCourseChange" value="{{courseIndex}}" range="{{courses}}">
+      <view class="course section">
+        <text class="courseTitle sectionTitle">课程</text>
+        <text>{{courses[courseIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <picker bindchange="bindTeacherChange" value="{{teacherIndex}}" range="{{teacheres}}">
+      <view class="teacher section">
+        <text class="teacherTitle sectionTitle">教师</text>
+        <text>{{teacheres[teacherIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <picker bindchange="bindWeekChange" value="{{weekIndex}}" range="{{weeks}}">
+      <view class="week section">
+        <text class="weekTitle sectionTitle">星期</text>
+        <text>{{weeks[weekIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <view>
+    <picker bindchange="bindCycleChange" value="{{cycleIndex}}" range="{{cycles}}">
+      <view class="cycle section">
+        <text class="cycleTitle sectionTitle">周期</text>
+        <text>{{cycles[cycleIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <!-- <view>
+    <picker bindchange="bindPersonChange" value="{{numberIndex}}" range="{{terms}}">
+      <view class="term section">
+        <text class="termTitle sectionTitle">人数</text>
+        <text>{{terms[termIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+   <view>
+    <picker bindchange="bindTermChange" value="{{termIndex}}" range="{{terms}}">
+      <view class="term section">
+        <text class="termTitle sectionTitle">教室</text>
+        <text>{{terms[termIndex]}}</text>
+      </view>
+    </picker>
   </view> -->
+</view>

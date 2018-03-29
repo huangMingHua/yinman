@@ -5,7 +5,6 @@
       <thead>
         <th>id</th>
         <th>课程名称</th>
-        <th>课程时间</th>
         <th>报名日期</td>
         <th>状态</th>
         <th>操作</th>
@@ -13,8 +12,7 @@
         <tbody>
           <tr v-for="(item,index) in tableData">
             <td>{{item.id}}</td>
-            <td>{{item.courseTableDetail.courseName}}</td>
-            <td>{{item.startCourseTableItemId?item.startCourseTableItem.date:item.courseTableDetail.startDate | viewDate}}至{{item.courseTableDetail.endDate | viewDate}} {{item.courseTableDetail.dayOfWeek}} {{item.courseTableDetail.startTime | viewHouAndSec}}~{{item.courseTableDetail.endTime | viewHouAndSec}} </td>
+            <td>{{item.courseTableDetail.course.name}}</td>
             <td>{{item.createTime}}</td>
             <td>{{item.state}}</td>
             <td>
@@ -28,7 +26,7 @@
       <student-signUp :studentId='this.$route.query.studentId' @btnBack="btnBack" @signUpSuccess="signUpSuccess"></student-signUp>
     </el-dialog>
     <el-dialog title="报名审核"  :visible.sync="dialogFormVisible" :close-on-click-modal="false">
-      <auditing :singleUser="singleUser" :singleChecked='singleChecked' @changes="change()" @btnBack="signBtnBack"  @success="success"></auditing>
+      <auditing :singleUser="singleUser" :id='id' :singleChecked='singleChecked' @changes="change()" @btnBack="signBtnBack"  @success="success"></auditing>
     </el-dialog>
   </div>
 </template>
@@ -36,7 +34,7 @@
 import studentSignUp from '../signUp/studentSignUp1';
 import auditing from '../registrationRecord/auditing'
 export default {
-  props:['studentId'],
+  props:['studentId','termId'],
   data(){
       return{
         tableData: [],
@@ -45,23 +43,29 @@ export default {
         singleChecked: false,
         singleUser: {},
         backSingleUser: "",
+        id:''
       }
   },
-  created(){
-     this.init()
+  mounted(){
+    this.init()
   },
   methods:{
-     init(){
+    init(){
         this.dialogFormVisible = false
-        this.$http.get("/api/signUpCurriculum/getSignCurriculum",{params: {studentId:this.studentId}}).then((response)=>{
-          this.tableData=response.data
-          console.log(response.data,1111)
-          this.tableData.reverse()
+        this.$http.get("/api/signUpCurriculum/getSignCurriculum",{params: {studentId:this.studentId,termId:this.termId}}).then((response)=>{
+          let res = response.data;
+          if(res.code){
+             this.tableData=res.data
+             this.tableData.reverse() 
+          }else{
+             this.$message(res.msg)
+          }
+          
         })
-     },
-     add() {
+    },
+    add() {
           this.showStudentSignUp=true;
-      },
+    },
     btnBack() {
           this.showStudentSignUp=false;
         },
@@ -72,7 +76,7 @@ export default {
        this.init()
        this.showStudentSignUp=false;
     },
-        details(index, val) {
+    details(index, val) {
         console.log(val)
         this.dialogFormVisible = true
         if(val.state=='已停课' || val.state=='已取消'||val.state=='已确认'||val.state=='已拒绝'||val.state=='已转课'){
@@ -80,6 +84,7 @@ export default {
         }else{
           this.singleChecked=false
         }
+        this.id = val.id;
         this.singleUser=JSON.parse(JSON.stringify(val))
         this.backSingleUser=JSON.parse(JSON.stringify(val))
       },
@@ -110,6 +115,9 @@ export default {
  
   watch:{
     '$route' (to, from) {
+      this.init()
+    },
+    termId(){
       this.init()
     } 
   },

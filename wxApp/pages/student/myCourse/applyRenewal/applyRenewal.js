@@ -29,7 +29,30 @@ Page({
         sLeave: '',
         sTeacher: '',
         sMakeup: '',
-        sReason: ''
+        sReason: '',
+        courseTableDetailId:'',
+        levels: [
+          {
+            id: 1,
+            name: '无等级'
+          },
+          {
+            id: 2,
+            name: 'A'
+          },
+          {
+            id: 3,
+            name: 'B'
+          },
+          {
+            id: 4,
+            name: 'C'
+          },
+          {
+            id: 5,
+            name: 'D'
+          },
+        ]
     },
     //教室下拉框时间
     teacherChange: function(e) {
@@ -40,11 +63,14 @@ Page({
         })
         this.setData({ makeupTime: ['请选择'], room: '', timeIndex: 0 })
         if (e.detail.value != 0) {
-            for (var item of this.data.teacherData[e.detail.value - 1].courseTableItems) {
-                console.log(item)
-                this.data.makeupTime.push(item.date + " " + item.startTime + "~" + item.endTime)
-            }
-            this.setData({ makeupTime: this.data.makeupTime, courseTableItems: this.data.teacherData[e.detail.value - 1].courseTableItems })
+          console.log(this.data.course)
+          for (var item of this.data.teacherData[e.detail.value - 1].classes) {
+            let leaveTime = this.data.leaveTime[this.data.leaveIndex]
+            let makeUpTime = item.date + " " + item.startTime + "~" + item.endTime
+            console.log(this.data.leaveTime[this.data.leaveIndex], makeUpTime)
+            this.data.makeupTime.push(item.date + " " + item.startTime + "~" + item.endTime)
+          }
+          this.setData({ makeupTime: this.data.makeupTime, courseTableItems: this.data.teacherData[e.detail.value - 1].classes })
         } else {
             this.setData({ makeupTime: ['请选择'], room: '', timeIndex: 0 })
         }
@@ -82,30 +108,30 @@ Page({
         })
         var appInstance = getApp()
             //获取用户信息
-        appInstance.ajax("/student/getFreeListByCourseTableDetailId", { courseTableDetailId: options.courseId, studentId: options.studentId }, "get", (res) => {
-            appInstance.ajax("/student/getById", { id: options.studentId }, 'get', (res) => {
+        appInstance.ajax("/student/getFreeListByCourseTableDetailId", { courseTableDetailId: options.courseTableDetailId, studentId: wx.getStorageSync('studentId') }, "get", (res) => {
+          appInstance.ajax("/student/getById", { id: wx.getStorageSync('studentId') }, 'get', (res) => {
                 console.log(res)
-                this.setData({ name: res.data.name })
+                this.setData({ courseTableDetailId: options.courseTableDetailId, name: res.data.name })
             })
-            appInstance.ajax("/courseTableChangeClass/getMakeupDataForStudent", { courseTableDetailId: options.courseId, studentId: this.data.studentId }, "get", (res) => {
+          appInstance.ajax("/courseTableChangeClass/getMakeupDataForStudent", { courseTableDetailId: options.courseTableDetailId, studentId: wx.getStorageSync('studentId') }, "get", (res) => {
                 this.data.teachers = ["请选择"];
-                console.log(res.data, '111')
                 for (var [key, item] of res.data.teachers.entries()) {
-                    this.data.teachers.push(item.name)
+                  this.data.teachers.push(item.teacher
+                    .name)
                 }
                 this.setData({ teachers: this.data.teachers, teacherData: res.data.teachers })
             })
             if (res.data.data.courseTableDetailStudent.numberOfChangeClass == 0) {
                 wx.showToast({
                     title: '你本节课补课次数已用完',
-                    icon: 'success',
+                    icon: 'none',
                     duration: 5000
                 })
                 this.setData({ disabled: true })
             } else if ((res.data.data.courseTableDetailStudent.allNumberOfChangeClass - res.data.data.courseTableDetailStudent.numberOfleave) - (res.data.data.courseTableDetailStudent.allNumberOfChangeClass - res.data.data.courseTableDetailStudent.numberOfChangeClass) == 0) {
                 wx.showToast({
                     title: `你没有补课次数，不需要补课`,
-                    icon: 'success',
+                    icon: 'none',
                     duration: 5000
                 })
                 this.setData({ disabled: true })
@@ -164,13 +190,13 @@ Page({
             duration: 5000,
             mask: true
         })
-
+        console.log(this.data.courseTableDetailId)
         appInstance.ajax("/courseTableChangeClass/addMakeup", {
             courseTableDetailId: this.data.courseTableDetailId,
             currentTeacher: this.data.teacherData[this.data.teacherIndex - 1].id,
             toCourseTableItemId: this.data.courseTableItems[this.data.timeIndex - 1].id,
             reason: e.detail.value.reason,
-            studentId: this.data.studentId,
+            studentId: wx.getStorageSync('studentId'),
         }, "post", (res) => {
             if (res.data.code == 1) {
                 wx.showToast({
@@ -181,8 +207,8 @@ Page({
                 setTimeout(() => {
                     wx.navigateBack({
                         url: '/pages/student/myCourse/myCourse?studentId=' + wx.getStorageSync("studentId"),
-                    }, 5000)
-                })
+                    })
+                }, 5000)
             } else {
                 wx.showToast({
                     title: res.data.msg,

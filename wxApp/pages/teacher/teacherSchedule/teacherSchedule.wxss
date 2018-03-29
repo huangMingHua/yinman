@@ -1,0 +1,167 @@
+/* pages/teacher/teacherSchedule/teacherSchedule.wxss */
+.img{
+  width: 30rpx;
+  height: 13rpx;
+  margin-left: 20rpx;
+}
+.semester{
+  background-color: white;
+  text-align: center;
+  padding-top: 20rpx;
+}
+.semesterPicker{
+  margin: 0 auto;
+  width: 314rpx;
+  height: 68rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 68rpx;
+  border: 1rpx solid #3cb4ff;
+  border-radius: 5px;
+  color: #3cb4ff; 
+}
+.semesterStartEnd{
+  padding: 18rpx 0 32rpx 0;
+  font-size: 28rpx;
+  color: #979797;
+}
+.semesterClassTitle,.classTimeClassTitle{
+   display: flex;
+   align-items: center;
+   height: 84rpx;
+   font-size: 24rpx;
+   border-top: 1rpx solid #e6e6e6;
+   border-bottom: 1rpx solid #e6e6e6;
+}
+.semesterClassTitle image,.classTimeClassTitle image{
+  margin: 0 15rpx 0 30rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.teahcerDetail{
+  position: relative;
+  display: flex;
+  margin-top: 19rpx;
+  height: 144rpx;
+  align-items: center;
+  background-color: white;
+  font-size: 32rpx;
+  color: #040000;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.teahcerDetail image{
+  margin: 0 20rpx 0 32rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+}
+.teahcerDetail .teacherTitle{
+  margin-right: 16rpx;
+}
+.teahcerDetail navigator{
+  position: absolute;
+  right: 32rpx;
+  text-align: center;
+  width: 222rpx;
+  height: 64rpx;
+  border-radius: 5px;
+  line-height: 64rpx;
+  background-color: #01d6c2;
+  font-size: 28rpx;
+  color: white;
+}
+.title{
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  height: 84rpx;
+  background-color: #f5f5f5;
+}
+.title image{
+  margin-left: 30rpx;
+  margin-right: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 32rpx;
+  color: #040000;
+}
+.class{
+  
+}
+.class .line{
+
+}
+.class .classDetail{
+
+}
+.class .classDetail{
+  padding: 13rpx 30rpx;
+  margin: 30rpx 30rpx 4rpx 30rpx;
+  background-color: #f5f5f5;
+}
+.class .classDetail>view{
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 28rpx;
+}
+.class .classDetail>view text:nth-child(1){
+  margin-right: 18rpx;
+}
+.class .warn{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
+  height: 60rpx;
+  background-color: #f5f5f5;
+  font-size: 24rpx;
+}
+.class .warn image{
+  margin: 0 10rpx 0 34rpx;
+  width: 24rpx; 
+  height: 24rpx;
+}
+.class .warn view{
+  color: #979797;
+}
+.class .warn text:nth-of-type(1){
+  margin-right: 16rpx;
+}
+.class .warn navigator{
+  position: absolute;
+  right: 30rpx;
+  color: #3cb4ff;
+}
+.class .warn navigator image{
+  margin: 0;
+  margin-left: 10rpx;
+  width: 14rpx;
+  height: 19rpx;
+}
+.class .nav{
+  display: flex;
+  margin: 20rpx 30rpx 30rpx 30rpx;
+  align-items: center;
+  justify-content: flex-end;
+}
+.class .nav navigator{
+  width: 220rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  color: white;
+  border-radius: 4px;
+}
+.class .nav navigator:nth-child(1){
+  margin-right: 14rpx; 
+  background-color: #3cb4ff;
+}
+.class .nav navigator:nth-child(2){
+  background-color: #00d6c2;
+}
+.line{
+  height: 20rpx;
+  background-color: #f5f5f5;
+}

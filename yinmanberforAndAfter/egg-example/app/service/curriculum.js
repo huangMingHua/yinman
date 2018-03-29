@@ -19,26 +19,26 @@ module.exports = app => {
       }
       return result;
     }
-    * getById(id){
+    * getById(id) {
       return yield app.mysql.get('curriculum', { id });
     }
     *
       getAll() {
-      const result = yield app.mysql.select('curriculum');
-      return result;
-    } *
+        const result = yield app.mysql.select('curriculum');
+        return result;
+      } *
       getPaging(page, limit) {
-      const list = yield app.mysql.select('curriculum', { limit: Number(limit), offset: (page - 1) * limit });
-      const count = yield app.mysql.query('select count(*) from curriculum');
-      const result = {
-        list,
-        pages: Math.ceil(count[0]['count(*)'] / limit),
-      };
-      return result;
-    } *
+        const list = yield app.mysql.select('curriculum', { limit: Number(limit), offset: (page - 1) * limit });
+        const count = yield app.mysql.query('select count(*) from curriculum');
+        const result = {
+          list,
+          pages: Math.ceil(count[0]['count(*)'] / limit),
+        };
+        return result;
+      } *
       delete(id) {
-      const result = yield app.mysql.delete('curriculum', { id });
-      return result;
+        const result = yield app.mysql.delete('curriculum', { id });
+        return result;
       // return result;
       //     const date = this.ctx.request.body.date
       // var delCurriculum = yield this.ctx.model.curriculum.remove({ 'date': date })
@@ -53,11 +53,11 @@ module.exports = app => {
       //         boff: false
       //     }
       // }
-    } *
+      } *
       query(name) {
-      const result = yield app.mysql.select('curriculum', { where: { name } });
-      return result;
-    }
+        const result = yield app.mysql.select('curriculum', { where: { name } });
+        return result;
+      }
   }
   return curriculum;
 };

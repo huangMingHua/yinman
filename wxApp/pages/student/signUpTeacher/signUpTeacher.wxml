@@ -1,0 +1,60 @@
+<!--pages/student/signUpTeacher/signUpTeacher.wxml-->
+<import src="../../template/wxparse/wxparse.wxml"/>
+<view>
+  <view class="header">
+    <image src="{{user.wxHead}}" class="headPortrait"></image>
+    <text class="title">教师</text>
+    <text>{{teacher.name}}</text>
+  </view>
+  <view class="personalIntroduction" wx:if="{{user.remarks.length>0}}">
+    {{user.remarks}}
+  </view>
+  <view class="termDetail" wx:if="{{termCourse.length>0}}">
+    <view class="typeWrap">
+     <image src="/images/icon/semesterClass.png"  class="type"></image>
+    </view> 
+     <text class="termDetailTitle">学期课</text>
+     <view>
+      <view><text  class="termName">{{term.name}}</text></view>
+      <view><text class="termCrycle">（{{term.startDate}}~{{term.endDate}}）</text>
+      </view>
+    </view>
+  </view>
+  <view class="course" wx:for="{{termCourse}}" wx:if="{{termCourse.length>0}}">
+    <image src="/images/icon/semesterClass.png"  class="type"></image>
+    <view class="courseDetail">
+      <view><text>课程：</text><text>{{item.course.name}}</text></view>
+      <view><text>时间：</text><text>{{item.dayOfWeek}} {{item.startTime}}~{{item.endTime}}</text></view>
+    </view>
+    <navigator url='/pages/student/signUpTermDetail/signUpTermDetail?courseDetailId={{item.id}}'>报名       </navigator>
+  </view>
+  <view class="termDetail" wx:if="{{classTimeClass.length>0}}">
+     <image src="/images/icon/timer.png"  class="type"></image>
+     <text class="termDetailTitle">课时课</text>
+  </view>
+  <view class="course" wx:for="{{classTimeClass}}" wx:if="{{classTimeClass.length>0}}">
+    <image src="/images/icon/timer.png"  class="type"></image>
+    <view class="courseDetail">
+      <view>
+        <text>课程：</text>
+        <text>{{item.course.name}}</text>
+      </view>
+      <view>
+        <text>时长：</text>
+        <text>{{item.duration}}分钟</text>
+      </view>
+    </view>
+    <navigator url="/pages/student/signUpClassTimeList/signUpClassTimeList?courseDetailId={{item.id}}">报名</navigator>
+  </view>
+  <view class='line'>
+  </view>
+  <view class="wxparseWrap">
+    <view class='wxparseTitle'>
+     <image src="/images/icon/smallBell.png" ></image>
+     <text>报名须知</text>
+    </view>
+    <view class="wxparse">
+     <template is="wxparse" data="{{article}}" />
+    </view>
+  </view>
+</view>

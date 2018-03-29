@@ -1,11 +1,102 @@
 <!--pages/student/myCourse/myCourse.wxml-->
-<import src="../../template/courseDetails/courseDetails.wxml" />
-<import src="../../template/teacherDetails/teacherDetails.wxml" />
- <picker bindchange="semesterChange" class="semester" value="{{index}}" range="{{semesterArr}}">
-    <view class="picker">
-      {{semesterArr[index]}}<image class="img" wx:if="{{semesterArr[index]}}" src="/images/icon/down.png"></image>
+<!-- <import src="../../template/courseDetails/courseDetails.wxml" /> -->
+<!-- <import src="../../template/teacherDetails/teacherDetails.wxml" /> -->
+ <picker wx:if="{{isShow===1}}" bindchange="semesterChange" class="semester" value="{{semesterIndex}}" range="{{semesterArr}}">
+    <view class="semesterPicker">
+      {{semesterArr[semesterIndex]}}<image class="img" wx:if="{{semesterArr[semesterIndex]}}" src="/images/icon/blunDown.png"></image>
       <text wx:else>{{loading}}</text>
     </view>
+    <view class="semesterStartEnd">
+      <text>学期起止：{{DateSatartEnd}}</text>
+    </view>
 </picker>
-<template is="courseDetails" wx:if="{{sign==1}}"  data="{{course}}" ></template>
-<template is="teacherDetails"  wx:if="{{sign==2}}" data="{{content}}"></template>
+<view class="semesterClassTitle" wx:if="{{isShow===1&&termClass.length!==0}}">
+  <image src='/images/icon/semesterClass.png'></image><text>学期课</text>
+</view>
+<view class='semesterClass' wx:for='{{termClass}}' wx:if="{{isShow===1}}">
+ <view class='teacher'>
+   <image src='{{item.wxHead}}'></image>
+   <text class='teahcerTitle'>教师</text>
+   <text class='teacherName'>{{item.teacherName}}</text>
+ </view>
+ <view class='detail'>
+  <view>
+    <text>课程：</text>
+    <text>{{item.courseName}}</text>
+  </view>
+  <view>
+    <text>时间：</text>
+    <text>{{item.dayOfWeek}} {{item.startTime}}~{{item.endTime}}</text>
+  </view>
+  <view>
+    <text>满员人数：</text>
+    <text>{{item.number}}</text>
+  </view>
+  <view>
+    <text>等级：</text>
+    <text>{{levels[item.level-1].name}}</text>
+  </view>
+  <view>
+    <text>教室：</text>
+    <text>{{item.classroomName}}</text>
+  </view> 
+ </view>
+ <view class='lineWhite'></view>
+ <view class='fun'>
+   <view class='warn'>
+   <image src='/images/icon/prompt.png' class="warnImg"></image>
+   <text class='content'>注：本课程你已请假 {{item.allNumberOfChangeClass-item.numberOfleave}}次（已补课 {{item.allNumberOfChangeClass-item.numberOfChangeClass}}次，剩余补课 {{item.numberOfChangeClass}}次），剩余可请假 {{item.numberOfleave}}次。</text>
+   </view>
+   <navigator class='record' url='/pages/student/myCourse/myLessonAndleave/myLessonAndleave?courseTableDetailId={{item.courseTableDetailId}}'>
+     <text>请假和补课记录</text>
+     <image src='/images/icon/blueRight.png'></image>
+   </navigator>
+  </view>
+  <view class='links'>
+    <navigator url='/pages/student/myCourse/applyLessons/applyLessons?courseTableDetailId={{item.courseTableDetailId}}'>申请请假</navigator><navigator url='/pages/student/myCourse/applyRenewal/applyRenewal?courseTableDetailId={{item.courseTableDetailId}}'>申请补课</navigator>
+   </view>
+</view>
+<view class="classTimeClassTitle" wx:if="{{isShow===1&&classTimeClass.length!==0}}">
+  <image src='/images/icon/semesterClass.png'></image><text>课时课</text>
+</view>
+<view class='classTimeClass' wx:for="{{classTimeClass}}" wx:if="{{isShow===1}}">
+ <view class='teacher'>
+   <image src='{{item.wxHead}}'></image>
+   <text class='teahcerTitle'>教师</text>
+   <text class='teacherName'>{{item.teacherName}}</text>
+ </view>
+ <view class='detail'>
+  <view>
+    <text>课程：</text>
+    <text>{{item.courseName}}</text>
+  </view>
+  <view>
+    <text>时长</text>
+    <text>{{item.courseTableItem.duration}}分钟</text>
+  </view>
+  <view>
+    <text>满员人数：</text>
+    <text>{{item.number}}</text>
+  </view>
+  <view>
+    <text>等级：</text>
+    <text>{{levels[item.level-1].name}}</text>
+  </view>
+  <view>
+    <text>教室：</text>
+    <text>{{item.classroomName}}</text>
+    <text class='classTimeNum'>总课时：{{item.classTimeNum}}</text>
+  </view> 
+  <navigator url='/pages/student/myCourse/selectClassRecord/selectClassRecord?courseTableId={{item.courseTableDetailId}}' class='btn'>
+    <text>选课记录</text>
+    <image src='/images/icon/blueRight.png'></image>
+  </navigator>
+ </view>
+  <view class='links'>
+    <navigator url='/pages/student/myCourse/selectClass/selectClass?courseTableId={{item.courseTableDetailId}}'>选课</navigator><navigator url='/pages/student/myCourse/applyLeave/applyLeave?courseTableId={{item.courseTableDetailId}}'>申请请假</navigator>
+  </view>
+</view>
+<view wx:if="{{isShow===0}}" class="noData">
+  <image src="/images/icon/noData.png"  ></image>
+  <view><text>暂无课程信息</text></view>
+</view>

@@ -41,3 +41,16 @@
 <view wx:if="{{urlIndex==1}}">
   <template is="exhibitionCenter" />
 </view>
+<view wx:if="{{urlIndex==3}}">
+  <view class="headWrap" >
+    <template is="head"  data="{{headInfo}}"/>
+  </view>  
+    <view class="stuAndTecCourse">
+      <view class="course" catchtap="teacherCourseTo">
+        <image src="/images/icon/course.png"></image>
+        <text>我的课程</text>
+        <image src="/images/icon/dir.png" class="dir"></image>
+      </view>
+    </view> 
+    <template is="tel" />
+</view>

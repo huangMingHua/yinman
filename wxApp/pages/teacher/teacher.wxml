@@ -9,7 +9,7 @@
     <template is="head"  data="{{headInfo}}"/>
   </view>  
     <view class="stuAndTecCourse">
-      <view class="course" catchtap="courseTo">
+      <view class="course" catchtap="teacherCourseTo">
         <image src="/images/icon/course.png"></image>
         <text>我的课程</text>
         <image src="/images/icon/dir.png" class="dir"></image>
@@ -22,14 +22,4 @@
     </view> 
     <template is="tel" />   
 </view> 
-<view class="fixed">
-  <navigator bindtap="url" class="{{urlIndex==2? 'active':''}}" data-urlIndex="2"><image src="/images/icon/home1.png" class="icon"></image><text>关于音曼</text></navigator>
-  <navigator bindtap="url" class="{{urlIndex==1? 'active':''}}" data-urlIndex="1"><image src="/images/icon/home2.png" class="icon"></image><text>展示中心</text></navigator>
-  <navigator bindtap="url" class="{{urlIndex==0? 'active':''}}" data-urlIndex="0"><image src="/images/icon/home3.png" class="icon"></image><text>个人中心</text></navigator> 
-</view>
- <view wx:if="{{urlIndex==2}}">
-  <template is="about" />
-</view> 
-<view wx:if="{{urlIndex==1}}">
-  <template is="exhibitionCenter" />
-</view>
+

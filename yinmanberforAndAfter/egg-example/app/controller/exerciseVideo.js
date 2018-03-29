@@ -14,7 +14,7 @@ module.exports = app => {
         this.fail('姓名不能为空');
         return;
       }
-      
+
       const now = app.moment();
       if (!id || id == 0) {
         if (stream == null) {
@@ -22,7 +22,7 @@ module.exports = app => {
           return;
         }
         const filePath = yield this.upload(stream);
-        var res = yield this.service.exerciseVideo.add(
+        const res = yield this.service.exerciseVideo.add(
           title,
           name,
           filePath,
@@ -53,18 +53,18 @@ module.exports = app => {
       const list = yield app.mysql.select('exercise_video', { limit: Number(this.ctx.request.query.limit), offset: (this.ctx.request.query.pageIndex - 1) * this.ctx.request.query.limit });
       const count = yield app.mysql.query('select count(*) from exercise_video');
 
-      for (let item of list) {
+      for (const item of list) {
         item.path = this.config.url + '/public/files' + item.path.replace(/\\/g, '/');
         item.createTime = app.moment(item.createTime).format('YYYY-MM-DD hh:mm:ss');
         item.updateTime = app.moment(item.updateTime).format('YYYY-MM-DD hh:mm:ss');
       }
       this.ctx.body = {
-        list: list,
+        list,
         pages: Math.ceil(count[0]['count(*)'] / this.ctx.request.query.limit),
       };
     }
 
-    *  getById() {
+    * getById() {
       const item = yield this.service.exerciseVideo.getById(this.ctx.request.query.id);
 
       item.path = this.config.url + '/public/files' + item.path.replace(/\\/g, '/');
@@ -74,15 +74,14 @@ module.exports = app => {
       this.success(item);
     }
     * delete() {
-      let id = this.ctx.request.body.id;
-      let info = yield this.service.exerciseVideo.getById(id);
+      const id = this.ctx.request.body.id;
+      const info = yield this.service.exerciseVideo.getById(id);
       try {
-        let filepath = path.resolve(__dirname, '../public/files' + info.path);
+        const filepath = path.resolve(__dirname, '../public/files' + info.path);
         if (fs.existsSync(filepath)) {
           fs.unlink(filepath);
         }
-      }
-      catch (error) {
+      } catch (error) {
 
       }
       yield this.service.exerciseVideo.delete(this.ctx.request.body.id);

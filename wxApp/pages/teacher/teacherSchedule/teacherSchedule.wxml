@@ -1,0 +1,96 @@
+<!--pages/teacher/teacherSchedule/teacherSchedule.wxml-->
+  <picker bindchange="semesterChange" class="semester" value="{{semesterIndex}}"range="{{semesterArr}}">
+    <view class="semesterPicker">
+      {{semesterArr[semesterIndex]}}<image class="img" wx:if="{{semesterArr[semesterIndex]}}" src="/images/icon/blunDown.png"></image>
+      <text wx:else>{{loading}}</text>
+    </view>
+    <view class="semesterStartEnd">
+      <text>学期起止：{{DateSatartEnd}}</text>
+    </view>
+</picker> 
+<view class="teahcerDetail">
+  <image src='{{user.wxHead}}'></image>
+  <text class='teacherTitle'>教师</text>
+  <text class='teacherName'>{{teacher.name}}</text>
+</view>
+<view>
+  <view class='termCalsss' wx:if="{{termClass.length>0}}">
+    <view class='title'>
+      <image src='/images/icon/termRecords.png'></image>
+      <text>学期课</text>
+    </view>
+    <view class='class'>
+      <view class='classDetailWrap' wx:for="{{termClass}}">
+        <view>
+          <view class='classDetail' >
+            <view class='curriculumName'>
+              <text>课程：</text><text>{{item.course.name}}</text>
+            </view>
+            <view class='time'>
+              <text>时间：</text><text>{{item.dayOfWeek}} {{item.startTime}}~{{item.endTime}}</text>
+            </view>
+            <view class='time'>
+              <text>满员人数：</text><text>{{item.number}}人</text>
+            </view>
+            <view class='time'>
+              <text>等级：</text><text>{{levels[item.level-1].name}}</text>
+            </view>
+            <view class='time'>
+              <text>教室：</text><text>{{item.classroom.name}}</text>
+            </view>
+          </view>
+          <view class='warn'>
+            <view>
+              <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAYCAYAAAF8R7ZtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA25pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGODU0NjRFMEE5QTRFNjExQjg3Q0RGQkNBMjBBQTlDMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowOThERDA0MjFEQzMxMUU4OTkzMEZBMDk3NDUzQkFENyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowOThERDA0MTFEQzMxMUU4OTkzMEZBMDk3NDUzQkFENyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNTFlZGRkYy0yNjhkLWMxNGUtOWJhZi03NTE4ZjI1MjNhYWEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjg1NDY0RTBBOUE0RTYxMUI4N0NERkJDQTIwQUE5QzIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4VdgxnAAACXklEQVR42mL8f1yOAQwsHoIpJgiP4R7DCfn/yAKKUJoBIIAYQFqAWOn///9IyqFKQXqqQHoBAogRbjJUFxDvBdrigmwoTMIciJ1hNsJ0/ocqYERiMwAEELqxLkAj98A4yMZOBuLdyCqRdf6HGvsVqJsbWSfMHl4g5sJmLAjEg0mk8PmPJDkFWSVAAKG7Fj1AQMHOiE2SCY+mD0B8HmY9OkC3kROIv0HZIA99R3KuOND2V9hstEfSBAI+QOyBxH8JtD0f3ca5QJzEQBw4CbTZAqTxPpCjgEXBF7AtDAzK2MIAIIDwhepmIPaFJWZiQjQG6r9uYkKTAS2ZYI0/bDZtg9KzoEnnLjE2/YdmLFAgHAJiWyDmANr4E5dNP6C0EFIqRhbH0AQymR3KFoDSanDZE/Lu2DTdweI/LiT2DnRNRUSliRPyc7HlfsIAGAUgm45hkXoJzednsdj2AqTJEosmcSBeBMTG2OQAAgxf2sMFbgCxOhD/AmJuoHP/EKuRiQRLOKElgzqUzwbEv4HeVKC2ZTLQwoEfi9x9oIW21LLMEYgfI6VgLWhkgvBrqPghoIU5lFqWBsT7kPigMvE6WvwhqpUT8pPJtWwOEM9EEwOlJnk0PjLIAVq4n1TLQKVFMg45HSitjWYxDDgALXyCTSMLFrFnQCyJx8ciUFoLjxppaF3GB8wan7GVh+zQFEcoHkGuXgjE0TgqFXSgDLTwHnIwakBTGjGp8zIU7yIy29wF+tIX5jMQYxORGkFJXQyJfwmIdYnUWw6KMxWoJk4iNX2FluegYuoBEN8mQg+oaBMCAL+VqudSK4dPAAAAAElFTkSuQmCC'></image>
+              <text>注:</text>
+              <text>本课程你已调课 {{item.courseTableItemChangeClass.length}}次</text>
+            </view>
+            <navigator url="/pages/teacher/leaveAndMakeup/leaveAndMakeup?courseTableDetailId={{item.id}}">请假和补课记录 <image src='/images/icon/blueRight.png'></image></navigator>
+          </view>
+          <view class='nav'>
+            <navigator url='/pages/teacher/teacherCourse/teacherCourse?termId={{item.termId}}'>查看周课表</navigator><navigator url='/pages/teacher/termTimeTag/termTimeTag?courseTableDetailId={{item.id}}'>考勤记录</navigator>
+          </view>
+          <view class='line'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='classTime' wx:if="{{classTime.length>0}}">
+    <view class='title'>
+      <image src='/images/icon/termRecords.png'></image>
+      <text>课时课</text>
+    </view>
+    <view class='class'>
+      <view class='classDetailWrap' wx:for="{{classTime}}">
+        <view>
+          <view class='classDetail' >
+            <view class='curriculumName'>
+              <text>课程：</text><text>{{item.course.name}}</text>
+            </view>
+            <view class='time'>
+              <text>时长：</text><text>{{item.duration}}分钟</text>
+            </view>
+            <view class='time'>
+              <text>满员人数：</text><text>{{item.number}}人</text>
+            </view>
+            <view class='time'>
+              <text>等级：</text><text>{{levels[item.level-1].name}}</text>
+            </view>
+          </view>
+          <view class='warn'>
+            <view>
+              <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAYCAYAAAF8R7ZtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA25pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpGODU0NjRFMEE5QTRFNjExQjg3Q0RGQkNBMjBBQTlDMiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowOThERDA0MjFEQzMxMUU4OTkzMEZBMDk3NDUzQkFENyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowOThERDA0MTFEQzMxMUU4OTkzMEZBMDk3NDUzQkFENyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoyNTFlZGRkYy0yNjhkLWMxNGUtOWJhZi03NTE4ZjI1MjNhYWEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Rjg1NDY0RTBBOUE0RTYxMUI4N0NERkJDQTIwQUE5QzIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4VdgxnAAACXklEQVR42mL8f1yOAQwsHoIpJgiP4R7DCfn/yAKKUJoBIIAYQFqAWOn///9IyqFKQXqqQHoBAogRbjJUFxDvBdrigmwoTMIciJ1hNsJ0/ocqYERiMwAEELqxLkAj98A4yMZOBuLdyCqRdf6HGvsVqJsbWSfMHl4g5sJmLAjEg0mk8PmPJDkFWSVAAKG7Fj1AQMHOiE2SCY+mD0B8HmY9OkC3kROIv0HZIA99R3KuOND2V9hstEfSBAI+QOyBxH8JtD0f3ca5QJzEQBw4CbTZAqTxPpCjgEXBF7AtDAzK2MIAIIDwhepmIPaFJWZiQjQG6r9uYkKTAS2ZYI0/bDZtg9KzoEnnLjE2/YdmLFAgHAJiWyDmANr4E5dNP6C0EFIqRhbH0AQymR3KFoDSanDZE/Lu2DTdweI/LiT2DnRNRUSliRPyc7HlfsIAGAUgm45hkXoJzednsdj2AqTJEosmcSBeBMTG2OQAAgxf2sMFbgCxOhD/AmJuoHP/EKuRiQRLOKElgzqUzwbEv4HeVKC2ZTLQwoEfi9x9oIW21LLMEYgfI6VgLWhkgvBrqPghoIU5lFqWBsT7kPigMvE6WvwhqpUT8pPJtWwOEM9EEwOlJnk0PjLIAVq4n1TLQKVFMg45HSitjWYxDDgALXyCTSMLFrFnQCyJx8ciUFoLjxppaF3GB8wan7GVh+zQFEcoHkGuXgjE0TgqFXSgDLTwHnIwakBTGjGp8zIU7yIy29wF+tIX5jMQYxORGkFJXQyJfwmIdYnUWw6KMxWoJk4iNX2FluegYuoBEN8mQg+oaBMCAL+VqudSK4dPAAAAAElFTkSuQmCC'></image>
+              <text>注:</text>
+              <text>本课程你已调课 {{item.courseTableItemChangeClass.length}}次</text>
+            </view>
+            <navigator url='/pages/teacher/classTimeLeave/classTimeLeave?courseTableDetailId={{item.id}}'>请假记录 <image src='/images/icon/blueRight.png'></image></navigator>
+          </view>
+          <view class='nav'>
+            <navigator url='/pages/teacher/teacherCourse/teacherCourse?termId={{item.termId}}'>查看周课表</navigator><navigator url='/pages/teacher/timeTag/timeTag?courseTableDetailId={{item.id}}'>考勤记录</navigator>
+          </view>
+          <view class='line'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+<!--pages/student/signUpTermDetail/signUpTermDetail.wxml-->
+<import src="../../template/wxparse/wxparse.wxml"/>
+<view>
+  <view class="header"  >
+    <text>报名学生：</text><text class="studentName">{{student.name}}</text>
+  </view>
+  <view class="line">
+  </view>
+  <view>
+  </view>
+  <view class="courseTeacher">
+    <image src="{{courseTableItem.user.wxHead}}" class="headPortrait"></image>
+    <text class="title">教师</text>
+    <text>{{courseTableItem.teacher.name}}</text>
+  </view>
+  <view class="courseTable">
+    <view>
+      <text>课程：</text>
+      <text>{{courseTableItem.course.name}}</text>
+    </view>
+    <view>
+      <text>教室：</text>
+      <text>{{courseTableItem.classroom.name}}</text>
+    </view>
+    <view>
+      <text>时间：{{courseTableItem.date}} 周{{courseTableItem.dayOfWeek}} {{courseTableItem.startTime}}~{{courseTableItem.endTime}}</text>
+    </view>
+  </view>
+  <view class="otherRequirements" v-if="{{disabled&&requirementVlaue.length===0?false:true}}">
+    <textarea disabled='{{disabled}}' placeholder="请输入其他要求" value="{{requirementVlaue}}" bindinput="bindRequirements"/>
+  </view>
+  <view class='line line1'>
+  <view class="wxparseWrap">
+    <view class='wxparseTitle'>
+     <image src="/images/icon/smallBell.png" ></image>
+     <text>预约须知</text>
+    </view>
+    <view class="wxparse">
+      <template is="wxparse" data="{{article}}" />
+    </view>
+  </view>
+  </view>
+  <button class='btn' bindtap='submit' wx:if="{{btn===0}}" >确认报名</button>
+  <button class='btn btn1' hidden="{{hiddenBtn}}" bindtap='cancel'wx:else>取消</button>
+</view>

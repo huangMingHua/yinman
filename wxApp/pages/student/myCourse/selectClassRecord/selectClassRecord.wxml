@@ -1,0 +1,24 @@
+<!--pages/student/myCourse/selectClassRecord/selectClassRecord.wxml-->
+<view>
+  <view class='student'>
+    <text>学生：</text><text>{{studentName}}</text>
+  </view>
+  <view class='title'>
+     <image src='/images/icon/class.png'></image>
+     <text>选课记录</text> 
+  </view>
+  <view class='contect' wx:for="{{records}}">
+    <view class='left'>
+      <view class="line">
+      </view>
+      <view class='index'>
+        <text>{{index+1}}</text>
+      </view>
+    </view>
+    <view class="right"> 
+      <view><text>教师：</text><text>{{item.teacher.name}}</text></view>
+      <view><text>时间：</text><text>{{item.date}} {{item.startTime}}~{{item.endTime}}</text></view>
+      <view><text>教室：</text><text>{{item.classroom.name}}</text></view>
+    </view>  
+  </view>
+</view>

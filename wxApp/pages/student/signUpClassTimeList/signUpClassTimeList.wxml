@@ -1,0 +1,60 @@
+<!--pages/student/signUpTermDetail/signUpTermDetail.wxml-->
+<import src="../../template/wxparse/wxparse.wxml"/>
+<view>
+    <view class="header" wx:if="{{student.name}}" >
+    <text>报名学生：</text><text class="studentName">{{student.name}}</text>
+  </view>
+  <view class="line" wx:if="{{student.name}}">
+  </view>
+  <view class="courseTeacher">
+    <image src="{{data.user.wxHead}}" class="headPortrait"></image>
+    <text class="title">教师</text>
+    <text>{{data.teacher.name}}</text>
+  </view>
+  <view class="courseTable">
+    <view>
+      <text>课程：</text>
+      <text>{{data.course.name}}</text>
+    </view>
+    <view>
+      <text>类型：</text>
+      <text>课时课</text>
+    </view>
+    <view>
+      <text>等级：</text>
+      <text>{{data.level}}</text>
+    </view>
+    <view>
+      <text>时长：</text>
+      <text>{{data.duration}}分钟</text>
+    </view>
+    <view>
+      <text>学期：{{data.term.startDate}}~{{data.term.endDate}}</text>
+    </view>
+  </view>
+  <view class="classTimeNum">
+    <text class="title">课时数:
+    </text>
+    <image class="reduce" bindtap='bindReduce' src='/images/icon/reduce.png'></image>
+    <text class="num">{{num}}</text>
+    <image class="add" bindtap='bindAdd' wx:if="{{btn===0}}" src='/images/icon/add.png'></image>
+    <image class="add" bindtap='bindAdd' wx:else src='/images/icon/noAdd.png'></image>
+  </view>
+  <view class="requirements" wx:if="{{disabled&&requirements.length===0?false:true}}">
+  <textarea maxlength='-1'  bindinput="requirementsInput" placeholder="请输入其他要求" value="{{requirements}}" disabled="{{disabled}}"/>
+  </view>
+  <view class="line">
+  </view>
+  <view class="wxparseWrap">
+    <view class='wxparseTitle'>
+     <image src="/images/icon/smallBell.png" ></image>
+     <text>报名须知</text>
+    </view>
+    <view class="wxparse">
+     <template is="wxparse" data="{{article}}" />
+    </view>
+  </view>
+   <button class='btn' bindtap='submit' wx:if="{{btn===0}}" >确认报名</button>
+  <button class='btn btn1' hidden="{{hiddenBtn}}" bindtap='cancel'wx:else>取消      </button>
+</view>
+

@@ -30,7 +30,7 @@
                            
                         </td> 
                         <td>
-                          {{item.courseTableDetail.courseName}}
+                          {{item.courseTableDetail.course.name}}
                         </td> 
                         <td>
                           {{item.courseTableDetail.level}}
@@ -48,12 +48,12 @@
                         </td>
                         
                         <td >
-                          <span v-if="item.shiftStartDate">
-                          {{item.shiftStartDate.date  | viewDate}}至{{item.classTransferCourseTableDetail.endDate | viewDate}}<br/>{{item.classTransferCourseTableDetail.dayOfWeek}} {{item.classTransferCourseTableDetail.startTime | viewHouAndSec}}~{{item.classTransferCourseTableDetail.endTime | viewHouAndSec}}
+                          <span v-if="item.classTransferCourseTableDetail">
+                          {{item.classTransferCourseTableDetail.startDate  | viewDate}}至{{item.classTransferCourseTableDetail.endDate | viewDate}}<br/>{{item.classTransferCourseTableDetail.dayOfWeek}} {{item.classTransferCourseTableDetail.startTime | viewHouAndSec}}~{{item.classTransferCourseTableDetail.endTime | viewHouAndSec}}
                           </span>
                         </td > 
                         <td >
-                          <span v-if="item.shiftStartDate">
+                          <span v-if="item.classTransferCourseTableDetail">
                           {{item.shiftReasons}}
                           </span>
                         </td> 

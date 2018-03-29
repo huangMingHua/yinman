@@ -1,0 +1,36 @@
+<!--pages/student/registrationRecord/registrationRecord.wxml-->
+<scroll-view>
+  <view class="header">
+    <image src='/images/icon/list.png' ></image>
+    <text>报名记录</text>
+  </view>
+  <navigator wx:if="{{item.courseTableDetail.dayOfWeek}}" url='/pages/student/signUpTermDetail/signUpTermDetail?id={{item.id}}' class="list" wx:for="{{list}}">
+    <image src='/images/icon/semesterClass.png' class="identification"></image>
+    <view class="detail">
+      <view><text>课程：</text><text>{{item.course.name}}</text></view>
+      <view ><text>类型：</text><text>学期课</text></view>
+      <view ><text>时间：</text><text>{{item.courseTableDetail.dayOfWeek}} {{item.courseTableDetail.startTime}} ~ {{item.courseTableDetail.endTime}}</text></view>
+    </view>
+    <view class="state">
+      <text wx:if="{{item.state=='已确认'}}">报名成功</text>
+      <text wx:elif="{{item.state=='待确认'}}">审核中</text>
+      <text wx:else>{{item.state}}</text>
+      <image src='/images/icon/dir.png' class="dir"></image>
+    </view>
+  </navigator>
+     <navigator wx:if="{{!item.courseTableDetail.dayOfWeek}}" url='/pages/student/signUpClassTimeList/signUpClassTimeList?id={{item.id}}' class="list" wx:for="{{list}}">
+    <image src='/images/icon/timer.png'  class="identification"></image>
+    <view class="detail">
+      <view><text>课程：</text><text>{{item.course.name}}</text></view>
+      <view><text>类型：</text><text>课时课</text></view>
+      <view><text>课时数：</text><text>{{item.classTimeNum}}</text></view>
+    </view>
+    <view class="state">
+      <text wx:if="{{item.state=='已确认'}}">报名成功</text>
+      <text wx:elif="{{item.state=='待确认'}}">审核中</text>
+      <text wx:else>{{item.state}}</text>
+      <image src='/images/icon/dir.png' class="dir"></image>
+    </view>
+  </navigator>
+  <navigator class="btn" url='/pages/student/signUpTeacherList/signUpTeacherList'>我要报名</navigator>
+</scroll-view>

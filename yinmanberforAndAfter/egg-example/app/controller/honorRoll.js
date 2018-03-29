@@ -19,7 +19,7 @@ module.exports = app => {
         return;
       }
 
-      let now = app.moment();
+      const now = app.moment();
       if (!id || id == 0) {
         if (stream == null) {
           this.fail('请上传文件');
@@ -55,7 +55,7 @@ module.exports = app => {
     * getList() {
       const list = yield app.mysql.select('honor_roll', { limit: Number(this.ctx.request.query.limit), offset: (this.ctx.request.query.pageIndex - 1) * this.ctx.request.query.limit });
       const count = yield app.mysql.query('select count(*) from honor_roll');
-      //const result = [];
+      // const result = [];
       for (const item of list) {
         item.path = this.config.url + '/public/files' + item.path.replace(/\\/g, '/');
         item.createTime = app.moment(item.createTime).format('YYYY-MM-DD hh:mm:ss');
@@ -76,15 +76,14 @@ module.exports = app => {
       this.success(item);
     }
     * delete() {
-      let id = this.ctx.request.body.id;
-      let info = yield this.service.honorRoll.getById(id);
+      const id = this.ctx.request.body.id;
+      const info = yield this.service.honorRoll.getById(id);
       try {
-        let filepath = path.resolve(__dirname, '../public/files' + info.path);
+        const filepath = path.resolve(__dirname, '../public/files' + info.path);
         if (fs.existsSync(filepath)) {
           fs.unlink(filepath);
         }
-      }
-      catch (error) {
+      } catch (error) {
 
       }
       yield this.service.honorRoll.delete(this.ctx.request.body.id);

@@ -1,0 +1,32 @@
+<!--pages/student/signUpTeacherList/signUpTeacherList.wxml-->
+<view>
+  <view class="terms" wx:if="{{isShow===1}}">
+    <picker bindchange="bindTermsChange" value="{{termIndex}}" range="{{terms}}">
+      <view class="pickerTerm">
+        <text class="pickerTermTitle">学期选择</text>
+        <text class="termSelect">{{terms[termIndex]}}</text>
+        <image src="/images/icon/down.png" class="down"></image>
+      </view>
+    </picker>
+  </view>
+  <view class="list" wx:for="{{teacherCourse}}">
+    <view>
+      <image src="{{item.user.wxHead}}" class="headPortrait"></image>
+      <text class="teacherTitle">教师</text>
+      <text class="teacher" >{{item.teacher.name}}</text>
+      <button bindtap="clickButton" data-teacher='{{item.teacher.id}}' class='btn'>查看</button>
+    </view>
+    <view class='personalProfile'>{{item.user.remarks}}</view>
+    <view class="classes">
+      <view wx:for="{{item.courses}}" wx:for-item="i">
+        <image src="/images/icon/semesterClass.png" wx:if="{{!i.date}}" class="type"></image>
+        <image src="/images/icon/timer.png" wx:else class="type"></image>
+        <text>{{i.course.name}}</text>
+      </view>
+    </view>  
+  </view>
+  <view wx:if="{{isShow===0}}" class="noData">
+    <image src="/images/icon/noData.png"  ></image>
+    <view><text>暂无课程信息</text></view>
+  </view>
+</view>

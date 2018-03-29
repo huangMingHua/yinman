@@ -1,0 +1,150 @@
+/* pages/teacher/checkWork/checkWork.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.teahcerDetailWrap{
+  padding-bottom: 32rpx; 
+  background-color: white;
+}
+.teahcerDetail{
+  position: relative;
+  padding-top: 20rpx;
+  display: flex;
+  margin-top: 19rpx;
+  height: 106rpx;
+  align-items: center;
+  background-color: white;
+  font-size: 32rpx;
+  color: #040000;
+}
+.teahcerDetail image{
+  margin: 0 20rpx 0 32rpx;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+}
+.teahcerDetail .teacherTitle{
+  margin-right: 16rpx;
+}
+.teahcerDetail navigator{
+  position: absolute;
+  right: 32rpx;
+  text-align: center;
+  width: 222rpx;
+  height: 64rpx;
+  border-radius: 5px;
+  line-height: 64rpx;
+  background-color: #01d6c2;
+  font-size: 28rpx;
+  color: white;
+}
+.classDetail{
+  padding: 13rpx 30rpx;
+  margin: 0 30rpx;
+  background-color: #f5f5f5;
+}
+.classDetail>view{
+  height: 54rpx;
+  line-height: 54rpx;
+  font-size: 28rpx;
+}
+.classDetail>view text:nth-child(1){
+  margin-right: 18rpx;
+}
+.title{
+  background-color: #f5f5f5;
+  height: 86rpx;
+  line-height: 86rpx;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+  padding-left: 32rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+.table{
+    background-color: white;
+}
+.row {
+  position: relative;
+  display: flex;
+  height: 120rpx;
+  align-items: center;
+  margin: 0 32rpx;
+  font-size: 28rpx;
+  color: #040000;
+  border-bottom: 1rpx solid #f4f4f4;
+}
+.row .noSelected{
+  margin-right: 22rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border: 1rpx solid #a2a2a2;
+  border-radius: 100%;
+}
+.row .selected{
+  margin-right: 22rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.row .selected image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.row .headPortraitWrap{
+   position: relative;
+}
+.row .headPortraitWrap .isGoClss{
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   width: 30rpx;
+   height: 30rpx;
+}
+.row .headPortrait{
+  margin-right: 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 100%;  
+}
+.row .isGoClss{
+  margin-right: 14rpx;
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 100%;  
+}
+.row navigator{
+  height: 56rpx;
+  text-align: center;
+  line-height: 56rpx;
+  font-size: 28rpx;
+  color: white;
+  border-radius: 8rpx;
+}
+.row navigator:nth-of-type(1){
+  position: absolute;
+  right: 210rpx;
+  width: 182rpx;
+  background-color: #ff9b39;
+}
+.row navigator:nth-of-type(2){
+  position: absolute;
+  right: 0;
+  width: 200rpx;
+  background-color: #00d6c2;
+}
+.btn{
+  position: relative;
+}
+.btn button{
+  position: absolute;
+  left: 0;
+  top: 34rpx;
+  right: 0;
+  margin: auto;
+  width: 282rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  background-color: #3cb4ff;
+  font-size: 32rpx;
+  color: white;
+}

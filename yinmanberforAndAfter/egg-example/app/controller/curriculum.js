@@ -25,13 +25,13 @@ module.exports = app => {
     }
 
     * delete() {
-      let id = this.ctx.request.body.id || 0;
-      let info = yield this.service.curriculum.getById(id);
+      const id = this.ctx.request.body.id || 0;
+      const info = yield this.service.curriculum.getById(id);
       if (info == null) {
         this.fail('数据不存在');
         return;
       }
-      let count = yield this.service.bookingCourse.countByCurriculum(info.name);
+      const count = yield this.service.bookingCourse.countByCurriculum(info.name);
       if (count > 0) {
         this.fail('该课程已经有人报了，无法删除');
         return;

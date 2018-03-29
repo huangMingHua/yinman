@@ -1,6 +1,6 @@
 <template>
     <p-layout>
-        <el-breadcrumb class="p-layout-breadcrumb" separator="/">
+        <!-- <el-breadcrumb class="p-layout-breadcrumb" separator="/">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item :to="{ path: '/courseTable/list' }">课程表管理</el-breadcrumb-item>
             <el-breadcrumb-item :to="{ path: '/studentInfo?studentId='+studentId }"
@@ -8,7 +8,7 @@
             <el-breadcrumb-item :to="{ path: '/teacherInfo?teacherId='+teacherId }"
                 v-if="teacherId > 0">教师详情</el-breadcrumb-item>
             <el-breadcrumb-item >周课表</el-breadcrumb-item>
-          </el-breadcrumb>
+          </el-breadcrumb> -->
         <course-table-item :teacherId="teacherId" :termId="termId" :studentId="studentId"></course-table-item>
     </p-layout>
 </template>

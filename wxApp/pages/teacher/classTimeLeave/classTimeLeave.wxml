@@ -1,0 +1,42 @@
+<!--pages/student/myCourse/myLessonAndleave/myLessonAndleave.wxml-->
+<view wx:if="{{isShow===1}}">
+  <view class='student'>
+    <text>教师：{{teacherName}}</text>
+  </view>
+  <view class="title">
+    <image src='/images/icon/termRecords.png'></image>
+    <text>请假记录</text>
+  </view>
+  <view class='detail' wx:for="{{leavesRecort}}">
+    <view class='left'>
+      <text class='leval'>{{index+1}}</text>
+    </view>
+    <view class='right'>
+      <view>
+        <text>满员人数：</text>
+        <text>{{courseTableDetail.number}}</text>
+      </view>
+      <view>
+        <text>课程：</text>
+        <text>{{courseTableDetail.courseName.name}}</text>
+      </view>
+      <view>
+        <text>等级：</text>
+        <text>{{levels[courseTableDetail.level-1].name}}</text>
+      </view>
+      <view>
+        <text>时间：</text>
+        <text>{{item.courseTableItem.date}} {{item.courseTableItem.dayOfWeek}} {{item.courseTableItem.startTime}}~{{item.courseTableItem.endTime}}</text>
+      </view>
+      <view>
+        <text>教室：</text>
+        <text>{{item.courseTableItem.classroom.name}}</text>
+      </view>
+    </view>
+  </view>
+
+</view>
+<view wx:if="{{isShow===0}}" class="noData">
+  <image src="/images/icon/noData.png"  ></image>
+  <view><text>暂无课程信息</text></view>
+</view>

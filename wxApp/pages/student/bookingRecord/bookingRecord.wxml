@@ -1,0 +1,30 @@
+<!--pages/student/registrationRecord/registrationRecord.wxml-->
+<import src="../../template/wxparse/wxparse.wxml"/>
+<scroll-view>
+  <view class="header">
+    <image src='/images/icon/list.png' ></image>
+    <text>预约记录</text>
+  </view>
+  <navigator url='/pages/student/bookingCourse/bookingCourse?bookingCorseId={{item.id}}&dir=1' class="list" wx:for="{{courseTableItems}}" >
+    <image src='/images/icon/semesterClass.png' class="identification"></image>
+    <view class="detail">
+      <view><text>教师：</text><text>{{item.courseTableItem.teacher.name}}</text></view>
+      <view><text>课程：</text><text>{{item.courseTableItem.course.name}}</text></view>
+      <view ><text>时间：</text><text>{{item.courseTableItem.date}}{{item.courseTableItem.startTime}}~{{item.courseTableItem.endTime}}</text></view>
+    </view>
+    <view class="state">
+      <text>{{item.state}}</text>
+      <image src='/images/icon/dir.png' class="dir"></image>
+    </view>
+  </navigator>
+  <view class="wxparseWrap">
+    <view class='wxparseTitle'>
+     <image src="/images/icon/smallBell.png" ></image>
+     <text>预约须知</text>
+    </view>
+    <view class="wxparse">
+      <template is="wxparse" data="{{article}}" />
+    </view>
+  </view>
+  <navigator class="btn" url='/pages/student/customerReservation/customerReservation'>我要预约</navigator>
+</scroll-view>

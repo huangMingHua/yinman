@@ -15,21 +15,28 @@ const nav = [{
                 name: 'courseCreation',
                 path: '/courseCreation',
                 icon: 'courseCreation',
-                text: '课程表管理',
+                text: '课程信息管理',
                 boff: true
             },
             {
                 name: 'introduce',
                 path: '/introduce',
                 icon: 'introduce',
-                text: '预约试课管理',
+                text: '试课申请管理',
                 boff: true
+            },
+            {
+                name: 'tableforclassTrasfer',
+                path: '/tableforclassTrasfer',
+                icon: 'tableforclassTrasfer',
+                text: '查看课程表',
+                boff: false
             },
             {
                 name: 'registrationRecord',
                 path: '/registrationRecord',
                 icon: 'registrationRecord',
-                text: '报名记录',
+                text: '报名申请管理',
                 boff: true
             },
             {
@@ -47,23 +54,20 @@ const nav = [{
                 text: '预约试课管理',
                 boff: false
             },
-
             {
-                name: 'signUp',
-                path: '/signUp',
-                icon: 'signUp',
-                text: '学生管理',
-                boff: false
+                name: 'studentManagement',
+                path: '/studentManagement',
+                icon: 'studentManagement',
+                text: '学生',
+                boff: true
             },
             {
-                name: 'teacherCreation',
-                path: '/teacherCreation',
-                icon: 'teacherCreation',
-                text: '教师管理',
-                boff: false
+                name: 'teacherManagement',
+                path: '/teacherManagement',
+                icon: 'teacherManagement',
+                text: '教师',
+                boff: true
             },
-
-
             {
                 name: 'classroomCreation',
                 path: '/classroomCreation',
@@ -82,7 +86,7 @@ const nav = [{
                 name: 'courseTable',
                 path: '/courseTable/list',
                 icon: 'courseTableCreation',
-                text: '课程表管理',
+                text: '教师',
                 boff: false
             },
 

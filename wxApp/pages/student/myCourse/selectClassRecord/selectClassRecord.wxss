@@ -1,0 +1,63 @@
+/* pages/student/myCourse/selectClassRecord/selectClassRecord.wxss */
+.student{
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  color: #040000;
+}
+.student text:nth-child(1){
+  margin:  0 20rpx 0 32rpx;
+}
+.title{
+  display: flex;
+  align-items: center;
+  height: 84rpx;
+  background-color: #f5f5f5;
+  border-top: 1rpx solid #e6e6e6;
+  border-bottom: 1rpx solid #e6e6e6;
+  font-size: 32rpx;
+}
+.title image{
+  width: 40rpx;
+  height: 40rpx;
+  margin:  0 10rpx 0 30rpx;
+}
+.contect{
+  display: flex;
+  padding-top: 36rpx;
+  position: relative;
+}
+.contect .left{
+  padding-left: 36rpx;
+}
+.contect .left .line{
+  position: absolute;
+  top: 0;
+  left: 48rpx;
+  width: 4rpx;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+.contect .left .index{
+  position: relative;
+  top: 8rpx;
+  z-index: 100;
+  width: 28rpx;
+  height: 28rpx;
+  background-color: #92d5ff;
+  border-radius: 100%;
+  font-size: 20rpx;
+  color: white;
+  text-align: center;
+  line-height: 28rpx;
+}
+.contect .right{
+  padding-left: 20rpx;
+  font-size: 28rpx;
+}
+.contect .right>view{
+  line-height: 48rpx;
+}
+.contect .right>view:nth-child(3){
+  border-bottom: 1rpx solid #f5f5f5;
+}

@@ -37,68 +37,86 @@
           <el-pagination class="pagination" layout="prev, pager, next" @current-change='currentChange' :total="page">
           </el-pagination>
     </div>
-    <el-dialog :title="title" :close-on-click-modal="false" size='tiny'  :visible.sync="showAdd">
-      <el-form ref="form" :model="newItem" :rules="rules" label-width="160px">
-        <el-form-item label="名称：" prop='name'>
-          <el-input v-model="newItem.name"></el-input>
-        </el-form-item>
-        <el-form-item label="开始时间：">
+    <el-dialog :title="title" :close-on-click-modal="false"  :visible.sync="showAdd">
+      <div class='w1000px'>
+        <div class="row">
+          <span class="title">名称：</span>
+          <el-input class="w300px" v-model="newItem.name"></el-input>
+        </div>
+        <div class="row">
+          <span class="title">开始时间：</span>
           <el-date-picker
+            class="w300px"
             v-model="newItem.startDate"
             type="date"
-            style="width:100%"
             placeholder="选择日期"
             >
           </el-date-picker>
-        </el-form-item>
-        <el-form-item label="结束时间：">
+        </div>
+        <div class="row">
+          <span class="title">结束时间：</span>
           <el-date-picker
             v-model="newItem.endDate"
             type="date"
-            style="width:100%"
+            class="w300px"
             placeholder="选择日期"
             >
           </el-date-picker>
-        </el-form-item>
-        <el-form-item label="设置学生请假次数：" class="setLeave">
-           低于：<el-input v-model="newItem.classHour" class="classHour" @change="classHourFn" ></el-input>课时，可请：<el-input v-model="newItem.belowclassHour" class="classHour" ></el-input>次假<br />
-           高于：<em>{{classHour}}</em>课时，可请：<el-input v-model="newItem.higherThanClassHour" class="classHour" ></el-input>次假
-        </el-form-item>
-        <el-form-item label="设置老师请假次数：" class="setLeave">
-           低于：<el-input v-model="newItem.teacherClassHour" class="classHour" @change="teacherClassHourFn" ></el-input>课时，可请：<el-input v-model="newItem.teacherBelowclassHour" class="classHour" ></el-input>次假<br />
-           高于：<em>{{teacherClassHour}}</em>课时，可请：<el-input v-model="newItem.teacherHigherThanClassHour" class="classHour" ></el-input>次假
-        </el-form-item>
-        <el-form-item>
+        </div>
+        <div class="row">
+          <span class="title vertical">设置学生请假次数：</span>
+          <em class="w300px inlineBlock">
+            <span class="math">≤：</span>
+            <el-input v-model="newItem.classHour" class="w40px"  ></el-input>课时，
+            可请：<el-input v-model="newItem.belowclassHour" class="w40px" ></el-input>次假<br />
+            <span class="math">≤：</span>
+            <el-input v-model="newItem.classHour1" class="w40px" @change="classHourFn" ></el-input>课时，
+            可请：<el-input v-model="newItem.belowclassHour1" class="w40px" ></el-input>次假<br />
+            <span class="math">>：</span><em>{{classHour}}</em>课时，
+            可请：<el-input v-model="newItem.higherThanClassHour" class="w40px" ></el-input>次假
+          </em>
+        </div>
+        <div class="row">
+          <span class="title">报名须知：</span>
+          <ueditor class="ueditor"  :content="newItem.registrationNotes" @get="changeRegistrationNotes" ></ueditor>
+        </div> 
+        <div class="row">
+          <span class="title">预约须知：</span>
+          <ueditor class="ueditor"  :content="newItem.noticeOfReservation" @get="changeNoticeOfReservation" ></ueditor>
+        </div>
+        <div class="row btns">
           <el-button @click="cancel">取消</el-button>
           <el-button type="primary" @click="onSubmit">提交</el-button>
-        </el-form-item> 
-      </el-form>
+        </div>
+      </div>
     </el-dialog>
    </div>
 </template>
 <script>
+import ueditor from '../components/ueditor/ueditor'
   export default {
     name:"terms",
     data(){
       return {
-        data:[],
+        data: [],
         showAdd: false,
-        page:1,
-        CPage:1,
-        limit:10,
+        page: 1,
+        CPage: 1,
+        limit: 10,
         newItem:{
-          id:0,
-          name:'',
-          startDate:new Date(),
-          endDate:new Date(),
-          classHour:'',
-          belowclassHour:'',
-          higherThanClassHour:'',
-          teacherClassHour:'',
-          teacherBelowclassHour:'',
-          teacherHigherThanClassHour:'',
+          id: 0,
+          name: '',
+          startDate: new Date(),
+          endDate: new Date(),
+          classHour: '',
+          classHour1: '',
+          belowclassHour: '',
+          belowclassHour1: '',
+          higherThanClassHour: '',
+          registrationNotes: '',
+          noticeOfReservation: ''
         },
-         rules: {
+        rules: {
           name: [
             { required: true, message: '请输入名称', trigger: 'blur' },
           ]
@@ -114,16 +132,17 @@
     methods:{
       init(pageIndex,limit){
        this.newItem={
-          id:0,
-          name:'',
-          startDate:new Date(),
-          endDate:new Date(),
-          classHour:'',
-          belowclassHour:'',
-          higherThanClassHour:'',
-          teacherClassHour:'',
-          teacherBelowclassHour:'',
-          teacherHigherThanClassHour:''
+          id: 0,
+          name: '',
+          startDate: new Date(),
+          endDate: new Date(),
+          classHour: '',
+          classHour1: '',
+          belowclassHour: '',
+          belowclassHour1: '',
+          higherThanClassHour: '',
+          registrationNotes: '',
+          noticeOfReservation: ''
         }
         this.$http.get(`/api/term/getList?pageIndex=${pageIndex}&limit=${limit}`).then((res) => { 
           this.data = res.data.list
@@ -131,10 +150,7 @@
         })
       },
       classHourFn(){
-          this.classHour=this.newItem.classHour
-      },
-      teacherClassHourFn(){
-          this.teacherClassHour=this.newItem.teacherClassHour 
+        this.classHour=this.newItem.classHour1
       },
       onSubmit(){
         if(this.newItem.id){
@@ -168,17 +184,29 @@
       cancel(){
         this.showAdd = false;
       },
+      //报名须知
+      changeRegistrationNotes(val){
+        this.newItem.registrationNotes = val 
+      },
+      //预约须知
+      changeNoticeOfReservation(val){
+        this.newItem.noticeOfReservation = val 
+      },
       showAddDialog(){
         this.showAdd = true
         this.title='添加学期'
         this.newItem={
-          id:0,
-          name:'',
-          startDate:new Date(),
-          endDate:new Date(),
-          classHour:'',
-          belowclassHour:'',
-          higherThanClassHour:''
+          id: 0,
+          name: '',
+          startDate: new Date(),
+          endDate: new Date(),
+          classHour: '',
+          classHour1: '',
+          belowclassHour: '',
+          belowclassHour1: '',
+          higherThanClassHour: '',
+          registrationNotes: '',
+          noticeOfReservation: ''
         }
       },
       del(id){
@@ -210,24 +238,34 @@
       currentChange(val){
       },
       modify(item){
-          let it=JSON.parse(JSON.stringify(item))
-          this.showAdd=true
-          this.title='编辑学期'
-          this.newItem={
-              id:it.id,
-              name:it.name,
-              startDate:it.startDate,
-              endDate:it.endDate,
-              classHour:it.belowClass,
-              belowclassHour:it.numberOfRequests1,
-              higherThanClassHour:it.numberOfRequests2,
-              teacherClassHour:it.teacherBelowClass,
-              teacherBelowclassHour:it.teacherNumberOfRequests1,
-              teacherHigherThanClassHour:it.teacherNumberOfRequests2
+        let it=JSON.parse(JSON.stringify(item))
+        this.showAdd=true
+        this.title='编辑学期'
+        this.newItem={
+          id: it.id,
+          name: it.name,
+          startDate: it.startDate,
+          endDate: it.endDate,
+          classHour: it.belowClass1,
+          classHour1: it.belowClass2,
+          belowclassHour: it.numberOfRequests1,
+          belowclassHour1: it.numberOfRequests2,
+          higherThanClassHour: it.numberOfRequests3,
+          registrationNotes: it.registrationNotes||'',
+          noticeOfReservation: it.noticeOfReservation||''
         }
-        this.classHour=it.belowClass
-        this.teacherClassHour=it.teacherBelowClass
-      }
+        // this.newItem={
+        //     id: it.id,
+        //     name: it.name,
+        //     startDate: it.startDate,
+        //     endDate: it.endDate,
+        //     classHour: it.belowClass1,
+        //     classHour1: it.belowClass2,
+        //     belowclassHour: it.numberOfRequests1,
+        //     belowclassHour1: it.numberOfRequests2,
+        //     higherThanClassHour: it.numberOfRequests3,
+        // }
+        this.classHour=it.belowClass2      }
     },
     watch:{
         //  curri(newVal,oldVal){
@@ -243,50 +281,88 @@
       
     },
     components:{
+      ueditor
     }
    }
 </script>
 <style lang="less" scoped>
-     .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
+  .w1000px{
+    width: 1000px;
+    text-align:left;
+  }
+  .w300px{
+    width: 300px !important;
+  }
+  .inlineBlock{
+    display: inline-block;
+    font-style: normal;
+    vertical-align: middle;
+  }
+  .ueditor{
+    display: inline-block;
+    width: 600px;
+    height: 300px;
+    vertical-align: middle;
+  }
+  .el-date-editor.300px{
+    width: 300px;
+  }
+  .w40px{
+    width: 40px;
+  }
+  .vertical{
+    vertical-align: middle;
+  }
+  .title{
+    width: 160px;
+    display: inline-block;
+    margin-left: 120px;
+  }
+  .show{
+    position:absolute;
+    left:0;
+    top:0;
+    background-color:rgba(0,0,0,0.5);
+    width:100%;
+    height:100%;
+    z-index:100;
+  } 
+  .row{
+    margin-top: 20px;
+  }
+  .btns{
+    text-align: center;
+  }
+  .pagination {
+    text-align: left;
+  }
+  .warnContent{
+    margin-left: 20px;
+    color:red;
+    font-size: 14px;
+  }
+  .setLeave{
+    text-align: left;
+    .classHour{
+      width: 40px;
+    }
+     em{
+        display:inline-block;
+        padding: 3px 10px;
+        font-style: normal;
+        width: 40px;
+        height: 36px;
+        line-height: 30px;
+        vertical-align: middle;
+        border:1px solid #bfcbd9;
+        border-radius: 4px;
+        box-sizing: border-box;
       }
-      .fade-enter, .fade-leave-active {
-        opacity: 0
-      }
-     .show{
-       position:absolute;
-        left:0;
-        top:0;
-        background-color:rgba(0,0,0,0.5);
-        width:100%;
-        height:100%;
-        z-index:100;
-     } 
-     .pagination {
-        text-align: left;
-      }
-      .warnContent{
-        margin-left: 20px;
-        color:red;
-        font-size: 14px;
-      }
-      .setLeave{
-        text-align: left;
-        .classHour{
-          width: 40px;
-        }
-         em{
-            display:inline-block;
-            padding: 3px 10px;
-            font-style: normal;
-            width: 40px;
-            height: 36px;
-            line-height: 30px;
-            vertical-align: middle;
-            border:1px solid #bfcbd9;
-            border-radius: 4px;
-            box-sizing: border-box;
-          }
-      }
+  }
+  .math{
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+  }
 </style>
 

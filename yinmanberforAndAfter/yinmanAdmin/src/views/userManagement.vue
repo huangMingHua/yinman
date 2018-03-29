@@ -70,18 +70,18 @@
           </div>
        </div> 
         </el-tab-pane>
-        <el-tab-pane label="已添加学生用户" name="added">
+        <el-tab-pane label="未报名学生" name="added">
           <existing></existing>
         </el-tab-pane>
-        <el-tab-pane label="学生管理" name="student">
+ <!--        <el-tab-pane label="学生管理" name="student">
            <sign-up></sign-up>
-        </el-tab-pane>
+        </el-tab-pane> -->
           <!-- <el-tab-pane label="续课管理" name="continuedEducation">
           <renew></renew>
         </el-tab-pane> -->
-        <el-tab-pane label="教师管理" name="teacher">
+       <!--  <el-tab-pane label="教师管理" name="teacher">
           <teacher></teacher>
-        </el-tab-pane>
+        </el-tab-pane> -->
       </el-tabs>
    </p-layout>
 </template>

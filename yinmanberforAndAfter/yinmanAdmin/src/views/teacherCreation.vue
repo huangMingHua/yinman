@@ -5,19 +5,14 @@
           <el-button type="primary" class="query-btn">查询</el-button>
         </div>-->
         <div class="p-search-table">
-          <table style="float:left;">
+          <table style="float:left;width: 100%;">
             <thead>
               <tr>
                 <th>id</th>
                 <th>教师姓名</th>
                 <th>性别</th>
-                <th>身份类别</th>
-                <th>昵称</th>
                 <th>头像</th>
-                <th>出生日期</th>
                 <th>联系电话</th>
-                <th>备注</th>
-                <th>关注时间</th>
                 <th>最后交互</th>
                 <th style="width:300px">操作</th>
               </tr>
@@ -26,13 +21,8 @@
                 <th><el-input @change="queryFn" v-model="teacherName" placeholder="输入教师姓名"></el-input></th>
                 <th></th>
                 <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
                 <th><el-input @change="queryFn" v-model="telephone" placeholder="输入联系电话"></el-input></th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th style="width:200px"></th>
                 <th style="width:300px"></th>
               </tr>
             </thead>
@@ -45,18 +35,15 @@
                   {{list.teacher.name}}
                 </td>
                 <td>{{list.teacher.sex}}</td>
-                <td>教师</td>
-                <td>{{list.user.wxName}}</td>
                 <td>
                   <img :src="list.user.wxHead">
                 </td>
-                <td>{{list.teacher.dateOfBirth}}</td>
                 <td>{{list.teacher.phoneNumber}}</td>
-                <td :title='list.user.remarks'>{{aRemarks[index]}}</td>
-                <td>{{list.user.attentionTime}}</td>
                 <td>{{list.user.lastInteraction}}</td>
                 <td>
-                   <router-link  :to="{ path: 'teacherInfo', query: { teacherId: list.teacher.id }}" class='el-button--text'>教师详细</router-link>
+                   <router-link  :to="{ path: '/courseTable/viewItems', query: { teacherId: list.teacher.id } }" class='el-button--text'>每周课表</router-link>
+                   <router-link  :to="{ name: '/courseTable/addDetail', params: { teacherId: list.teacher.id } }" class='el-button--text'>排学期课</router-link>
+                   <router-link  :to="{ path: 'teacherInfo', query: { teacherId: list.teacher.id }}" class='el-button--text'>教师档案</router-link>
                    <el-button type="text"   @click="isDisable(list.user)">{{list.user.isDisable}}</el-button>
                 </td>
               </tr>
@@ -64,7 +51,7 @@
           </table>
         </div>
         <div>
-          <el-pagination class="pagination" layout="prev, pager, next" :total="page">
+          <el-pagination class="pagination" @current-change="changePage" layout="prev, pager, next" :total="page">
           </el-pagination>
         </div>  
       </div>
@@ -180,6 +167,10 @@ import get from '../get'
          }else{
             this.initialCurriculum(this.CPage,this.limit)
          }
+       },
+       changePage(page){
+         this.CPage=page;
+         this.initialCurriculum(this.CPage,this.limit)
        }
     },
     watch:{
@@ -301,6 +292,9 @@ import get from '../get'
     height: 36px;
     line-height: 36px;
   }
+}
+.el-button--text{
+  margin-right: 10px;
 }
 </style>
 

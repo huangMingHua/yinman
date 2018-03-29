@@ -44,7 +44,7 @@
                 <td>{{ item.student.id}}</td>
                 <td>{{ item.student.name}}</td>
                 <td>{{ item.student.sex}}</td>
-                <td><span v-for="curriculum in item.signUpCurriculum" v-if="curriculum.state=='已确认'">{{curriculum.courseTableDetail.courseName}},</span></td>
+                <td><span v-for="curriculum in item.signUpCurriculum" v-if="curriculum.state=='已确认'">{{curriculum.courseTableDetail.course.name}},</span></td>
                 <td>
                   <img :src="item.user.wxHead">
                 </td>

@@ -12,10 +12,9 @@
                 <table>
                     <thead>
                         <tr> 
-                            <th>id</th><th>学生姓名</th><th>学生性别</th><th>出生日期</th><th>报名课程</th><th>课程时间</th><th>头像</th><th>昵称</th><th>家长姓名</th><th>联系电话</th><th>关注时间</th><th>最后交互</th><th>特殊要求</th><th>状态</th><th>操作</th>    
+                            <th>id</th><th>学生姓名</th><th>学生性别</th><th>报名课程</th><th>类型</th><th>头像</th><th>昵称</th><th>家长姓名</th><th>联系电话</th><th>关注时间</th><th>最后交互</th><th>特殊要求</th><th>状态</th><th>操作</th>    
                         </tr>
                         <tr> 
-                          <th></th>
                           <th></th>
                           <th></th>
                           <th></th>
@@ -58,19 +57,15 @@
                         <td>
                             {{item.oStudent.sex}}
                         </td> 
-                        <td>
-                            {{item.oStudent.dateOfBirth | viewDate}}
-                        </td> 
-                        <td v-if="item.oCourse">
-                            {{item.oCourse.courseName}}
+                        <td >
+                            {{item.courseTableDetail.course.name}}
+                        </td>
+                        <td v-if="item.courseTableDetail.dayOfWeek">
+                          学期课
                         </td> 
                         <td v-else>
-                            {{item.afterCourseDeleTeSaveInfo.courseName}}
+                          课时课
                         </td> 
-                        <td style="width:160px">
-                            <span v-if="item.changeCurriculumId&&item.oChangeCourse">{{item.startCourseTableItemId?item.startCourseTableItem.date:item.oChangeCourse.startDate | viewDate}}至{{item.oChangeCourse.endDate | viewDate}}<br />{{item.oChangeCourse.dayOfWeek}}{{item.oChangeCourse.startTime | viewHouAndSec}}~{{item.oChangeCourse.endTime | viewHouAndSec}}</span>
-                            <span v-else-if="item.oCourse">{{item.startCourseTableItemId?item.startCourseTableItem.date:item.oCourse.startDate | viewDate}}至{{item.oCourse.endDate | viewDate}}<br />{{item.oCourse.dayOfWeek}}{{item.oCourse.startTime | viewHouAndSec}}~{{item.oCourse.endTime|viewHouAndSec}}</span>
-                            <span v-else>{{item.startCourseTableItemId?item.startCourseTableItem.date:item.afterCourseDeleTeSaveInfo.startDate | viewDate}}至{{item.afterCourseDeleTeSaveInfo.endDate | viewDate}}<br />{{item.afterCourseDeleTeSaveInfo.dayOfWeek}}{{item.afterCourseDeleTeSaveInfo.startTime|viewHouAndSec }}~{{item.afterCourseDeleTeSaveInfo.endTime |viewHouAndSec}}</span>
                         <td>
                             <img :src="item.oUser.wxHead" style="width:30px;height:30px;" />
                         </td> 
@@ -112,8 +107,8 @@
                     :total="page">
                 </el-pagination>
             </div>
-             <el-dialog title="报名审核"  :visible.sync="dialogFormVisible" :close-on-click-modal="false">
-                 <auditing  :singleUser="singleUser" :singleChecked='singleChecked' @changes="change()" @btnBack="btnBack" @success="get"></auditing>
+             <el-dialog title="报名审核" @close="goBack" :visible.sync="dialogFormVisible" :close-on-click-modal="false" >
+                 <auditing :id='id' :type='type' @goBack="goBack" @changes="change()" @btnBack="btnBack" @success="get"></auditing>
              </el-dialog>
         </div>  
     </div> 
@@ -134,16 +129,9 @@
         CPage: 1,
         limit:  10,
         userInfo: [],
-        delCurriculum: [],
-        timer: null,
-        isShow: false,
         singleChecked: false,
-        singleUser: {},
-        backSingleUser: "",
         dialogFormVisible: false,
         student: {},
-        studentName:'',
-        parentName:'',
         typeOption: [
                 {
                   label: '全部'
@@ -157,22 +145,23 @@
         },{
                   label: '已拒绝'
         }],
-        state:'',
-        aSpecialRequirements:[],
-        terms:[],
-        term:'',
-        termDate:''
+        state: '',
+        aSpecialRequirements: [],
+        terms: [],
+        term: '',
+        termDate: '',
+        id: 0,
+        type: 0
       }
     },
   
     created() {
      //初加载
-      this.get()
       this.termInit()
     },
     methods: {
       get(){
-         this.init(this.state,this.CPage, this.limit,this.termDate)
+         this.init(this.state,this.CPage, this.limit,this.term.id)
       },
       stateClass(state){
         switch (state) {
@@ -198,29 +187,21 @@
           return ''
       },
      //初始化
-      init(state,pageIndex,limit,termDate) {
-        console.log(termDate)
+      init(state,pageIndex,limit,termId) {
         this.dialogFormVisible = false
-        this.$http.get(`/api/signUpCurriculum/getAll?pageIndex=${pageIndex}&limit=${limit}&state=${state}&termDate=${termDate}`).then((response) => {
-           if(response.data.code==1){
-                for(let [index,item] of response.data.data.aCurriculum.entries()){
-                  item.afterCourseDeleTeSaveInfo=item.afterCourseDeleTeSaveInfo
-                  if(item.specialRequirements&&item.specialRequirements.length>10){
-                      this.aSpecialRequirements[index]=item.specialRequirements.substring(0,10)+"..."
-                  }else{
-                      this.aSpecialRequirements[index]=item.specialRequirements
-                  }
-                }
-               this.userInfo=response.data.data.aCurriculum
-               this.page=response.data.data.nTotalCount
-           }
+        this.$http.get(`/api/signUpCurriculum/getAll?pageIndex=${pageIndex}&limit=${limit}&state=${state}&termId=${termId}`).then((response) => {
+          if (response.data.code) {
+            this.userInfo=response.data.data.aCurriculum
+            this.page=response.data.data.nTotalCount
+          }
         })
         
       },
       termInit(){
         this.$http.get('/api/term/getAll').then((res)=>{
             this.terms = res.data;
-            this.term=nowTerm(this.term,this.terms)
+            this.term=nowTerm(this.term,this.terms);
+            this.get()
         });
       },
       currentChange(val) {
@@ -229,28 +210,30 @@
         this.init(this.state,this.CPage, this.limit)
       },
       details(index, val) {
-        this.dialogFormVisible = true
-        if(val.state=='已停课' || val.state=='已取消'||val.state=='已确认'||val.state=='已拒绝'||val.state=='已转课'){
-          this.singleChecked=true
+        if (!val.courseTableDetail.dayOfWeek) {
+          this.type = 1;
         }else{
-          this.singleChecked=false
+          this.type = 0;
         }
-        this.singleUser=JSON.parse(JSON.stringify(val))
-        this.backSingleUser=JSON.parse(JSON.stringify(val))
+        this.dialogFormVisible = true;
+        this.id = val.id
       },
       btnBack() {
         this.dialogFormVisible = false
-        this.singleUser = this.backSingleUser
       },
       query(){
         if(this.state=='全部'){
-               this.state="" 
+          this.state="" 
         }
         this.init(this.state,this.CPage,this.limit,this.termDate)
       },
       queryTerm(val){
         this.termDate=val.startDate+'至'+val.endDate
         this.get()
+      },
+      goBack(){
+        this.id = 0;
+        this.dialogFormVisible = false
       },
       cancel(index,item){
          this.$confirm('选择已取消后状态不可更改，是否继续?', '提示', {

@@ -1,31 +1,41 @@
 module.exports = app => {
-    class courseTableItemSwitch extends app.Service { *
+  class courseTableItemSwitch extends app.Service {
+    *
         add(reason, studentId, createTime, courseTableDetailItemId, courseTableDetailId) {
-            const result = yield app.mysql.insert('course_table_item_leave', {
-                reason,
-                studentId,
-                createTime,
-                courseTableDetailItemId,
-                courseTableDetailId,
-            });
-        }
-
-        *
+          const result = yield app.mysql.insert('course_table_item_leave', {
+            reason,
+            studentId,
+            createTime,
+            courseTableDetailItemId,
+            courseTableDetailId
+          });
+    }
+    *  addForTeacher(courseTableDetailItemId,reason,teacherId,createTime) {
+          const result = yield app.mysql.insert('course_table_item_leave', {
+            reason,
+            teacherId,
+            createTime,
+            courseTableDetailItemId,
+          });
+        } 
+    *
         getById(id) {
-            const info = yield app.mysql.get('course_table_item_leave', { id });
-            return info;
+          const info = yield app.mysql.get('course_table_item_leave', { id });
+          return info;
         }
 
-        *
+    *
         getByCourseTableDetailItemIdAndStudentIdAndOne(courseTableDetailItemId, studentId, one) {
 
-                const o = yield app.mysql.get('course_table_item_change_class', { courseTableDetailItemId, studentId, one });
+          const o = yield app.mysql.get('course_table_item_change_class', { courseTableDetailItemId, studentId, one });
 
-                return o;
-            } *
+          return o;
+    }
+    
+    *
             getByCourseTableDetailIdAndStudentIdAndOne(courseTableDetailId, studentId, one) {
-                const aList = yield app.mysql.select('course_table_item_change_class', { where: { courseTableDetailId, studentId, one } });
-                return aList;
+              const aList = yield app.mysql.select('course_table_item_change_class', { where: { courseTableDetailId, studentId, one } });
+              return aList;
             }
             // *
             //     getByToCourseTableItemIdAndStudentId(fromCourseTableItemId, studentId) {
@@ -36,76 +46,76 @@ module.exports = app => {
         //     }
         /**
          * 根据学期获取学生调课信息
-         * @param {*} termId 
-         * @param {*} teacherId 
-         * @param {*} studentId 
+         * @param {*} termId
+         * @param {*} teacherId
+         * @param {*} studentId
          */
-        *
+    *
         getStudentSwitchs(termId, studentId) {
-            const list = yield app.mysql.select('course_table_item_leave', {
-                where: {
-                    termId: termId,
-                    studentId: studentId
-                }
-            });
-            return list;
+          const list = yield app.mysql.select('course_table_item_leave', {
+            where: {
+              termId,
+              studentId,
+            },
+          });
+          return list;
         }
 
-        *
+    *
         getTeacherSwitchs(termId, teacherId) {
-                const list = yield app.mysql.select('course_table_item_leave', {
-                    where: {
-                        termId: termId,
-                        teacherId: teacherId
-                    }
-                });
-                return list;
-            } *
+          const list = yield app.mysql.select('course_table_item_leave', {
+            where: {
+              termId,
+              teacherId,
+            },
+          });
+          return list;
+        } *
             getListBystudentIdAndTermId(termId, studentId) {
-                let list = yield app.mysql.query(`SELECT  *,course_table_item_leave.createTime as createTime1 FROM course_table_item_leave LEFT JOIN course_table_item ON course_table_item_leave.courseTableDetailItemId=course_table_item.id WHERE termId=${termId} AND studentId=${studentId}`)
-                console.log(list)
-                return list
+              const list = yield app.mysql.query(`SELECT  *,course_table_item_leave.createTime as createTime1 FROM course_table_item_leave LEFT JOIN course_table_item ON course_table_item_leave.courseTableDetailItemId=course_table_item.id WHERE termId=${termId} AND studentId=${studentId}`);
+              console.log(list);
+              return list;
             } *
             getStudentChangeCourseLengthByCourseTableDetailIdAndStudentId(fromCourseTableItemId, studentId) {
-                let list = []
-                return list;
+              const list = [];
+              return list;
             }
 
-        *
+    *
         getTeacherSwitchs1(courseTableDetailId, teacherId) {
-            const list = yield app.mysql.select('course_table_item_leave', {
-                where: {
-                    fromCourseTableDetailId: courseTableDetailId,
-                    teacherId: teacherId
-                }
-            });
-            return list;
+          const list = yield app.mysql.select('course_table_item_leave', {
+            where: {
+              courseTableDetailId: courseTableDetailId,
+              teacherId,
+            },
+          });
+          return list;
         }
 
-        *
+    *
         update(info) {
-                let o = yield app.mysql.update('course_table_item_change_class', info)
-                return o
-            } *
+          const o = yield app.mysql.update('course_table_item_change_class', info);
+          return o;
+        } *
             get(toCourseTableItemId, studentId) {
-                const info = yield app.mysql.get('course_table_item_leave', {
-                    toCourseTableItemId: toCourseTableItemId,
-                    studentId: studentId
-                });
-                return info;
+              const info = yield app.mysql.get('course_table_item_leave', {
+                toCourseTableItemId,
+                studentId,
+              });
+              return info;
             }
             /**
              * 统计某学生在某节课请过几次假
-             * @param {Number} fromCourseTableDetailId 
-             * @param {Number} studentId 
+             * @param {Number} fromCourseTableDetailId
+             * @param {Number} studentId
              */
-            *
+    *
             countByFromCourseTableDetailId(fromCourseTableDetailId, studentId) {
-                const count = yield app.mysql.query('select count(*) from course_table_item_leave where fromCourseTableDetailId = ? and studentId = ?', [fromCourseTableDetailId, studentId]);
-                return count[0]['count(*)'];
+              const count = yield app.mysql.query('select count(*) from course_table_item_leave where fromCourseTableDetailId = ? and studentId = ?', [ fromCourseTableDetailId, studentId ]);
+              return count[0]['count(*)'];
             }
 
-        *
+    *
         getList(page, termId, limit) {
                 // console.log((page - 1) * limit, limit)
                 // const list = yield app.mysql.query('course_table_item_leave', {
@@ -116,7 +126,7 @@ module.exports = app => {
                 //     limit: limit,
                 //     offset: (page - 1) * limit
                 // });
-                const list = yield app.mysql.query(`
+          const list = yield app.mysql.query(`
                 SELECT
                 course_table_item_leave.id,
                 studentId,
@@ -132,30 +142,39 @@ module.exports = app => {
                 course_table_item_leave.createTime
                 FROM  course_table_item_leave
                 LEFT JOIN course_table_item ON course_table_item_leave.courseTableDetailItemId=course_table_item.id 
-                LEFT JOIN course_table_detail ON course_table_item.courseTableDetailId=course_table_detail.id WHERE course_table_item.termId=? LIMIT ${Number(limit)} OFFSET ${(page - 1) * Number(limit)}`, [termId]);
-                var count = yield app.mysql.query("select count(*) from course_table_item_leave LEFT JOIN course_table_item ON course_table_item_leave.courseTableDetailItemId=course_table_item.id WHERE termId=?", [termId])
-                console.log(list)
-                var result = {
-                    list: list,
-                    total: count[0]['count(*)']
-                };
-                return result;
-            } *
-            getListByCourseTableDetailItemId(courseTableDetailItemId) {
-                let list = yield app.mysql.select('course_table_item_change_class', { where: { courseTableDetailItemId } })
-                return list
-            } *
+                LEFT JOIN course_table_detail ON course_table_item.courseTableDetailId=course_table_detail.id WHERE course_table_item.termId=? LIMIT ${Number(limit)} OFFSET ${(page - 1) * Number(limit)}`, [ termId ]);
+          const count = yield app.mysql.query('select count(*) from course_table_item_leave LEFT JOIN course_table_item ON course_table_item_leave.courseTableDetailItemId=course_table_item.id WHERE termId=?', [ termId ]);
+          console.log(list);
+          const result = {
+            list,
+            total: count[0]['count(*)'],
+          };
+          return result;
+        }
+    * getListByCourseTableDetailItemIdAndStudent(courseTableDetailItemId, studentId) {
+      const list = yield app.mysql.select('course_table_item_leave', { where: { courseTableDetailItemId, studentId } });
+      return list;
+    }
+    *
             deleteId(id) {
-                const result = yield app.mysql.delete('course_table_item_leave', { id })
+              const result = yield app.mysql.delete('course_table_item_leave', { id });
             } *
             getChangeClassByCourseTableDetailIdAndStudentId(courseTableDetailId, studentId) {
-                let list = yield app.mysql.select('course_table_item_change_class', { where: { courseTableDetailId, studentId, one: 1 } })
-                return list
+              const list = yield app.mysql.select('course_table_item_change_class', { where: { courseTableDetailId, studentId, one: 1 } });
+              return list;
             } *
             getByCourseTableItemId(courseTableDetailItemId) {
-                let list = yield app.mysql.select('course_table_item_leave', { where: { courseTableDetailItemId } })
-                return list
+              const list = yield app.mysql.select('course_table_item_leave', { where: { courseTableDetailItemId } });
+              return list;
             }
+    * getleaveByCourseTableAndstudentId(courseTableDetailId, studentId) {
+      const list = yield app.mysql.select('course_table_item_leave', { where: { courseTableDetailId, studentId } });
+      return list;
     }
-    return courseTableItemSwitch;
+    *getleaveByCourseTableAndTeacherId(courseTableDetailId, teacherId) {
+      const list = yield app.mysql.select('course_table_item_leave', { where: { courseTableDetailId, teacherId } });
+      return list;
+    }
+    }
+  return courseTableItemSwitch;
 };

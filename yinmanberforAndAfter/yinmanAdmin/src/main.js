@@ -151,6 +151,7 @@ Vue.config.productionTip = false
 Vue.use(elementUi)
 Vue.use(VueRouter)
 Vue.use(Vuex)
+Vue.use(moment)
 
 import Layout from './components/Layout'
 import Search from './components/Search'

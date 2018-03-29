@@ -2,17 +2,17 @@ const moment = require('moment');
 module.exports = app => {
   class CourseTable extends app.Service {
     * add(teacherId, termId, startDate, endDate) {
-          const result = yield app.mysql.insert('course_table', {
-            teacherId,
-            termId,
-            startDate,
-            endDate,
-          });
-          if (result.insertId > 0) {
-            return yield this.findById(result.insertId);
-          }
-          return null;
-        }
+      const result = yield app.mysql.insert('course_table', {
+        teacherId,
+        termId,
+        startDate,
+        endDate,
+      });
+      if (result.insertId > 0) {
+        return yield this.findById(result.insertId);
+      }
+      return null;
+    }
 
     * update(info) {
       yield app.mysql.update('course_table', info);
@@ -43,10 +43,10 @@ module.exports = app => {
       const result = yield app.mysql.select('course_table_detail_student', { where: { studentId } });
       return result;
     }
-    * getMakeUpStudents(){
-      //判断numberOfChangeClass 调课剩余比请假剩余大 大的话就返回出去
-      const result = yield app.mysql.query('select * from course_table_detail_student where numberOfChangeClass>numberOfleave')
-      return result
+    * getMakeUpStudents() {
+      // 判断numberOfChangeClass 调课剩余比请假剩余大 大的话就返回出去
+      const result = yield app.mysql.query('select * from course_table_detail_student where numberOfChangeClass>numberOfleave');
+      return result;
     }
   }
   return CourseTable;
